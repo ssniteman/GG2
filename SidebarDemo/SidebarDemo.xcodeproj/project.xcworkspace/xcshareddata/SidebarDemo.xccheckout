@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4F63E566-E087-4770-B2DD-06C71920D54B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SidebarDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>A720786476AC7A993A13306263C61E28465C17FF</key>
+		<string>https://github.com/ssniteman/iOS-Beginner-Apps.git</string>
+		<key>B2D1C29A7D779CB2B9A48CB2B8809C54C39424AB</key>
+		<string>github.com:ssniteman/get-a-gig.git</string>
+		<key>F732DFCFA6F31EE4A6DBCE6D25DA616728D9C015</key>
+		<string>https://github.com/ssniteman/GG-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SidebarDemo/SidebarDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>A720786476AC7A993A13306263C61E28465C17FF</key>
+		<string>../../../../iOS_Beginner</string>
+		<key>B2D1C29A7D779CB2B9A48CB2B8809C54C39424AB</key>
+		<string>../../../../theironyard/javascript-two/get-a-gig</string>
+		<key>F732DFCFA6F31EE4A6DBCE6D25DA616728D9C015</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/ssniteman/GG-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F732DFCFA6F31EE4A6DBCE6D25DA616728D9C015</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>B2D1C29A7D779CB2B9A48CB2B8809C54C39424AB</string>
+			<key>IDESourceControlWCCName</key>
+			<string>get-a-gig</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F732DFCFA6F31EE4A6DBCE6D25DA616728D9C015</string>
+			<key>IDESourceControlWCCName</key>
+			<string>GG-iOS</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>A720786476AC7A993A13306263C61E28465C17FF</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iOS_Beginner</string>
+		</dict>
+	</array>
+</dict>
+</plist>
