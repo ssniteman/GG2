@@ -369,11 +369,6 @@
 		6044CD0C19D9AA2300B72FD5 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				60FBF72319F084C5004BF681 /* image@2x.png */,
-				60FBF72519F08540004BF681 /* video@2x.png */,
-				60FBF72719F08722004BF681 /* music@2x.png */,
-				60FBF72B19F098CB004BF681 /* camera@2x.png */,
-				60E680F119F1584300639580 /* arrow.png */,
 				60A420DA19D2039C007738D4 /* MainStoryboardTwo.storyboard */,
 				60F4242E19D7078C001D8B0E /* genre.storyboard */,
 				60F4243919D71519001D8B0E /* searchGenre.storyboard */,
@@ -387,6 +382,11 @@
 		604DC51619C7DED600E6A3BD /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				60FBF72319F084C5004BF681 /* image@2x.png */,
+				60FBF72519F08540004BF681 /* video@2x.png */,
+				60FBF72719F08722004BF681 /* music@2x.png */,
+				60FBF72B19F098CB004BF681 /* camera@2x.png */,
+				60E680F119F1584300639580 /* arrow.png */,
 				60FBF72919F0930F004BF681 /* menu3@2x.png */,
 				60FBF71919F077FD004BF681 /* p2.png */,
 				60D7967719D0B61F0009CDB2 /* bigG.png */,

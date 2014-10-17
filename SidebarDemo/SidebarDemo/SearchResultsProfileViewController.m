@@ -58,18 +58,19 @@ UIButton * messageButton;
     //Setting the profile picture to be round
     
     
+//    
+//    // Image coming back from Parse
+//    
+//    PFFile *imageFile = searchResultsForProfile[@"image"];
+//    
+//    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//        
+//        UIImage * image = [UIImage imageWithData:data];
+//        [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
+//        
+//        
+//    }];
     
-    // Image coming back from Parse
-    
-    PFFile *imageFile = searchResultsForProfile[@"image"];
-    
-    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        
-        UIImage * image = [UIImage imageWithData:data];
-        [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
-        
-        
-    }];
     
     
     
@@ -110,10 +111,13 @@ UIButton * messageButton;
     
     // MESSAGE BUTTON
     
-    messageButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 300, 100, 30)];
-    messageButton.backgroundColor = [UIColor grayColor];
+    messageButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, topView.bounds.size.height-15,
+                                                               100, 25)];
     [messageButton setTitle:@"Message" forState:UIControlStateNormal];
-
+    [messageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    messageButton.layer.borderColor = [UIColor whiteColor].CGColor;
+    messageButton.layer.cornerRadius = 5;
+    messageButton.layer.borderWidth = 1;
     [messageButton addTarget:self action:@selector(sendMessageTapped) forControlEvents:UIControlEventTouchUpInside];
     
     [self.view addSubview:messageButton];
@@ -167,6 +171,32 @@ UIButton * messageButton;
     //        self.messageButton.hidden = FALSE;
     //
     //    }
+    
+    
+    PFUser * user = [PFUser user];
+    //
+    
+    if (user[@"image"] == nil) {
+        
+        profileImage = [UIImage imageNamed:@"avatarcopy.jpg"];
+        
+        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+        
+        
+    } else {
+        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+        
+        // Image coming back from Parse
+        
+        PFFile *imageFile = user[@"image"];
+        
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            
+            UIImage * image = [UIImage imageWithData:data];
+            [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
+        }];
+    }
+
     
     
     [super viewDidLoad];
