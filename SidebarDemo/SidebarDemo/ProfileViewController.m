@@ -148,7 +148,7 @@
     
  //Setting the profile picture to be round
     
-    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-80, 90, 160, 160)];
+    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-80, 80, 160, 160)];
     
     if (user[@"image"] == nil) {
     
@@ -177,7 +177,7 @@
     
 // BAND NAME LABEL
     
-    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-100, 200, 21)];
+    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-150, 200, 21)];
     [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20]];
     nameLabel.textColor = [UIColor whiteColor];
     nameLabel.textAlignment = NSTextAlignmentCenter;
@@ -196,7 +196,7 @@
     
 // Genre LABEL
     
-    genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-75, 200, 21)];
+    genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-125, 200, 21)];
     [genreLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20]];
     
     genreLabel.textColor = [UIColor whiteColor];
@@ -211,7 +211,7 @@
 
  //City & State LABEL
     
-    stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-50, 200, 21)];
+    stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-100, 200, 21)];
     [stateLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20]];
     
     stateLabel.textColor = [UIColor whiteColor];
@@ -235,8 +235,9 @@
     
     // Rate Label Parse
     
-    rateLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(20, 50, 100, 50)];
+    rateLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(topView.bounds.size.width - 120, topView.bounds.size.height - 30, 100, 20)];
     [rateLabelParse setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:14]];
+//    rateLabelParse.backgroundColor = [UIColor greenColor];
     rateLabelParse.textColor = [UIColor whiteColor];
     rateLabelParse.textAlignment = NSTextAlignmentCenter;
     
@@ -247,14 +248,20 @@
     
     // Availability Label Parse
     
-    availabilityLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(0, 250, 200, 50)];
+    availabilityLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(5, topView.bounds.size.height - 30, 100, 20)];
     [availabilityLabelParse setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:14]];
+//    availabilityLabelParse.backgroundColor = [UIColor greenColor];
+
     availabilityLabelParse.textColor = [UIColor whiteColor];
     availabilityLabelParse.textAlignment = NSTextAlignmentCenter;
     
     availabilityLabelParse.text = user[@"availability"];
     
     [topView addSubview:availabilityLabelParse];
+    [topView addSubview:self.rateLabel];
+    [topView addSubview:self.availabilityLabel];
+
+    
 }
 
 

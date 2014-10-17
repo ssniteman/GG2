@@ -36,6 +36,14 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *videoButton;
 
+@property (weak, nonatomic) IBOutlet UILabel *availabilityLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *rateLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *availabilityLabelParse2;
+
+@property (weak, nonatomic) IBOutlet UILabel *rateLabelParse2;
+
 
 //Array for other profiles
 @property (nonatomic, strong) NSMutableArray * searchResultsForProfile;

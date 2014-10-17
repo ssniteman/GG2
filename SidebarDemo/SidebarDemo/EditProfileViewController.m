@@ -73,8 +73,6 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
 }
 
 
-
-
 -(void)setGenreString:(NSString *)genreString{
     _genreString = genreString;
     
@@ -119,13 +117,10 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
         
         UIImage * image = [UIImage imageWithData:data];
         self.editImageView.image = image;
-        
-        
+
     }];
 
-    
     self.tableView.delegate = self;
-    
     self.tableView.dataSource =self;
     
     
@@ -234,10 +229,14 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
         PFUser * user = [PFUser currentUser];
 
         
-        user[@"zip"] = self.zipTextBox.text;
+            PFGeoPoint * point = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
+        
+            user[@"location"] = point;
+            user[@"city"] = city;
+            user[@"state"] = state;
+            user[@"zip"] = self.zipTextBox.text;
 
     }
-    
     
 }
 
@@ -247,14 +246,6 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     
     user[@"bandName"] = self.nameCell.text;
     user[@"email"] = self.emailTextField.text;
-    
-    PFGeoPoint * point = [PFGeoPoint geoPointWithLatitude:latitude longitude:longitude];
-
-    user[@"location"] = point;
-    user[@"city"] = city;
-    user[@"state"] = state;
-    
-    
     user[@"instagram"] = self.photosTextField.text;
     user[@"soundcloud"] = self.soundTextField.text;
     user[@"youtube"] = self.videosTextField.text;
@@ -267,9 +258,7 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
     ProfileViewController * profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileView"];
     [self.navigationController pushViewController:profileView animated:YES];
-    
-
-
+  
 }
 
 - (IBAction)editPhotoButton:(id)sender {
