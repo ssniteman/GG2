@@ -33,7 +33,7 @@
     
     self.navigationItem.rightBarButtonItem = saveButton;
     
-    saveButton.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    saveButton.tintColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
     
     
     //LEFT MENU BUTTON
@@ -42,7 +42,7 @@
     
     self.navigationItem.leftBarButtonItem = cancelButton;
     
-    cancelButton.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    cancelButton.tintColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
     
     // SEGMENT CONTROL
     
@@ -50,23 +50,26 @@
     [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
     segmentControl.frame = CGRectMake(20, 100, SCREEN_WIDTH - 40, 50);
     
-    UIColor *newTintColor = [UIColor redColor];
+    UIColor *newTintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     segmentControl.tintColor = newTintColor;
     
-    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-    [segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+//    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
+//    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+//    [segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+//
+     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:16.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    
     
     //    [segmentControl addTarget:self action:@selector(segmentedControlValueDidChange:) forControlEvents:UIControlEventValueChanged];
     [segmentControl setSelectedSegmentIndex:0];
     [self.view addSubview:segmentControl];
     
-    rateTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 360, SCREEN_WIDTH - 40, 50)];
+    rateTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 400, SCREEN_WIDTH - 40, 50)];
     rateTextField.backgroundColor = [UIColor whiteColor];
     rateTextField.layer.cornerRadius = 5;
     rateTextField.font = [UIFont systemFontOfSize:18];
     rateTextField.placeholder = @"Rate";
-    [rateTextField setValue:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f] forKeyPath:@"_placeholderLabel.textColor"];
+    [rateTextField setValue:[UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f] forKeyPath:@"_placeholderLabel.textColor"];
     
     UIView * paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
     rateTextField.leftView = paddingView;

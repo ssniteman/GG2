@@ -255,9 +255,9 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     
     [self.navigationController popViewControllerAnimated:YES];
 
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
-    ProfileViewController * profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileView"];
-    [self.navigationController pushViewController:profileView animated:YES];
+//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
+//    ProfileViewController * profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileView"];
+//    [self.navigationController pushViewController:profileView animated:YES];
   
 }
 

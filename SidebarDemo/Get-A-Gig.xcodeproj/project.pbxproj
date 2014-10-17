@@ -58,6 +58,7 @@
 		60D7968A19D1074F0009CDB2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D7968919D1074F0009CDB2 /* Security.framework */; };
 		60D7968C19D107560009CDB2 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D7968B19D107560009CDB2 /* StoreKit.framework */; };
 		60D7968E19D1075E0009CDB2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60D7968D19D1075E0009CDB2 /* SystemConfiguration.framework */; };
+		60E680F219F1584300639580 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 60E680F119F1584300639580 /* arrow.png */; };
 		60F4242F19D7078D001D8B0E /* genre.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F4242E19D7078C001D8B0E /* genre.storyboard */; };
 		60F4243219D70A8E001D8B0E /* EditGenreTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F4243119D70A8E001D8B0E /* EditGenreTVC.m */; };
 		60F4243819D71356001D8B0E /* SearchGenreTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F4243719D71356001D8B0E /* SearchGenreTVC.m */; };
@@ -177,6 +178,7 @@
 		60D7968919D1074F0009CDB2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		60D7968B19D107560009CDB2 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		60D7968D19D1075E0009CDB2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		60E680F119F1584300639580 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		60F4242E19D7078C001D8B0E /* genre.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = genre.storyboard; sourceTree = "<group>"; };
 		60F4243019D70A8E001D8B0E /* EditGenreTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditGenreTVC.h; sourceTree = "<group>"; };
 		60F4243119D70A8E001D8B0E /* EditGenreTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditGenreTVC.m; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				60FBF72519F08540004BF681 /* video@2x.png */,
 				60FBF72719F08722004BF681 /* music@2x.png */,
 				60FBF72B19F098CB004BF681 /* camera@2x.png */,
+				60E680F119F1584300639580 /* arrow.png */,
 				60A420DA19D2039C007738D4 /* MainStoryboardTwo.storyboard */,
 				60F4242E19D7078C001D8B0E /* genre.storyboard */,
 				60F4243919D71519001D8B0E /* searchGenre.storyboard */,
@@ -609,6 +612,7 @@
 				60D7967619D0AE790009CDB2 /* g.png in Resources */,
 				60FBF72419F084C5004BF681 /* image@2x.png in Resources */,
 				60FBF72A19F0930F004BF681 /* menu3@2x.png in Resources */,
+				60E680F219F1584300639580 /* arrow.png in Resources */,
 				F4EECF67177F4AB000778578 /* nav_bg.png in Resources */,
 				F4EECF6A177F4C0200778578 /* menu.png in Resources */,
 				607A6CAE19E5C2AF00B27D94 /* searchResultsProfile.storyboard in Resources */,

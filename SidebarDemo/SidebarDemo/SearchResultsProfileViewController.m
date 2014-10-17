@@ -57,9 +57,7 @@ UIButton * messageButton;
     
     //Setting the profile picture to be round
     
-    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-70, 90, 140, 140)];
-    profileImage = [UIImage imageNamed:@"avatarcopy.jpg"];
-    [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+    
     
     // Image coming back from Parse
     
@@ -73,9 +71,7 @@ UIButton * messageButton;
         
     }];
     
-    theProfilePicture.layer.cornerRadius = 70;
-    theProfilePicture.userInteractionEnabled = false;
-    theProfilePicture.clipsToBounds = YES;
+    
     
     
     // BAND NAME LABEL
@@ -107,7 +103,9 @@ UIButton * messageButton;
     [topView addSubview:genreLabel];
     [topView addSubview:stateLabel];
     
-    [topView addSubview:theProfilePicture];
+    
+    
+    
     
     
     // MESSAGE BUTTON
@@ -174,6 +172,12 @@ UIButton * messageButton;
     [super viewDidLoad];
    
     
+    [self.profilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+    self.profilePicture.layer.cornerRadius = 50;
+    self.profilePicture.userInteractionEnabled = false;
+    self.profilePicture.clipsToBounds = YES;
+    
+    
     //***************************************************** FIX
     
     
@@ -190,21 +194,21 @@ UIButton * messageButton;
     //Position for the Photos Button
     
     self.photosButton.frame = CGRectMake(10, SCREEN_HEIGHT-105, 95, 95);
-    self.photosButton.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
+    
     
     
     
     //Position for the Sound Button
     
     self.soundButton.frame = CGRectMake(SCREEN_WIDTH/2.0-47.5, SCREEN_HEIGHT-105, 95, 95);
-    self.soundButton.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
+  
     
     
     
     //Position for the video Button
     
     self.videoButton.frame = CGRectMake(SCREEN_WIDTH-105, SCREEN_HEIGHT-105, 95, 95);
-    self.videoButton.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
+ 
     
     
 

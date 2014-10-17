@@ -11,6 +11,10 @@
 #import <Parse/Parse.h>
 
 @interface QueryResultsCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+
+@property (weak, nonatomic) IBOutlet UIView *bottomVIew;
 
 @property (weak, nonatomic) IBOutlet UIButton *resultPhoto;
 

@@ -144,9 +144,11 @@
 //    UIColor *newTintColor = [UIColor whiteColor];
     segmentControl.tintColor = [UIColor whiteColor];
     
-    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-    [segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+//    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
+//    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:16.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+//
+//    [segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
     segmentControl.layer.borderWidth = 0;
     

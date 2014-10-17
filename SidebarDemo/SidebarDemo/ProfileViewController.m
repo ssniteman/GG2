@@ -235,7 +235,7 @@
     
     // Rate Label Parse
     
-    rateLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(topView.bounds.size.width - 120, topView.bounds.size.height - 30, 100, 20)];
+    rateLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(topView.bounds.size.width - 115, topView.bounds.size.height - 30, 100, 20)];
     [rateLabelParse setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:14]];
 //    rateLabelParse.backgroundColor = [UIColor greenColor];
     rateLabelParse.textColor = [UIColor whiteColor];
@@ -248,7 +248,7 @@
     
     // Availability Label Parse
     
-    availabilityLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(5, topView.bounds.size.height - 30, 100, 20)];
+    availabilityLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(10, topView.bounds.size.height - 30, 100, 20)];
     [availabilityLabelParse setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:14]];
 //    availabilityLabelParse.backgroundColor = [UIColor greenColor];
 

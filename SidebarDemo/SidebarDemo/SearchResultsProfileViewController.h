@@ -11,6 +11,9 @@
 
 @interface SearchResultsProfileViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *profilePicture;
+
+
 //Profile SoundCloud Button
 - (IBAction)soundcloudButton:(id)sender;
 
