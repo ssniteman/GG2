@@ -32,7 +32,9 @@
     
     //[self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
     
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu3.png"]style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    
+    revealButtonItem.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
@@ -48,7 +50,12 @@
     
     [inboxQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        NSArray * people = [PFUser currentUser][@"peopleSpoken"];
+        
+        PFQuery * userQuery = [PFUser query];
+//        [userQuery includeKey:@"peopleSpoken"];
+        PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
+        
+        NSArray * people = currentUser[@"peopleSpoken"];
         
         
         for (PFUser * user in people)
@@ -78,9 +85,17 @@
             
         }
         
+        //TO DO
+        for (NSDictionary * dictionary in myConversations) {
+            
+            
+            NSLog(@"my messages are %@", dictionary[@"messages"]);
+            
+        }
+        
         [self.tableView reloadData];
         
-        NSLog(@"my messages are %@", myConversations);
+       
         
     }];
     

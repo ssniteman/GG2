@@ -10,6 +10,7 @@
 #import "EditProfileViewController.h"
 #import "QueryResultsTVC.h"
 #import <Parse/Parse.h>
+#import "Showcase.h"
 
 // WIDTH & HEIGHT
 
@@ -17,7 +18,7 @@
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
 
-@interface ProfileViewController ()
+@interface ProfileViewController () 
 
 @end
 
@@ -98,7 +99,9 @@
     [super viewDidLoad];
     //LEFT MENU BUTTON
     SWRevealViewController *revealController = [self revealViewController];
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"] style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu3.png"]style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    
+    revealButtonItem.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
@@ -117,63 +120,79 @@
 
     
     //Position for the Photos Button
-    
-    self.photosButton.frame = CGRectMake(10, SCREEN_HEIGHT-105, 95, 95);
-    self.photosButton.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
+//    
+    self.photosButton.frame = CGRectMake(10, SCREEN_HEIGHT-125, 95, 95);
+ 
     
     
     
     //Position for the Sound Button
+//    
+    self.soundButton.frame = CGRectMake(SCREEN_WIDTH/2.0-47.5, SCREEN_HEIGHT-125, 95, 95);
+   
     
-    self.soundButton.frame = CGRectMake(SCREEN_WIDTH/2.0-47.5, SCREEN_HEIGHT-105, 95, 95);
-    self.soundButton.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
     
+    //Position for the video Button
     
+    self.videoButton.frame = CGRectMake(SCREEN_WIDTH-105, SCREEN_HEIGHT-125, 95, 95);
     
- //Position for the video Button
-    
-    self.videoButton.frame = CGRectMake(SCREEN_WIDTH-105, SCREEN_HEIGHT-105, 95, 95);
-    self.videoButton.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
     
     
     
  // TOP VIEW BACKGROUND
     
-    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -150)];
+    UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 150)];
     topView.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
+    
     [self.view addSubview:topView];
     
  //Setting the profile picture to be round
     
-    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-70, 90, 140, 140)];
+    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-80, 90, 160, 160)];
+    
+    if (user[@"image"] == nil) {
+    
     profileImage = [UIImage imageNamed:@"avatarcopy.jpg"];
+    
     [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
 
-    // Image coming back from Parse
     
-    PFFile *imageFile = user[@"image"];
-    
-    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-        
-        UIImage * image = [UIImage imageWithData:data];
-        [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
+    } else {
+        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
 
+        // Image coming back from Parse
         
-    }];
+        PFFile *imageFile = user[@"image"];
+        
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            
+            UIImage * image = [UIImage imageWithData:data];
+            [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
+        }];
+    }
     
-    theProfilePicture.layer.cornerRadius = 70;
+    theProfilePicture.layer.cornerRadius = 80;
     theProfilePicture.userInteractionEnabled = false;
     theProfilePicture.clipsToBounds = YES;
     
-
 // BAND NAME LABEL
     
     nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-100, 200, 21)];
     [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20]];
     nameLabel.textColor = [UIColor whiteColor];
     nameLabel.textAlignment = NSTextAlignmentCenter;
-    nameLabel.text = @"Your Band Name ";
-    nameLabel.text = user[@"bandName"];
+    
+    
+    if ([user[@"bandName"] length] <= 0) {
+        
+        nameLabel.text = @"Your Band Name ";
+
+    } else {
+        
+        nameLabel.text = user[@"bandName"];
+
+    }
+    
     
 // Genre LABEL
     
@@ -182,9 +201,14 @@
     
     genreLabel.textColor = [UIColor whiteColor];
     genreLabel.textAlignment = NSTextAlignmentCenter;
-    genreLabel.text = @"Genre";
-    genreLabel.text = user[@"genre"];
     
+    if ([user[@"genre"] length] <= 0) {
+        genreLabel.text = @"Genre";
+    } else {
+        genreLabel.text = user[@"genre"];
+    }
+    
+
  //City & State LABEL
     
     stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-50, 200, 21)];
@@ -193,8 +217,16 @@
     stateLabel.textColor = [UIColor whiteColor];
     stateLabel.textAlignment = NSTextAlignmentCenter;
 //    stateLabel.text = @"City, State";
+    
+    if ([user[@"city"] length] <= 0) {
+        
+        stateLabel.text = @"City, State";
+    } else {
+    
     stateLabel.text = [NSString stringWithFormat:@"%@, %@",user[@"city"],user[@"state"]];
     
+    }
+        
     [topView addSubview:nameLabel];
     [topView addSubview:genreLabel];
     [topView addSubview:stateLabel];
@@ -242,8 +274,20 @@
 //}
 
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"web"])
+    {
+        Showcase *webController = segue.destinationViewController;
+        webController.link = self.link;
+        
+    }
+}
+
+
 - (IBAction)soundcloudButton:(id)sender {
+    self.link = [NSString stringWithFormat:@"https://www.soundcloud.com/%@", user[@"soundcloud"]];
     
+    [self performSegueWithIdentifier:@"web" sender:self];
 }
 
 
@@ -255,9 +299,18 @@
 
 
 - (IBAction)instagramButton:(id)sender {
+    self.link = [NSString stringWithFormat:@"https://www.instagram.com/%@", user[@"instagram"]];
     
+    [self performSegueWithIdentifier:@"web" sender:self];
 }
 
 - (IBAction)messageButton:(id)sender {
+}
+- (IBAction)youTube:(id)sender {
+    self.link = [NSString stringWithFormat:@"https://www.youtube.com/user/%@", user[@"youtube"]];
+    
+    [self performSegueWithIdentifier:@"web" sender:self];
+    
+    
 }
 @end

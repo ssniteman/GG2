@@ -16,6 +16,7 @@
 #import <Accelerate/Accelerate.h>
 #import "EditRateVC.h"
 #import <MobileCoreServices/MobileCoreServices.h>
+#import "Showcase.h"
 
 @interface EditProfileViewController ()<UITableViewDataSource,UITableViewDelegate, UIImagePickerControllerDelegate,
 UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AvailableTVCDelegate, RateDelegate, GenreTVCDelegate, UITextFieldDelegate>
@@ -26,7 +27,11 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
 @property (weak, nonatomic) IBOutlet UIView *rateCell;
 
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+//SHOWCASE
 
+@property (weak, nonatomic) IBOutlet UITextField *photosTextField;
+@property (weak, nonatomic) IBOutlet UITextField *soundTextField;
+@property (weak, nonatomic) IBOutlet UITextField *videosTextField;
 
 @end
 
@@ -84,15 +89,26 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     // Do any additional setup after loading the view.
     
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(editSaveButton)];
+
     
+    saveButton.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     self.navigationItem.rightBarButtonItem = saveButton;
     
+    
+    if ([self.zipTextBox.text isEqualToString:@""]) {
+        self.changeZipButton.hidden = NO;
+        self.zipButton.hidden = YES;
+    } else {
+        self.changeZipButton.hidden = YES;
+        self.zipButton.hidden = NO;
+        
+    }
     
     PFUser * user = [PFUser currentUser];
    
     self.nameCell.text = user[@"bandName"];
     self.emailTextField.text = user[@"email"];
-    self.zipTextBox.text = address[@"formatted_address"];
+    self.zipTextBox.text = user[@"zip"];
 
     
     PFFile *imageFile = user[@"image"];
@@ -112,16 +128,19 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     
     self.tableView.dataSource =self;
     
-    [self.changeZipButton setHidden:YES];
-
     
     SWRevealViewController *revealController = [self revealViewController];
     
     //[self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
     
     
-    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu.png"]
-        style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    
+    
+    UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu3.png"]style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
+    
+    revealButtonItem.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+
+    
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
    self.daysAvailableLabel.text = self.daysAvailable;
@@ -211,6 +230,12 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
         
         self.zipButton.hidden = YES;
         self.changeZipButton.hidden = NO;
+        
+        PFUser * user = [PFUser currentUser];
+
+        
+        user[@"zip"] = self.zipTextBox.text;
+
     }
     
     
@@ -229,6 +254,12 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     user[@"city"] = city;
     user[@"state"] = state;
     
+    
+    user[@"instagram"] = self.photosTextField.text;
+    user[@"soundcloud"] = self.soundTextField.text;
+    user[@"youtube"] = self.videosTextField.text;
+    
+
     [[PFUser currentUser] saveInBackground];
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -237,7 +268,8 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     ProfileViewController * profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileView"];
     [self.navigationController pushViewController:profileView animated:YES];
     
-    
+
+
 }
 
 - (IBAction)editPhotoButton:(id)sender {

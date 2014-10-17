@@ -69,22 +69,35 @@
     
     // add reciever to people spoken to
     
-    PFUser * user = [PFUser currentUser];
+    PFQuery * userQuery = [PFUser query];
+    [userQuery includeKey:@"peopleSpoken"];
+    PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
     
-    NSMutableArray * peopleSpokenTo = [user[@"peopleSpoken"] mutableCopy];
+    NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
     
     if (peopleSpokenTo == nil) {
         peopleSpokenTo = [@[] mutableCopy];
     }
     
-    if (![peopleSpokenTo containsObject:self.toUser])
+    BOOL foundUser = NO;
+    for (PFUser * user in peopleSpokenTo)
+    {
+        if ([user.objectId isEqualToString:self.toUser.objectId]) foundUser = YES;
+    }
+    
+    if (!foundUser)
     {
         [peopleSpokenTo addObject:self.toUser];
     }
     
-    user[@"peopleSpoken"] = peopleSpokenTo;
+//    if (![peopleSpokenTo containsObject:self.toUser])
+//    {
+//        [peopleSpokenTo addObject:self.toUser];
+//    }
     
-    [user saveInBackground];
+    currentUser[@"peopleSpoken"] = peopleSpokenTo;
+    
+    [currentUser saveInBackground];
     
     // run push
     

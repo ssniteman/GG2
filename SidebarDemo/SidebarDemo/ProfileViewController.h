@@ -17,6 +17,7 @@
 //Profile Social Accounts
 
 //Button Actions
+- (IBAction)youTube:(id)sender;
 
 //Profile SoundCloud Button
 - (IBAction)soundcloudButton:(id)sender;
@@ -44,5 +45,7 @@
 
 @property (nonatomic,strong) NSString * whatProfileToLoad;
 
+//Link for SHOWCASE
 
+@property (nonatomic) NSString * link;
 @end

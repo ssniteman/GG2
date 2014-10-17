@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F4EECF0D177C99F400778578"
-               BuildableName = "SidebarDemo.app"
-               BlueprintName = "SidebarDemo"
-               ReferencedContainer = "container:SidebarDemo.xcodeproj">
+               BuildableName = "Get-A-Gig.app"
+               BlueprintName = "Get-A-Gig"
+               ReferencedContainer = "container:Get-A-Gig.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4EECF0D177C99F400778578"
-            BuildableName = "SidebarDemo.app"
-            BlueprintName = "SidebarDemo"
-            ReferencedContainer = "container:SidebarDemo.xcodeproj">
+            BuildableName = "Get-A-Gig.app"
+            BlueprintName = "Get-A-Gig"
+            ReferencedContainer = "container:Get-A-Gig.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -52,9 +52,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4EECF0D177C99F400778578"
-            BuildableName = "SidebarDemo.app"
-            BlueprintName = "SidebarDemo"
-            ReferencedContainer = "container:SidebarDemo.xcodeproj">
+            BuildableName = "Get-A-Gig.app"
+            BlueprintName = "Get-A-Gig"
+            ReferencedContainer = "container:Get-A-Gig.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F4EECF0D177C99F400778578"
-            BuildableName = "SidebarDemo.app"
-            BlueprintName = "SidebarDemo"
-            ReferencedContainer = "container:SidebarDemo.xcodeproj">
+            BuildableName = "Get-A-Gig.app"
+            BlueprintName = "Get-A-Gig"
+            ReferencedContainer = "container:Get-A-Gig.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
