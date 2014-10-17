@@ -200,6 +200,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     locationSearchs.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20];
     [locationSearchs setTextAlignment: NSTextAlignmentCenter];
     locationSearchs.backgroundColor = [UIColor whiteColor];
+    locationSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
     UILabel * locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, locationSearch.bounds.size.width, 20)];
     locationLabel.text = @"Location";
@@ -243,7 +244,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     genreSearchs.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20];
     [genreSearchs setTextAlignment: NSTextAlignmentCenter];
     genreSearchs.backgroundColor = [UIColor whiteColor];
-    
+    genreSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     // BUTTON
     
     genreSearchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, genreSearch.bounds.size.width, genreSearch.bounds.size.height)];
@@ -278,6 +279,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     availabilitySearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
     availabilitySearchs.backgroundColor = [UIColor whiteColor];
     availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20];
+    availabilitySearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     [availabilitySearchs setTextAlignment: NSTextAlignmentCenter];
     availabilitySearchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, availabilitySearch.bounds.size.width, availabilitySearch.bounds.size.height)];
     [availabilitySearch addSubview:availabilitySearchButton];
@@ -303,6 +305,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     rateSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
     [rateSearchs setTextAlignment: NSTextAlignmentCenter];
     rateSearchs.backgroundColor = [UIColor whiteColor];
+    rateSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
     UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, rateSearch.bounds.size.width, 20)];
     rateLabel.text = @"Rate";

@@ -15,6 +15,7 @@
 @property (nonatomic,assign) id<SearchLocationTVCDelegate> delegate;
 
 // AFTER DELEGATE
+@property (weak, nonatomic) IBOutlet UILabel *radiusLabel;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 

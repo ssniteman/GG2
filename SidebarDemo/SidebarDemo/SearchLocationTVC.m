@@ -67,8 +67,12 @@
 
     
 }
+
+
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row   inComponent:(NSInteger)component
 {
+    
+    self.radiusLabel.text = [NSString stringWithFormat:@"%@ Miles",  radiusMiles[row]];
     
     NSLog(@"%@",radiusMiles[row]);
     radius = radiusMiles[row];
@@ -110,7 +114,7 @@
     
     CGSize pickerSize = [self.radiusPicker sizeThatFits:CGSizeZero];
     
-    UIView * pickerTransformView= [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, pickerSize.width, pickerSize.height)];
+    UIView * pickerTransformView= [[UIView alloc] initWithFrame:CGRectMake(2.0f, 2.0f, pickerSize.width, pickerSize.height)];
     
     pickerTransformView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
     [pickerTransformView addSubview:self.radiusPicker];
