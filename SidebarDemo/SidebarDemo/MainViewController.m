@@ -10,9 +10,7 @@
 #import "SWRevealViewController.h"
 #import "SignUpViewController.h"
 #import "LoginViewController.h"
-
 #import "ProfileViewController.h"
-
 #import <Parse/Parse.h>
 
 @interface MainViewController ()

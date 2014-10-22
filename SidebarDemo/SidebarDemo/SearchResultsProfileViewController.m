@@ -71,11 +71,44 @@ UIButton * messageButton;
 //        
 //    }];
     
+    // Setting Profile Picture
+ 
+    
+    //Setting the profile picture to be round
+    
+    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-80, 80, 160, 160)];
+    
+    if (searchResultsForProfile[@"image"] == nil) {
+        
+        profileImage = [UIImage imageNamed:@"avatarcopy.jpg"];
+        
+        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+        
+        
+    } else {
+        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+        
+        // Image coming back from Parse
+        
+        PFFile *imageFile = searchResultsForProfile[@"image"];
+        
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            
+            UIImage * image = [UIImage imageWithData:data];
+            [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
+        }];
+    }
+    
+    theProfilePicture.layer.cornerRadius = 80;
+    theProfilePicture.userInteractionEnabled = false;
+    theProfilePicture.clipsToBounds = YES;
     
     
     
+
     
-    // BAND NAME LABEL
+    
+    // NAME LABEL
     
     nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-100, 200, 21)];
     [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20]];
@@ -111,7 +144,7 @@ UIButton * messageButton;
     
     // MESSAGE BUTTON
     
-    messageButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, topView.bounds.size.height-15,
+    messageButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, topView.bounds.size.height-25,
                                                                100, 25)];
     [messageButton setTitle:@"Message" forState:UIControlStateNormal];
     [messageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -220,25 +253,24 @@ UIButton * messageButton;
     
     //***************************************************** FIX
     
+
     
     //Position for the Photos Button
-    
-    self.photosButton.frame = CGRectMake(10, SCREEN_HEIGHT-105, 95, 95);
+    //
+    self.photosButton.frame = CGRectMake(10, SCREEN_HEIGHT-125, 95, 95);
     
     
     
     
     //Position for the Sound Button
-    
-    self.soundButton.frame = CGRectMake(SCREEN_WIDTH/2.0-47.5, SCREEN_HEIGHT-105, 95, 95);
-  
+    //
+    self.soundButton.frame = CGRectMake(SCREEN_WIDTH/2.0-47.5, SCREEN_HEIGHT-125, 95, 95);
     
     
     
     //Position for the video Button
     
-    self.videoButton.frame = CGRectMake(SCREEN_WIDTH-105, SCREEN_HEIGHT-105, 95, 95);
- 
+    self.videoButton.frame = CGRectMake(SCREEN_WIDTH-105, SCREEN_HEIGHT-125, 95, 95);
     
     
 

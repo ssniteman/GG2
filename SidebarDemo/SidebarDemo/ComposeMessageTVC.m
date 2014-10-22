@@ -22,7 +22,7 @@
     
     _toWhomWeSendString = toWhomWeSendString;
     NSLog(@"listen here %@",toWhomWeSendString);
-    self.sendMessageText.text = toWhomWeSendString;
+    self.toWhomWeSend.text = toWhomWeSendString;
     
     [self.tableView reloadData];
     
@@ -31,6 +31,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    [self.sendMessageText becomeFirstResponder];
     
 
     // SEND BUTTON

@@ -92,13 +92,15 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     saveButton.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     self.navigationItem.rightBarButtonItem = saveButton;
     
+
+    
     
     if ([self.zipTextBox.text isEqualToString:@""]) {
-        self.changeZipButton.hidden = NO;
-        self.zipButton.hidden = YES;
-    } else {
         self.changeZipButton.hidden = YES;
         self.zipButton.hidden = NO;
+    } else {
+        self.changeZipButton.hidden = NO;
+        self.zipButton.hidden = YES;
         
     }
     

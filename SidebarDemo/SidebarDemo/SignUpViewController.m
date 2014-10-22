@@ -36,34 +36,6 @@
     [self.view addSubview:gLogo];
     
     
-   
-    
-    
-//    // SIGN UP FINAL BUTTON
-//    
-//    UIButton * musicianButton = [[UIButton alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 80, SCREEN_WIDTH - 40, 50)];
-//    
-//    signUpFinalButton.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
-//    signUpFinalButton.titleLabel.font = [UIFont systemFontOfSize:18];
-//    [signUpFinalButton setTitle:@"SIGN UP" forState:UIControlStateNormal];
-//    [signUpFinalButton setTitleColor: [UIColor whiteColor] forState:UIControlStateNormal];
-//    signUpFinalButton.layer.cornerRadius = 5;
-//    signUpFinalButton.layer.borderWidth = 1;
-//    signUpFinalButton.layer.borderColor = [[UIColor whiteColor] CGColor];
-//    
-//    [signUpFinalButton addTarget:self action:@selector(signUpFinalTouched) forControlEvents:UIControlEventTouchUpInside];
-//    
-//    [signUpFinalButton setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24]];
-//    
-//    
-//    [self.view addSubview:signUpFinalButton];
-//    
-//    
-//    
-//    
-//    
-    
-    
     // USERNAME TEXT FIELD
     
     usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 360, SCREEN_WIDTH - 40, 50)];
@@ -85,6 +57,7 @@
 
     [usernameTextField setValue:[UIFont fontWithName: @"HelveticaNeue-UltraLight" size: 24] forKeyPath:@"_placeholderLabel.font"];
 
+    [usernameTextField becomeFirstResponder];
     
     [self.view addSubview:usernameTextField];
         
@@ -137,7 +110,7 @@
     
     // USERTYPE
     
-    segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician / Band",@"Bar / Venue"]];
+    segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician/Band",@"Bar/Venue"]];
     [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
     segmentControl.frame = CGRectMake(20, SCREEN_HEIGHT - 150, SCREEN_WIDTH - 40, 50);
     
@@ -146,7 +119,7 @@
     
 //    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
 //    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:16.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
 //
 //    [segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
@@ -189,15 +162,15 @@
     PFUser *user = [PFUser user];
     user.username = usernameTextField.text;
     user.password = passwordTextField.text;
-  
+    user.email = emailField.text;
     
-    if (![emailField.text length]<=0) {
-        user.email = emailField.text;
-
-    }else{
-        user.email = @"k@k.com";
-
-    }
+//    if (![emailField.text length]<=0) {
+//        user.email = emailField.text;
+//
+//    }else{
+//        user.email = @"k@k.com";
+//
+//    }
     
     NSLog(@"%@",emailField.text);
     
@@ -224,7 +197,12 @@
             // Show the errorString somewhere and let the user try again.
         }
     }];
-//    
+    
+        PFInstallation * installation = [PFInstallation currentInstallation];
+        installation[@"user"] = user;
+        [installation saveInBackground];
+    
+//
 //     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
 //    
 //    ProfileViewController * profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileView"];
@@ -240,10 +218,6 @@
     ((UINavigationController *)self.presentingViewController).viewControllers = @[revealVC];
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    
-    
-    
-     //    user.email = @"email@example.com";
     
 }
 

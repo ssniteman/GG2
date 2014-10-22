@@ -60,6 +60,8 @@
     loginUsernameTextField.leftViewMode = UITextFieldViewModeAlways;
     loginUsernameTextField.delegate = self;
     
+    [loginUsernameTextField becomeFirstResponder];
+    
     [self.view addSubview:loginUsernameTextField];
     
     // PASSWORD TEXT FIELD

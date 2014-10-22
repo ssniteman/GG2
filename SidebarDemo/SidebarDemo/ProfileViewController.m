@@ -79,22 +79,6 @@
     
     user = [PFUser currentUser];
     
-    PFInstallation * installation = [PFInstallation currentInstallation];
-    installation[@"user"] = user;
-    [installation saveInBackground];
-    
-//    NSLog(self.whatProfileToLoad ? @"VIEW DID LOAD Yes" : @" VIEW DID LOAD No");
-//    self.whatProfileToLoad = YES;
-    
-//    self.messageButton.hidden = TRUE;
-
-//    if (self.whatProfileToLoad==FALSE) {
-//        // nameLabel.text = user[@"bandName"];
-//    }else{
-//        // nameLabel.text = user[@"bandName"];
-//        self.messageButton.hidden = FALSE;
-//    }
-
     
     [super viewDidLoad];
     //LEFT MENU BUTTON
@@ -106,38 +90,19 @@
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
     
-    //***************************************************** FIX
-    
-    
-//    RIGHT MENU BUTTON   SLIDER INFO
-//    
-//    UIBarButtonItem *editButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStyleBordered target:self action:@selector(editProfileButtonTickled)];
-//    
-//    self.navigationItem.rightBarButtonItem = editButton;
-//    
-    
-    //***************************************************** FIX
-
     
     //Position for the Photos Button
-//    
+   
     self.photosButton.frame = CGRectMake(10, SCREEN_HEIGHT-125, 95, 95);
- 
-    
-    
-    
+
     //Position for the Sound Button
-//    
+    
     self.soundButton.frame = CGRectMake(SCREEN_WIDTH/2.0-47.5, SCREEN_HEIGHT-125, 95, 95);
    
-    
-    
     //Position for the video Button
     
     self.videoButton.frame = CGRectMake(SCREEN_WIDTH-105, SCREEN_HEIGHT-125, 95, 95);
-    
-    
-    
+     
     
  // TOP VIEW BACKGROUND
     
@@ -175,7 +140,7 @@
     theProfilePicture.userInteractionEnabled = false;
     theProfilePicture.clipsToBounds = YES;
     
-// BAND NAME LABEL
+// NAME LABEL
     
     nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-150, 200, 21)];
     [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20]];
@@ -185,7 +150,7 @@
     
     if ([user[@"bandName"] length] <= 0) {
         
-        nameLabel.text = @"Your Band Name ";
+        nameLabel.text = @"Your Band Name";
 
     } else {
         
@@ -209,7 +174,7 @@
     }
     
 
- //City & State LABEL
+ // City & State LABEL
     
     stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-100, 200, 21)];
     [stateLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20]];

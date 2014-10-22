@@ -172,17 +172,16 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     
     
-    searchSegmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician / Band",@"Bar / Venue"]];
+    searchSegmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician/Band",@"Bar/Venue"]];
     [searchSegmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
-    
-    
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     searchSegmentControl.frame = CGRectMake(20, 60, SCREEN_WIDTH -40, 70);
     searchSegmentControl.layer.borderWidth = 0;
     UIColor *newTintColor = [UIColor whiteColor];
     searchSegmentControl.tintColor = newTintColor;
-    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
-    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-    [searchSegmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+//    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
+//    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+//    [searchSegmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
     //    [segmentControl addTarget:self action:@selector(segmentedControlValueDidChange:) forControlEvents:UIControlEventValueChanged];
     [searchSegmentControl setSelectedSegmentIndex:0];
@@ -305,6 +304,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     rateSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
     [rateSearchs setTextAlignment: NSTextAlignmentCenter];
     rateSearchs.backgroundColor = [UIColor whiteColor];
+    rateSearchs.font = [UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20];
     rateSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
     UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, rateSearch.bounds.size.width, 20)];
@@ -328,7 +328,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     searchButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 500, SCREEN_WIDTH - 40, 50)];
     searchButton.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
-    [searchButton setTitle:@"Search" forState:UIControlStateNormal];
+    [searchButton setTitle:@"SEARCH" forState:UIControlStateNormal];
     [searchButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0]];
 
     [searchButton setTitleColor: [UIColor whiteColor] forState:UIControlStateNormal];
