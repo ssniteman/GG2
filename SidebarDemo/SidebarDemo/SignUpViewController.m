@@ -36,6 +36,14 @@
     [self.view addSubview:gLogo];
     
     
+    UIButton * cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 45, 5, 40, 40)];
+    UIImage *cancel = [UIImage imageNamed:@"close.png"];
+    [cancelButton setBackgroundImage:cancel forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelTouched) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:cancelButton];
+    
+    
     // USERNAME TEXT FIELD
     
     usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 360, SCREEN_WIDTH - 40, 50)];
@@ -222,13 +230,17 @@
 }
 
 
-
-
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
     
     return YES;
+}
+
+
+-(void)cancelTouched {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -88,11 +88,23 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(editSaveButton)];
 
+    //RIGHT MENU BUTTON
     
-    saveButton.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    [saveButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                              [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName,
+                                              [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f], NSForegroundColorAttributeName,
+                                              nil]
+                                    forState:UIControlStateNormal];
+    
+    
     self.navigationItem.rightBarButtonItem = saveButton;
     
 
+    
+    
+    
+    
+    
     
     
     if ([self.zipTextBox.text isEqualToString:@""]) {
@@ -247,11 +259,12 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     PFUser * user = [PFUser currentUser];
     
     user[@"bandName"] = self.nameCell.text;
-    user[@"email"] = self.emailTextField.text;
     user[@"instagram"] = self.photosTextField.text;
     user[@"soundcloud"] = self.soundTextField.text;
     user[@"youtube"] = self.videosTextField.text;
     
+    
+    NSLog(@" photo: %@ sound: %@ video: %@",self.photosTextField.text, self.soundTextField.text,self.videosTextField.text);
 
     [[PFUser currentUser] saveInBackground];
     

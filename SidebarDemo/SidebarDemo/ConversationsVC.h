@@ -10,7 +10,7 @@
 
 @interface ConversationsVC : UIViewController
 
-
+@property (strong,nonatomic) NSDictionary * conversationThread;
 @property (weak, nonatomic) IBOutlet UITextView *conversationNew;
 
 

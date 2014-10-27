@@ -12,7 +12,7 @@
 
 @interface InboxCustomCell : UITableViewCell
 
-@property (nonatomic,strong) PFObject * myMessagesCell;
+@property (nonatomic,strong) NSDictionary * myMessagesCell;
 
 @property (weak, nonatomic) IBOutlet UIButton *inboxMessagePhoto;
 
@@ -20,6 +20,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *inboxMessageDate;
 
+@property (weak, nonatomic) IBOutlet UILabel *messagePreviewLabel;
 
 
 @end

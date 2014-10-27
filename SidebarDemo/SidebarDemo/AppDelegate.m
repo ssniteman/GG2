@@ -76,11 +76,56 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
+    
+    //See what this prints and
+    NSLog(@"%@",userInfo);
+    
+    //DO THIS CODE BASED OFF The USER INFO
+    
+    
+    //TEST this with TWO Phones
+    
     // add sender to my people spoken to
     
+//    PFQuery * userQuery = [PFUser query];
+//    [userQuery includeKey:@"peopleSpoken"];
+//    PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
+//    
+//    NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
+//    
+//    if (peopleSpokenTo == nil) {
+//        peopleSpokenTo = [@[] mutableCopy];
+//    }
+//    
+//    BOOL foundUser = NO;
+//    for (PFUser * user in peopleSpokenTo)
+//    {
+//        if ([user.objectId isEqualToString:self.toUser.objectId]) foundUser = YES;
+//    }
+//    
+//    if (!foundUser)
+//    {
+//        [peopleSpokenTo addObject:self.toUser];
+//    }
+//    
+//    //    if (![peopleSpokenTo containsObject:self.toUser])
+//    //    {
+//    //        [peopleSpokenTo addObject:self.toUser];
+//    //    }
+//    
+//    currentUser[@"peopleSpoken"] = peopleSpokenTo;
+//    
+//    [currentUser saveInBackground];
+//    
+//    NSMutableArray * peopleSpokenTo = [self.toUser[@"peopleSpoken"] mutableCopy];
+//
+//    [peopleSpokenTo addObject:self.currentUser];
+
+   
+    //Dispalys the alert
     [PFPush handlePush:userInfo];
 }
-							
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

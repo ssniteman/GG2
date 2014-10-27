@@ -38,6 +38,14 @@
 
     [self.view addSubview:gLogo];
     
+
+    
+    UIButton * cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 50, 10, 40, 40)];
+    UIImage *cancel = [UIImage imageNamed:@"close.png"];
+    [cancelButton setBackgroundImage:cancel forState:UIControlStateNormal];
+    [cancelButton addTarget:self action:@selector(cancelTouched) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:cancelButton];
     
     
     // USERNAME TEXT FIELD
@@ -149,6 +157,13 @@
             
         }
     }];
+}
+
+
+-(void)cancelTouched {
+   
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

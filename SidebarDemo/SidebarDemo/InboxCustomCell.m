@@ -13,13 +13,25 @@
 @implementation InboxCustomCell
 
 
--(void)setMyMessagesCell:(PFObject *)myMessagesCell {
+-(void)setMyMessagesCell:(NSDictionary *)myMessagesCell {
    
     _myMessagesCell = myMessagesCell;
     
-    PFUser * sender = myMessagesCell[@"sender"];
+    PFUser * user = myMessagesCell[@"user"];
+
+    PFQuery * userQuery = [PFUser query];
+
+    PFUser * conversationUser = (PFUser *)[userQuery getObjectWithId:user.objectId];
+
     
-    self.inboxMessageName.text = sender.username;
+//    NSLog(@"%@",conversationUser);
+    
+    self.inboxMessageName.text = conversationUser.username;
+    
+   // NSLog(@"%@",myMessagesCell[@"messages"]);
+    
+    
+    
     
 }
 

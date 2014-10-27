@@ -150,9 +150,10 @@ UIButton * messageButton;
     [messageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     messageButton.layer.borderColor = [UIColor whiteColor].CGColor;
     messageButton.layer.cornerRadius = 5;
-    messageButton.layer.borderWidth = 1;
+    messageButton.layer.borderWidth = .5;
     [messageButton addTarget:self action:@selector(sendMessageTapped) forControlEvents:UIControlEventTouchUpInside];
-    
+    [messageButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16]];
+
     [self.view addSubview:messageButton];
 
 }
@@ -161,18 +162,19 @@ UIButton * messageButton;
 
 -(void)sendMessageTapped {
     
-    ComposeMessageTVC * newMessage = [[ComposeMessageTVC alloc]init];
+// if you alloc init, you have to do the setter method... but below, we only are showing a new view, not making a new one so we don't have to pass info
     
-    newMessage.toWhomWeSendString = self.searchResultsForProfile[@"bandName"];
+//    ComposeMessageTVC * newMessage = [[ComposeMessageTVC alloc]init];
+//    newMessage.toWhomWeSendString = self.searchResultsForProfile[@"bandName"];
     
-    NSLog(@"%@", self.searchResultsForProfile[@"bandName"]);
+    NSLog(@"the band name is %@", self.searchResultsForProfile[@"bandName"]);
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"composeMessage" bundle: nil];
     
     ComposeMessageTVC * composeTVC = [storyboard instantiateViewControllerWithIdentifier:@"composeNew"];
     
     composeTVC.toUser = self.searchResultsForProfile;
-    
+    composeTVC.toWhomWeSendString =self.searchResultsForProfile[@"bandName"];
     
     
     UINavigationController *navigationController =

@@ -53,23 +53,7 @@
     _whatProfileToLoad = whatProfileToLoad;
     
     NSLog(@"%@", self.whatProfileToLoad);
-    
-//    if ([self.whatProfileToLoad isEqualToString:@"userProfile"]) {
-//    
-//        messageButton.hidden = true;
-//        
-//        NSLog(@"%@", self.whatProfileToLoad);
-//
-//    } else {
-// 
-//   }
-//
-//    }else if(self.whatProfileToLoad == YES){
-//       // nameLabel.text = user[@"bandName"];
-//       messageButton.hidden = FALSE;
-//
-//    }
-    
+
 }
 
 // Added view will appear... because the view did load would set the view once on the reveal button... view will appear runs again once the view is called

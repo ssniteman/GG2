@@ -22,6 +22,6 @@
 
 
 
-@property (weak, nonatomic) NSString * toWhomWeSendString;
+@property (strong, nonatomic) NSString * toWhomWeSendString;
 
 @end

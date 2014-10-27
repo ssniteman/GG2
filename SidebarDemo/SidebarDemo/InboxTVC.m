@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "InboxCustomCell.h"
 #import <Parse/Parse.h>
+#import "ConversationsVC.h"
 
 @interface InboxTVC ()
 
@@ -24,9 +25,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
     myConversations = [@[] mutableCopy];
-    
     
     SWRevealViewController *revealController = [self revealViewController];
     
@@ -50,9 +49,8 @@
     
     [inboxQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        
         PFQuery * userQuery = [PFUser query];
-//        [userQuery includeKey:@"peopleSpoken"];
+
         PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
         
         NSArray * people = currentUser[@"peopleSpoken"];
@@ -70,39 +68,40 @@
             for (PFObject * message in objects)
             {
                 
-                if (message[@"sender"] == user || message[@"reciever"] == user) {
+                PFUser * sender = (PFUser *)message[@"sender"];
+                PFUser * reciever = (PFUser *)message[@"reciever"];
+                
+                if ([sender.objectId isEqualToString:user.objectId] || [reciever.objectId isEqualToString:user.objectId]) {
                     
                     [conversation[@"messages"] addObject:message];
-                    
                 }
-                
             }
             
-            
             [myConversations addObject:conversation];
-            
-            
             
         }
         
         //TO DO
-        for (NSDictionary * dictionary in myConversations) {
+        for (NSDictionary * conversation in myConversations) {
             
             
-            NSLog(@"my messages are %@", dictionary[@"messages"]);
+            //NSLog(@"my messages are %@", conversation[@"messages"]);
+            
+            for (PFObject * message in conversation[@"messages"]) {
+                
+                NSString * text = message[@"messageContent"];
+                
+                NSLog(@"The actual MESSAGE: %@",text);
+            }
+            
             
         }
         
         [self.tableView reloadData];
         
-       
-        
-    }];
-    
-    
 
-    
-    
+    }];
+
 }
 
 
@@ -139,11 +138,11 @@
 }
 
 
-
-
-
-
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    ConversationsVC * conversation = [[ConversationsVC alloc]init];
+    
+    conversation.conversationThread = myConversations [indexPath.row];
+}
 
 
 - (void)didReceiveMemoryWarning {

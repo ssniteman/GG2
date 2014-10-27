@@ -18,19 +18,22 @@
 
 }
 
--(void)setToWhomWeSendString:(NSString *)toWhomWeSendString {
-    
-    _toWhomWeSendString = toWhomWeSendString;
-    NSLog(@"listen here %@",toWhomWeSendString);
-    self.toWhomWeSend.text = toWhomWeSendString;
-    
-    [self.tableView reloadData];
-    
-}
+
+//-(void)setToWhomWeSendString:(NSString *)toWhomWeSendString{
+//    _toWhomWeSendString =toWhomWeSendString;
+//    self.toWhomWeSend.text = self.toWhomWeSendString;
+//
+//    NSLog(@"listen here %@",toWhomWeSendString);
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.toWhomWeSend.text = self.toWhomWeSendString;
+    
+    NSLog(@"listen here %@",self.toWhomWeSendString);
+
+    self.sendMessageText.text = @"";
     
     [self.sendMessageText becomeFirstResponder];
     
@@ -39,6 +42,12 @@
     
     UIBarButtonItem *sendButton = [[UIBarButtonItem alloc] initWithTitle:@"Send" style:UIBarButtonItemStyleBordered target:self action:@selector(sendButton)];
     
+    [sendButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                          [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName,
+                                          [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f], NSForegroundColorAttributeName,
+                                          nil]
+                                forState:UIControlStateNormal];
+    
     self.navigationItem.rightBarButtonItem = sendButton;
     
     
@@ -46,11 +55,16 @@
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelButton)];
     
+    [cancelButton setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                        [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], NSFontAttributeName,
+                                        [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f], NSForegroundColorAttributeName,
+                                        nil]
+                              forState:UIControlStateNormal];
+    
     self.navigationItem.leftBarButtonItem = cancelButton;
-    
+  
     SearchResultsProfileViewController * searchResultProfile = [[SearchResultsProfileViewController alloc] init];
-    
-    
+   
 }
 
 
@@ -101,7 +115,33 @@
     
     [currentUser saveInBackground];
     
+    
     // run push
+    
+    
+    PFQuery * deviceQuery = [PFInstallation query];
+    
+    [deviceQuery whereKey:@"user" equalTo:self.toUser];
+
+    
+    
+    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+                          self.sendMessageText.text, @"alert",[PFUser currentUser],
+                          @"sender",
+                          @"Increment", @"badge",
+                          nil];
+    PFPush *push = [[PFPush alloc] init];
+    [push setQuery:(deviceQuery)];
+    
+
+    [push setData:data];
+    [push sendPushInBackground];
+    
+    
+    
+    
+    
+    
     
     
     NSLog(@"message is working");
