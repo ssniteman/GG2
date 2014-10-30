@@ -43,7 +43,13 @@
 - (void)uploadImage:(NSData *)imageData;
 
 @property (weak, nonatomic) IBOutlet UIButton *zipButton;
+@property (weak, nonatomic) IBOutlet UILabel *photosLabel;
 
+//UIVIEW FOR Facebook and Twitter
+@property (weak, nonatomic) IBOutlet UIView *facebookView;
+@property (weak, nonatomic) IBOutlet UIView *twitterView;
 
-
+//textfield for twiiter and Facebook
+@property (weak, nonatomic) IBOutlet UITextField *twitterTextField;
+@property (weak, nonatomic) IBOutlet UITextField *facebookTextField;
 @end

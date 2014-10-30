@@ -11,8 +11,20 @@
 @implementation ConversationCell
 
 - (void)awakeFromNib {
-    // Initialization code
+
+
+
+
 }
+
+-(void)setText:(NSString *)text{
+    _text = text;
+    self.messageLabel.text = self.text;
+    
+    
+    //     Configure the cell...
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -8,6 +8,7 @@
 
 #import "ConversationsVC.h"
 #import "ConversationCell.h"
+#import "InboxTVC.h"
 #import <Parse/Parse.h>
 @interface ConversationsVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -15,54 +16,47 @@
 
 @implementation ConversationsVC
 
-
--(void)setConversationThread:(NSDictionary *)conversationThread{
-    _conversationThread = conversationThread;
-//    
-//    NSLog(@"The conversation Thread :%@",conversationThread[@"messages"]);
-//    
-//    
-//    for (PFObject * message in conversationThread[@"messages"]) {
-//        
-//        NSString * text = message[@"messageContent"];
-//        
-//        NSLog(@"The actual MESSAGE: %@",text);
-//    }
-
+-(void)setMessages:(NSMutableArray *)messages {
+    _messages = messages;
     
+    
+    [self.conversationTableView reloadData];
+    
+    NSLog(@"COUNT NUMBER ROWS IN NEW VIEW :%d",self.messages.count);
+    // this NSLog is coming back correctly
 }
 
-
-
+-(void)setConversationThread:(NSDictionary *)conversationThread {
+    _conversationThread = conversationThread;
+}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return self.conversationThread.count;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 1;
+
+    NSLog(@"COUNT NUMBER ROWS :%d",self.messages.count);
+    return self.messages.count;
+    
+    // this is returning 0
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"conversationCell" forIndexPath:indexPath];
     
-    for (PFObject * message in self.conversationThread[@"messages"]) {
-        
-        NSString * text = message[@"messageContent"];
-        
-        NSLog(@"The actual MESSAGE: %@",text);
-    }
-    cell.messageLabel.text = @"hey";
-    
-    
     if (cell == nil) {
         
         cell = [[ConversationCell alloc]init];
-    }
+            }
     
+    cell.text = self.messages[indexPath.row];
     
+    NSLog(@"messagesss index %@",self.messages[indexPath.row]);
+    
+    // this is returning (null)
     
     //     Configure the cell...
     
@@ -73,20 +67,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
     self.conversationTableView.dataSource = self;
-    
     self.conversationTableView.delegate = self;
     
-    NSLog(@"The conversation Thread :%@",self.conversationThread[@"messages"]);
-    
-    
-    for (PFObject * message in self.conversationThread[@"messages"]) {
-        
-        NSString * text = message[@"messageContent"];
-        
-        NSLog(@"The actual MESSAGE: %@",text);
-    }
 }
 
 

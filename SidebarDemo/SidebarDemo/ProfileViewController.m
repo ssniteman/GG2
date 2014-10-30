@@ -61,8 +61,17 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     
-    user = [PFUser currentUser];
+   user = [PFUser currentUser];
     
+    if ([user[@"userType"] isEqualToString:@"musician"]) {
+            
+        self.barUIView.hidden = TRUE;
+    
+    } else {
+        self.barUIView.hidden = FALSE;
+    }
+            
+            
     
     [super viewDidLoad];
     //LEFT MENU BUTTON
@@ -140,6 +149,16 @@
         
         nameLabel.text = user[@"bandName"];
 
+    }
+    
+    if ([user[@"barName"] length] <= 0) {
+        
+        nameLabel.text = @"Bar/Venue Name";
+        
+    } else {
+        
+        nameLabel.text = user[@"barName"];
+        
     }
     
     
@@ -268,5 +287,26 @@
     [self performSegueWithIdentifier:@"web" sender:self];
     
     
+}
+
+- (IBAction)barInstagram:(id)sender {
+    
+    self.link = [NSString stringWithFormat:@"https://www.instagram.com/%@", user[@"instagram"]];
+    
+    [self performSegueWithIdentifier:@"web" sender:self];
+}
+
+- (IBAction)barFacebook:(id)sender {
+    self.link = [NSString
+                 //doublecheck this URL For Facebook
+                 stringWithFormat:@"https://www.facebook.com/%@", user[@"facebook"]];
+    
+    [self performSegueWithIdentifier:@"web" sender:self];
+}
+
+- (IBAction)barTwitter:(id)sender {
+    self.link = [NSString stringWithFormat:@"https://www.twitter.com/%@", user[@"twitter"]];
+    
+    [self performSegueWithIdentifier:@"web" sender:self];
 }
 @end

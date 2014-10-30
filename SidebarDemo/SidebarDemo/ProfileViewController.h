@@ -36,6 +36,15 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *videoButton;
 
+- (IBAction)barInstagram:(id)sender;
+
+- (IBAction)barFacebook:(id)sender;
+
+- (IBAction)barTwitter:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UIView *barUIView;
+
+
 @property (weak, nonatomic) IBOutlet UILabel *availabilityLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *rateLabel;
@@ -47,6 +56,7 @@
 
 //Array for other profiles
 @property (nonatomic, strong) NSMutableArray * searchResultsForProfile;
+
 
 
 

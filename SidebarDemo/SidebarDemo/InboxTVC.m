@@ -9,8 +9,9 @@
 #import "InboxTVC.h"
 #import "SWRevealViewController.h"
 #import "InboxCustomCell.h"
-#import <Parse/Parse.h>
 #import "ConversationsVC.h"
+#import <Parse/Parse.h>
+
 
 @interface InboxTVC ()
 
@@ -138,10 +139,32 @@
 }
 
 
+
+//Cell You Select
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     ConversationsVC * conversation = [[ConversationsVC alloc]init];
     
-    conversation.conversationThread = myConversations [indexPath.row];
+    
+    
+    // This is the array that contains just the conversation that you select
+    self.messages = [@[]mutableCopy];
+
+    
+    //Going through all your messages in your inbox
+    for (PFObject * messageAndUser in myConversations[indexPath.row][@"messages"]) {
+        
+        //adding to the messages array just the messages from the cell you select ... IndexPath.Row
+        [self.messages addObject:messageAndUser[@"messageContent"]];
+      
+    }
+    
+    
+    //After you get the mesages from that cell or person, you pass it to the next view...This is just the array of that one conversation
+    
+    NSLog(@"%d",self.messages.count);
+    
+    conversation.messages = self.messages;
+
 }
 
 

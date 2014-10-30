@@ -86,6 +86,21 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    PFUser * user = [PFUser currentUser];
+    
+    if ([user[@"userType"] isEqualToString:@"musician"]) {
+        
+        self.facebookView.hidden = TRUE;
+        self.twitterView.hidden = TRUE;
+self.photosLabel.text =@"Photos";
+    } else {
+        self.facebookView.hidden = FALSE;
+        self.twitterView.hidden = FALSE;
+        self.photosLabel.text =@"Instagram";
+
+    }
+    
+    
     UIBarButtonItem *saveButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStyleBordered target:self action:@selector(editSaveButton)];
 
     //RIGHT MENU BUTTON
@@ -116,7 +131,7 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
         
     }
     
-    PFUser * user = [PFUser currentUser];
+    user = [PFUser currentUser];
    
     self.nameCell.text = user[@"bandName"];
     self.emailTextField.text = user[@"email"];
@@ -258,15 +273,30 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     
     PFUser * user = [PFUser currentUser];
     
-    user[@"bandName"] = self.nameCell.text;
-    user[@"instagram"] = self.photosTextField.text;
-    user[@"soundcloud"] = self.soundTextField.text;
-    user[@"youtube"] = self.videosTextField.text;
+    
+    if ([user[@"userType"] isEqualToString:@"musician"]) {
+        user[@"bandName"] = self.nameCell.text;
+        user[@"instagram"] = self.photosTextField.text;
+        user[@"soundcloud"] = self.soundTextField.text;
+        user[@"youtube"] = self.videosTextField.text;
+        
+        
+        NSLog(@" photo: %@ sound: %@ video: %@",self.photosTextField.text, self.soundTextField.text,self.videosTextField.text);
+        
+        [[PFUser currentUser] saveInBackground];
+    } else {
+        user[@"bandName"] = self.nameCell.text;
+        user[@"instagram"] = self.photosTextField.text;
+        user[@"facebook"] = self.facebookTextField.text;
+        user[@"twitter"] = self.twitterTextField.text;
+        
+        
+        NSLog(@" photo: %@ sound: %@ video: %@",self.photosTextField.text, self.soundTextField.text,self.videosTextField.text);
+        
+        [[PFUser currentUser] saveInBackground];
+    }
     
     
-    NSLog(@" photo: %@ sound: %@ video: %@",self.photosTextField.text, self.soundTextField.text,self.videosTextField.text);
-
-    [[PFUser currentUser] saveInBackground];
     
     [self.navigationController popViewControllerAnimated:YES];
 

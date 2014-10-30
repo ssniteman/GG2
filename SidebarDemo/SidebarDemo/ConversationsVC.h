@@ -10,7 +10,16 @@
 
 @interface ConversationsVC : UIViewController
 
+//The Dictionary
 @property (strong,nonatomic) NSDictionary * conversationThread;
+
+
+//The Array for Messages
+
+@property(strong,nonatomic) NSMutableArray * messages;
+
+//Array for Users
+
 @property (weak, nonatomic) IBOutlet UITextView *conversationNew;
 
 

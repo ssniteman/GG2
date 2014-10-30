@@ -251,8 +251,8 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g9W-lN-4nW">
-                                                    <rect key="frame" x="133" y="15" width="55" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g9W-lN-4nW">
+                                                    <rect key="frame" x="108" y="14" width="105" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -279,6 +279,26 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" id="f1B-sP-ZVR">
+                                                    <rect key="frame" x="7" y="4.5" width="306" height="75"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="k3x-kH-idQ">
+                                                            <rect key="frame" x="120" y="6.5" width="70" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Facebook Handle" minimumFontSize="17" id="7pD-wj-EKu">
+                                                            <rect key="frame" x="1" y="38.5" width="304" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -300,6 +320,26 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
+                                                <view contentMode="scaleToFill" id="5YZ-Hf-hjE">
+                                                    <rect key="frame" x="7" y="3" width="306" height="75"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CB9-2W-uYy">
+                                                            <rect key="frame" x="131" y="6.5" width="45" height="21"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter Twitter Handle" minimumFontSize="17" id="oMr-ec-3dY">
+                                                            <rect key="frame" x="1" y="38.5" width="304" height="30"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                                            <textInputTraits key="textInputTraits"/>
+                                                        </textField>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -318,15 +358,20 @@
                         <outlet property="daysAvailableLabel" destination="iIi-LT-fko" id="ymc-Ba-TAW"/>
                         <outlet property="editGenreCell" destination="gvQ-ko-v4B" id="yOM-lJ-PAr"/>
                         <outlet property="editImageView" destination="gCT-dg-4Jv" id="eJw-Yw-i57"/>
+                        <outlet property="facebookTextField" destination="7pD-wj-EKu" id="PRW-9y-JdD"/>
+                        <outlet property="facebookView" destination="f1B-sP-ZVR" id="HTy-O1-sEu"/>
                         <outlet property="genreLabel" destination="2it-G2-6D2" id="A7b-ac-SaF"/>
                         <outlet property="nameCell" destination="GMo-9s-uXy" id="sxB-LN-8wh"/>
+                        <outlet property="photosLabel" destination="g9W-lN-4nW" id="car-hh-vbh"/>
                         <outlet property="photosTextField" destination="QFB-ml-eBs" id="FfR-6j-OJo"/>
                         <outlet property="profileImageEdit" destination="n1a-gK-O5F" id="zd2-Ms-0OF"/>
                         <outlet property="rateCell" destination="qV0-5v-Bvs" id="Hkq-3i-GZu"/>
                         <outlet property="rateLabel" destination="Q5u-gv-FFL" id="g8b-Ci-Arp"/>
                         <outlet property="soundTextField" destination="kOc-8F-umZ" id="fYW-Os-3rA"/>
                         <outlet property="tableView" destination="gIs-JP-XH3" id="vwe-u9-Fen"/>
-                        <outlet property="videosTextField" destination="Ksu-Mz-HRa" id="HcY-o9-9yb"/>
+                        <outlet property="twitterTextField" destination="oMr-ec-3dY" id="pCp-m2-YGX"/>
+                        <outlet property="twitterView" destination="5YZ-Hf-hjE" id="NFk-0o-1Rr"/>
+                        <outlet property="videosTextField" destination="Ksu-Mz-HRa" id="xNt-fy-ZB7"/>
                         <outlet property="zipButton" destination="5FT-MA-y0Y" id="jgS-eX-Ace"/>
                         <outlet property="zipTextBox" destination="Eqw-5r-KLb" id="IIs-VS-EPe"/>
                     </connections>
@@ -708,7 +753,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7bB-TL-vrm">
-                                <rect key="frame" x="253" y="401" width="55" height="51"/>
+                                <rect key="frame" x="250" y="401" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="video.png">
@@ -716,11 +761,11 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="youTube:" destination="Fa2-nH-baz" eventType="touchUpInside" id="eCr-zL-0ma"/>
+                                    <action selector="youTube:" destination="Fa2-nH-baz" eventType="touchUpInside" id="jiz-M4-aI5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="28h-pK-qaH">
-                                <rect key="frame" x="14" y="401" width="50" height="50"/>
+                                <rect key="frame" x="14" y="401" width="55" height="55"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" image="image.png">
@@ -752,6 +797,68 @@
                                 <color key="textColor" red="0.75686274509999996" green="0.2470588235" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" id="eL4-oZ-Dck">
+                                <rect key="frame" x="5" y="382" width="310" height="112"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mhs-jj-PDg">
+                                        <rect key="frame" x="10" y="83" width="86" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" red="0.75686274509999996" green="0.2470588235" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PCB-Nj-sqJ">
+                                        <rect key="frame" x="113" y="83" width="86" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.75686274509999996" green="0.2470588235" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="AG9-y2-FxQ">
+                                        <rect key="frame" x="216" y="83" width="86" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.75686274509999996" green="0.2470588235" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="rvS-iX-Gm6">
+                                        <rect key="frame" x="128" y="18" width="55" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="music.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="barFacebook:" destination="Fa2-nH-baz" eventType="touchUpInside" id="A4E-ch-3n4"/>
+                                            <action selector="barInstagram:" destination="Fa2-nH-baz" eventType="touchUpInside" id="dVw-Fq-ucp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4qV-rI-yu2">
+                                        <rect key="frame" x="231" y="18" width="55" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="video.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="barTwitter:" destination="Fa2-nH-baz" eventType="touchUpInside" id="vwJ-rL-txj"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="xSf-6H-jTb">
+                                        <rect key="frame" x="24" y="21" width="55" height="55"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="image.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -768,6 +875,7 @@
                     <connections>
                         <outlet property="availabilityLabel" destination="Iag-e8-2vX" id="VL5-Pt-pUO"/>
                         <outlet property="availabilityLabelParse2" destination="PdS-Sb-N3c" id="N7p-or-27K"/>
+                        <outlet property="barUIView" destination="eL4-oZ-Dck" id="7B8-h4-fZu"/>
                         <outlet property="photosButton" destination="28h-pK-qaH" id="5Fk-mn-BNK"/>
                         <outlet property="rateLabel" destination="o6s-Qv-hB4" id="KqH-gQ-p1B"/>
                         <outlet property="rateLabelParse2" destination="Ba3-pS-meh" id="Afj-66-vg5"/>

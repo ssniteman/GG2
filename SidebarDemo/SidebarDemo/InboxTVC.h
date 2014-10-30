@@ -11,6 +11,8 @@
 @interface InboxTVC : UITableViewController
 
 
+@property(strong,nonatomic) NSMutableArray * messages;
+@property (strong,nonatomic) NSDictionary * conversationThread;
 
 
 

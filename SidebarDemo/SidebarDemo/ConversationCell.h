@@ -10,5 +10,5 @@
 
 @interface ConversationCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
-
+@property (strong,nonatomic) NSString * text;
 @end
