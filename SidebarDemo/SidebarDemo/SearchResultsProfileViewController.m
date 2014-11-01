@@ -52,7 +52,7 @@ UIButton * messageButton;
     // TOP VIEW BACKGROUND
     
     UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -150)];
-    topView.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.204f alpha:1.0f];;
+    topView.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     [self.view addSubview:topView];
     
     //Setting the profile picture to be round

@@ -12,6 +12,7 @@
 		601441AD19BCF21F00BC3CC8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601441AC19BCF21F00BC3CC8 /* SettingsViewController.m */; };
 		60186EDD19D58DBC00AE331A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60186EDC19D58DBC00AE331A /* LoginViewController.m */; };
 		6027C5A719CF896D00CDD988 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6027C5A619CF896D00CDD988 /* SignUpViewController.m */; };
+		6032646B1A056A620084F4D5 /* p4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6032646A1A056A620084F4D5 /* p4.png */; };
 		6044CD0519D9A5B100B72FD5 /* SearchAvailabilityTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6044CD0419D9A5B100B72FD5 /* SearchAvailabilityTVC.m */; };
 		6048255C19E0C44700FDE2FC /* searchQueryResults.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6048255B19E0C44700FDE2FC /* searchQueryResults.storyboard */; };
 		6048255F19E0C51C00FDE2FC /* QueryResultsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6048255E19E0C51C00FDE2FC /* QueryResultsTVC.m */; };
@@ -65,7 +66,6 @@
 		60F4243819D71356001D8B0E /* SearchGenreTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 60F4243719D71356001D8B0E /* SearchGenreTVC.m */; };
 		60F4243A19D71519001D8B0E /* searchGenre.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60F4243919D71519001D8B0E /* searchGenre.storyboard */; };
 		60FBF71219F042BB004BF681 /* Showcase.m in Sources */ = {isa = PBXBuildFile; fileRef = 60FBF71119F042BB004BF681 /* Showcase.m */; };
-		60FBF71A19F077FD004BF681 /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FBF71919F077FD004BF681 /* p2.png */; };
 		60FBF72419F084C5004BF681 /* image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FBF72319F084C5004BF681 /* image@2x.png */; };
 		60FBF72619F08540004BF681 /* video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FBF72519F08540004BF681 /* video@2x.png */; };
 		60FBF72819F08722004BF681 /* music@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 60FBF72719F08722004BF681 /* music@2x.png */; };
@@ -116,6 +116,7 @@
 		60186EDC19D58DBC00AE331A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		6027C5A519CF896D00CDD988 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		6027C5A619CF896D00CDD988 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
+		6032646A1A056A620084F4D5 /* p4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4.png; sourceTree = "<group>"; };
 		6044CD0319D9A5B100B72FD5 /* SearchAvailabilityTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAvailabilityTVC.h; sourceTree = "<group>"; };
 		6044CD0419D9A5B100B72FD5 /* SearchAvailabilityTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAvailabilityTVC.m; sourceTree = "<group>"; };
 		6048255B19E0C44700FDE2FC /* searchQueryResults.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = searchQueryResults.storyboard; sourceTree = "<group>"; };
@@ -189,7 +190,6 @@
 		60F4243919D71519001D8B0E /* searchGenre.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = searchGenre.storyboard; sourceTree = "<group>"; };
 		60FBF71019F042BB004BF681 /* Showcase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Showcase.h; sourceTree = "<group>"; };
 		60FBF71119F042BB004BF681 /* Showcase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Showcase.m; sourceTree = "<group>"; };
-		60FBF71919F077FD004BF681 /* p2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p2.png; sourceTree = "<group>"; };
 		60FBF72319F084C5004BF681 /* image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "image@2x.png"; sourceTree = "<group>"; };
 		60FBF72519F08540004BF681 /* video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "video@2x.png"; sourceTree = "<group>"; };
 		60FBF72719F08722004BF681 /* music@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "music@2x.png"; sourceTree = "<group>"; };
@@ -388,10 +388,10 @@
 				60FBF72519F08540004BF681 /* video@2x.png */,
 				60FBF72719F08722004BF681 /* music@2x.png */,
 				60FBF72B19F098CB004BF681 /* camera@2x.png */,
+				6032646A1A056A620084F4D5 /* p4.png */,
 				60E680F119F1584300639580 /* arrow.png */,
 				60FBF72919F0930F004BF681 /* menu3@2x.png */,
 				608981CD19F808770000E57A /* close@2x.png */,
-				60FBF71919F077FD004BF681 /* p2.png */,
 				60D7967719D0B61F0009CDB2 /* bigG.png */,
 				60D7967519D0AE790009CDB2 /* g.png */,
 				60D37D7F19CA1309006FB596 /* avatarcopy.jpg */,
@@ -598,6 +598,7 @@
 				F4EECF24177C99F400778578 /* Default.png in Resources */,
 				60CE5A7919E6D05300263FCD /* composeMessage.storyboard in Resources */,
 				F4EECF26177C99F400778578 /* Default@2x.png in Resources */,
+				6032646B1A056A620084F4D5 /* p4.png in Resources */,
 				F4EECF28177C99F400778578 /* Default-568h@2x.png in Resources */,
 				60A420DC19D2039C007738D4 /* MainStoryboardTwo.storyboard in Resources */,
 				60D37D8019CA1309006FB596 /* avatarcopy.jpg in Resources */,
@@ -628,7 +629,6 @@
 				60F4243A19D71519001D8B0E /* searchGenre.storyboard in Resources */,
 				6077825C19D35A3400AE62C1 /* getagiglanding.jpg in Resources */,
 				60FBF72819F08722004BF681 /* music@2x.png in Resources */,
-				60FBF71A19F077FD004BF681 /* p2.png in Resources */,
 				F4FE87FF178010F000CB3DA8 /* bookmark_photo.jpg in Resources */,
 				F4FE8800178010F000CB3DA8 /* calendar_photo.jpg in Resources */,
 				F4FE8802178010FA00CB3DA8 /* tag_photo.jpg in Resources */,

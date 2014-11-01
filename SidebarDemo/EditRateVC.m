@@ -65,31 +65,29 @@
     
     UIColor *newTintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     segmentControl.tintColor = newTintColor;
-    
-//    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
-//    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-//    [segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-//
-     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:16.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
-    
-    
-    //    [segmentControl addTarget:self action:@selector(segmentedControlValueDidChange:) forControlEvents:UIControlEventValueChanged];
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     [segmentControl setSelectedSegmentIndex:0];
     [self.view addSubview:segmentControl];
     
-    rateTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 400, SCREEN_WIDTH - 40, 50)];
-    rateTextField.backgroundColor = [UIColor whiteColor];
+    // RATE TEXT FIELD
+    
+    rateTextField = [[UITextField alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, SCREEN_HEIGHT - 400, 100, 50)];
+    rateTextField.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    rateTextField.textAlignment = NSTextAlignmentCenter;
     rateTextField.layer.cornerRadius = 5;
     rateTextField.font = [UIFont systemFontOfSize:18];
     rateTextField.placeholder = @"Rate";
-    [rateTextField setValue:[UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f] forKeyPath:@"_placeholderLabel.textColor"];
+    [rateTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
+    [rateTextField setValue:[UIFont fontWithName: @"HelveticaNeue-Light" size: 18] forKeyPath:@"_placeholderLabel.font"];
+    [rateTextField setTextColor:[UIColor whiteColor]];
+    rateTextField.keyboardType = UIKeyboardTypeNumberPad;
+    rateTextField.delegate = self;
+    [rateTextField becomeFirstResponder];
     
-    UIView * paddingView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 20)];
-    rateTextField.leftView = paddingView;
-    rateTextField.leftViewMode = UITextFieldViewModeAlways;
+    
     
     [self.view addSubview:rateTextField];
-
+    
 }
 
 - (void) cancelButton{

@@ -115,13 +115,6 @@ self.photosLabel.text =@"Photos";
     self.navigationItem.rightBarButtonItem = saveButton;
     
 
-    
-    
-    
-    
-    
-    
-    
     if ([self.zipTextBox.text isEqualToString:@""]) {
         self.changeZipButton.hidden = YES;
         self.zipButton.hidden = NO;

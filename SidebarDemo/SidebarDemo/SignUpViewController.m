@@ -65,7 +65,7 @@
 
     [usernameTextField setValue:[UIFont fontWithName: @"HelveticaNeue-Thin" size: 24] forKeyPath:@"_placeholderLabel.font"];
 
-    [usernameTextField becomeFirstResponder];
+//    [usernameTextField becomeFirstResponder];
     
     [self.view addSubview:usernameTextField];
         

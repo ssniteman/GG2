@@ -68,7 +68,7 @@
     loginUsernameTextField.leftViewMode = UITextFieldViewModeAlways;
     loginUsernameTextField.delegate = self;
     
-    [loginUsernameTextField becomeFirstResponder];
+//    [loginUsernameTextField becomeFirstResponder];
     
     [self.view addSubview:loginUsernameTextField];
     
