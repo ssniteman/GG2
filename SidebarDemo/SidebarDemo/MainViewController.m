@@ -50,7 +50,7 @@
     
     signUpButton.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     [signUpButton setTitle:@"SIGN UP" forState:UIControlStateNormal];
-    [signUpButton setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24]];
+    [signUpButton setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24]];
     [signUpButton setTitleColor: [UIColor whiteColor] forState:UIControlStateNormal];
     signUpButton.layer.cornerRadius = 5;
     
@@ -64,7 +64,7 @@
     
     loginButton.backgroundColor = [UIColor whiteColor];
     [loginButton setTitle:@"LOGIN" forState:UIControlStateNormal];
-    [loginButton setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24]];
+    [loginButton setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24]];
     [loginButton setTitleColor: [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f] forState:UIControlStateNormal];
     loginButton.layer.cornerRadius = 5;
 //    [loginButton.layer setBorderColor:[[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f] CGColor]];

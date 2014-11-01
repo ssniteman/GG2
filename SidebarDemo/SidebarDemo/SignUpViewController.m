@@ -54,7 +54,7 @@
     usernameTextField.autocapitalizationType = FALSE;
 
     [usernameTextField setValue:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f] forKeyPath:@"_placeholderLabel.textColor"];
-    [usernameTextField setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size: 24]];
+    [usernameTextField setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size: 24]];
     [usernameTextField setTextColor:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f]];
 
     
@@ -63,7 +63,7 @@
     usernameTextField.leftViewMode = UITextFieldViewModeAlways;
     usernameTextField.delegate = self;
 
-    [usernameTextField setValue:[UIFont fontWithName: @"HelveticaNeue-UltraLight" size: 24] forKeyPath:@"_placeholderLabel.font"];
+    [usernameTextField setValue:[UIFont fontWithName: @"HelveticaNeue-Thin" size: 24] forKeyPath:@"_placeholderLabel.font"];
 
     [usernameTextField becomeFirstResponder];
     
@@ -78,12 +78,12 @@
     passwordTextField.placeholder = @"PASSWORD";
     passwordTextField.autocapitalizationType = FALSE;
 
-    [passwordTextField setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size: 24]];
+    [passwordTextField setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size: 24]];
     [passwordTextField setTextColor:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f]];
 
     passwordTextField.secureTextEntry = YES;
     
-    [passwordTextField setValue:[UIFont fontWithName: @"HelveticaNeue-UltraLight" size: 24] forKeyPath:@"_placeholderLabel.font"];
+    [passwordTextField setValue:[UIFont fontWithName: @"HelveticaNeue-Thin" size: 24] forKeyPath:@"_placeholderLabel.font"];
 
     
     [passwordTextField setValue:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f] forKeyPath:@"_placeholderLabel.textColor"];
@@ -109,9 +109,9 @@
     emailField.leftViewMode = UITextFieldViewModeAlways;
     emailField.delegate = self;
     [emailField setTextColor:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f]];
-    [emailField setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size: 24]];
+    [emailField setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size: 24]];
 
-    [emailField setValue:[UIFont fontWithName: @"HelveticaNeue-UltraLight" size: 24] forKeyPath:@"_placeholderLabel.font"];
+    [emailField setValue:[UIFont fontWithName: @"HelveticaNeue-Thin" size: 24] forKeyPath:@"_placeholderLabel.font"];
 
     
     [self.view addSubview:emailField];
@@ -127,7 +127,7 @@
     
 //    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
 //    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
-    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
 //
 //    [segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
     
@@ -154,7 +154,7 @@
     
     [signUpFinalButton addTarget:self action:@selector(signUpFinalTouched) forControlEvents:UIControlEventTouchUpInside];
     
-    [signUpFinalButton setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24]];
+    [signUpFinalButton setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24]];
 
     [self.view addSubview:signUpFinalButton];
 

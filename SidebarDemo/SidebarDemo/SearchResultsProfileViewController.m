@@ -52,7 +52,7 @@ UIButton * messageButton;
     // TOP VIEW BACKGROUND
     
     UIView * topView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT -150)];
-    topView.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.208f alpha:1.0f];
+    topView.backgroundColor = [UIColor colorWithRed:0.753f green:0.251f blue:0.204f alpha:1.0f];;
     [self.view addSubview:topView];
     
     //Setting the profile picture to be round
@@ -76,7 +76,7 @@ UIButton * messageButton;
     
     //Setting the profile picture to be round
     
-    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-80, 80, 160, 160)];
+    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-90, 80, 180, 180)];
     
     if (searchResultsForProfile[@"image"] == nil) {
         
@@ -110,7 +110,7 @@ UIButton * messageButton;
     
     // NAME LABEL
     
-    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-100, 200, 21)];
+    nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-140, 200, 21)];
     [nameLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20]];
     nameLabel.textColor = [UIColor whiteColor];
     nameLabel.textAlignment = NSTextAlignmentCenter;
@@ -118,7 +118,7 @@ UIButton * messageButton;
     
     // Genre LABEL
     
-    genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-75, 200, 21)];
+    genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-115, 200, 21)];
     [genreLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20]];
     genreLabel.textColor = [UIColor whiteColor];
     genreLabel.textAlignment = NSTextAlignmentCenter;
@@ -126,7 +126,7 @@ UIButton * messageButton;
     
     //City & State LABEL
     
-    stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-50, 200, 21)];
+    stateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-90, 200, 21)];
     [stateLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20]];
     
     stateLabel.textColor = [UIColor whiteColor];
@@ -136,21 +136,17 @@ UIButton * messageButton;
     [topView addSubview:nameLabel];
     [topView addSubview:genreLabel];
     [topView addSubview:stateLabel];
-    
-    
-    
-    
-    
+
     
     // MESSAGE BUTTON
     
-    messageButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, topView.bounds.size.height-25,
-                                                               100, 25)];
+    messageButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-50, 200, 35)];
     [messageButton setTitle:@"Message" forState:UIControlStateNormal];
     [messageButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     messageButton.layer.borderColor = [UIColor whiteColor].CGColor;
     messageButton.layer.cornerRadius = 5;
     messageButton.layer.borderWidth = .5;
+    [messageButton.titleLabel setTextAlignment:UITextAlignmentCenter];
     [messageButton addTarget:self action:@selector(sendMessageTapped) forControlEvents:UIControlEventTouchUpInside];
     [messageButton setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:16]];
 

@@ -56,9 +56,9 @@
     loginUsernameTextField.font = [UIFont systemFontOfSize:18];
     loginUsernameTextField.placeholder = @"USERNAME";
     loginUsernameTextField.autocapitalizationType = FALSE;
-    [loginUsernameTextField setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size: 24]];
+    [loginUsernameTextField setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size: 24]];
 
-    [loginUsernameTextField setValue:[UIFont fontWithName: @"HelveticaNeue-UltraLight" size: 24] forKeyPath:@"_placeholderLabel.font"];
+    [loginUsernameTextField setValue:[UIFont fontWithName: @"HelveticaNeue-Thin" size: 24] forKeyPath:@"_placeholderLabel.font"];
     [loginUsernameTextField setTextColor:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f]];
 
     [loginUsernameTextField setValue:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f] forKeyPath:@"_placeholderLabel.textColor"];
@@ -81,10 +81,10 @@
     loginPasswordTextField.placeholder = @"PASSWORD";
     loginPasswordTextField.autocapitalizationType = FALSE;
     [loginPasswordTextField setValue:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f] forKeyPath:@"_placeholderLabel.textColor"];
-    [loginPasswordTextField setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size: 24]];
+    [loginPasswordTextField setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size: 24]];
     [loginPasswordTextField setTextColor:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f]];
 
-    [loginPasswordTextField setValue:[UIFont fontWithName: @"HelveticaNeue-UltraLight" size: 24] forKeyPath:@"_placeholderLabel.font"];
+    [loginPasswordTextField setValue:[UIFont fontWithName: @"HelveticaNeue-Thin" size: 24] forKeyPath:@"_placeholderLabel.font"];
 
     
     loginPasswordTextField.secureTextEntry = YES;
@@ -110,7 +110,7 @@
     loginFinalButton.layer.borderWidth = 1;
     loginFinalButton.layer.borderColor = [[UIColor whiteColor] CGColor];
     
-    [loginFinalButton setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:24]];
+    [loginFinalButton setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24]];
 
     
     [loginFinalButton addTarget:self action:@selector(loginFinalTouched) forControlEvents:UIControlEventTouchUpInside];
