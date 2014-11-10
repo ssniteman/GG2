@@ -11,6 +11,7 @@
 		601441A719BCF1E900BC3CC8 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601441A619BCF1E900BC3CC8 /* SearchViewController.m */; };
 		601441AD19BCF21F00BC3CC8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601441AC19BCF21F00BC3CC8 /* SettingsViewController.m */; };
 		60186EDD19D58DBC00AE331A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60186EDC19D58DBC00AE331A /* LoginViewController.m */; };
+		601FC3A41A11238A00724776 /* p5.png in Resources */ = {isa = PBXBuildFile; fileRef = 601FC3A31A11238A00724776 /* p5.png */; };
 		6027C5A719CF896D00CDD988 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6027C5A619CF896D00CDD988 /* SignUpViewController.m */; };
 		6032646B1A056A620084F4D5 /* p4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6032646A1A056A620084F4D5 /* p4.png */; };
 		6044CD0519D9A5B100B72FD5 /* SearchAvailabilityTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6044CD0419D9A5B100B72FD5 /* SearchAvailabilityTVC.m */; };
@@ -114,6 +115,7 @@
 		601441AC19BCF21F00BC3CC8 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		60186EDB19D58DBC00AE331A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		60186EDC19D58DBC00AE331A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		601FC3A31A11238A00724776 /* p5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5.png; sourceTree = "<group>"; };
 		6027C5A519CF896D00CDD988 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		6027C5A619CF896D00CDD988 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		6032646A1A056A620084F4D5 /* p4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4.png; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				60FBF72519F08540004BF681 /* video@2x.png */,
 				60FBF72719F08722004BF681 /* music@2x.png */,
 				60FBF72B19F098CB004BF681 /* camera@2x.png */,
+				601FC3A31A11238A00724776 /* p5.png */,
 				6032646A1A056A620084F4D5 /* p4.png */,
 				60E680F119F1584300639580 /* arrow.png */,
 				60FBF72919F0930F004BF681 /* menu3@2x.png */,
@@ -620,6 +623,7 @@
 				60E680F219F1584300639580 /* arrow.png in Resources */,
 				F4EECF67177F4AB000778578 /* nav_bg.png in Resources */,
 				F4EECF6A177F4C0200778578 /* menu.png in Resources */,
+				601FC3A41A11238A00724776 /* p5.png in Resources */,
 				607A6CAE19E5C2AF00B27D94 /* searchResultsProfile.storyboard in Resources */,
 				F4EECF6B177F4C0200778578 /* menu@2x.png in Resources */,
 				F4FE87FB1780081300CB3DA8 /* comments_photo.jpg in Resources */,

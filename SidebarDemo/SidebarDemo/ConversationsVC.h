@@ -26,7 +26,7 @@
 - (IBAction)conversationNewSendButton:(id)sender;
 
 
-@property (weak, nonatomic) IBOutlet UITableView *conversationTableView;
+
 
 
 @property (weak, nonatomic) IBOutlet UIView *conversationBottomView;

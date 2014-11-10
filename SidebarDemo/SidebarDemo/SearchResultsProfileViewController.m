@@ -55,26 +55,11 @@ UIButton * messageButton;
     topView.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     [self.view addSubview:topView];
     
-    //Setting the profile picture to be round
-    
-    
-//    
-//    // Image coming back from Parse
-//    
-//    PFFile *imageFile = searchResultsForProfile[@"image"];
-//    
-//    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//        
-//        UIImage * image = [UIImage imageWithData:data];
-//        [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
-//        
-//        
-//    }];
-    
     // Setting Profile Picture
  
-    
     //Setting the profile picture to be round
+    
+
     
     theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-90, 80, 180, 180)];
     
@@ -86,6 +71,8 @@ UIButton * messageButton;
         
         
     } else {
+    
+    
         [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
         
         // Image coming back from Parse
@@ -97,9 +84,11 @@ UIButton * messageButton;
             UIImage * image = [UIImage imageWithData:data];
             [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
         }];
+
+    
     }
     
-    theProfilePicture.layer.cornerRadius = 80;
+    theProfilePicture.layer.cornerRadius = 90;
     theProfilePicture.userInteractionEnabled = false;
     theProfilePicture.clipsToBounds = YES;
     
@@ -136,6 +125,7 @@ UIButton * messageButton;
     [topView addSubview:nameLabel];
     [topView addSubview:genreLabel];
     [topView addSubview:stateLabel];
+    [topView addSubview:theProfilePicture];
 
     
     // MESSAGE BUTTON
@@ -185,56 +175,37 @@ UIButton * messageButton;
 
 - (void)viewDidLoad {
     
-    // TRIED BOOL VALUE... EPIC FAILURE
-    
-//    user = [PFUser currentUser];
-    //    NSLog(self.whatProfileToLoad ? @"VIEW DID LOAD Yes" : @" VIEW DID LOAD No");
-    //    self.whatProfileToLoad = YES;
-    
-    //    self.messageButton.hidden = TRUE;
-    
-    //    if (self.whatProfileToLoad==FALSE) {
-    //        // nameLabel.text = user[@"bandName"];
-    //
-    //
-    //    }else{
-    //        // nameLabel.text = user[@"bandName"];
-    //        self.messageButton.hidden = FALSE;
-    //
-    //    }
-    
-    
-    PFUser * user = [PFUser user];
-    //
-    
-    if (user[@"image"] == nil) {
-        
-        profileImage = [UIImage imageNamed:@"avatarcopy.jpg"];
-        
-        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
-        
-        
-    } else {
-        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
-        
-        // Image coming back from Parse
-        
-        PFFile *imageFile = user[@"image"];
-        
-        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-            
-            UIImage * image = [UIImage imageWithData:data];
-            [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
-        }];
-    }
-
-    
+//    PFUser * user = [PFUser user];
+//    //
+//    
+//    if (user[@"image"] == nil) {
+//        
+//        profileImage = [UIImage imageNamed:@"avatarcopy.jpg"];
+//        
+//        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+//        
+//        
+//    } else {
+//        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+//        
+//        // Image coming back from Parse
+//        
+//        PFFile *imageFile = user[@"image"];
+//        
+//        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+//            
+//            UIImage * image = [UIImage imageWithData:data];
+//            [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
+//        }];
+//    }
+//
+//    
     
     [super viewDidLoad];
    
     
-    [self.profilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
-    self.profilePicture.layer.cornerRadius = 50;
+//    [self.profilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
+    self.profilePicture.layer.cornerRadius = 90;
     self.profilePicture.userInteractionEnabled = false;
     self.profilePicture.clipsToBounds = YES;
     
@@ -257,40 +228,15 @@ UIButton * messageButton;
     //
     self.photosButton.frame = CGRectMake(10, SCREEN_HEIGHT-125, 95, 95);
     
-    
-    
-    
     //Position for the Sound Button
     //
     self.soundButton.frame = CGRectMake(SCREEN_WIDTH/2.0-47.5, SCREEN_HEIGHT-125, 95, 95);
     
-    
-    
     //Position for the video Button
     
     self.videoButton.frame = CGRectMake(SCREEN_WIDTH-105, SCREEN_HEIGHT-125, 95, 95);
-    
-    
-
-//- (void)editProfileButtonTickled {
-//
-//    EditProfileViewController * editProfileSegue = [[EditProfileViewController alloc] init];
-//
-//    [self.navigationController pushViewController:editProfileSegue animated:YES];
-//
-//
-//    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
-//
-//    EditProfileViewController * editProfile = [storyboard instantiateViewControllerWithIdentifier:@"editProfileID"];
-//
-//    [self presentViewController:editProfile animated:YES completion:nil];
-//
-//}
-    
-    
 
     
-
 }
 
 - (IBAction)soundcloudButton:(id)sender {

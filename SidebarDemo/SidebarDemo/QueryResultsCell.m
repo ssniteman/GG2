@@ -22,7 +22,7 @@
 }
 
 
--(void)setUsersContent:(PFUser *)usersContent{
+-(void)setUsersContent:(PFUser *)usersContent {
     
     
     
@@ -44,18 +44,35 @@
     
 //    resultPhoto
     
+    if (self.usersContent[@"image"] == nil) {
+        
+        [self.resultPhoto setBackgroundImage:[UIImage imageNamed:@"avatarcopy.jpg"] forState:UIControlStateNormal];
+        
+    } else {
+
+    // Image coming back from Parse
     
+    
+    NSLog(@"The PICTURE!!!!!!!!!!%@",self.usersContent[@"image"]);
+        
+        PFFile *imageFile = self.usersContent[@"image"];
+        
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            
+            UIImage * image = [UIImage imageWithData:data];
+            [self.resultPhoto setBackgroundImage:image forState:UIControlStateNormal];
+        }];
+        
+        
+    }
+   
     self.resultPhoto.layer.cornerRadius = 40;
     self.resultPhoto.userInteractionEnabled = false;
     self.resultPhoto.clipsToBounds = YES;
     
     self.resultBandName.text = self.usersContent[@"bandName"];
     self.resultGenreLabel.text = self.usersContent[@"genre"];
-//    self.resultCityLabel.text = delegate shit
     self.resultAvailabilityLabel.text = self.usersContent[@"availability"];
-//    self.resultRateLabel.text = rate stuff
-    
-//    NSLog(@"%@",usersContent);
     
 }
 

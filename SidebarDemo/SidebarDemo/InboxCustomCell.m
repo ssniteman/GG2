@@ -17,6 +17,7 @@
    
     _myMessagesCell = myMessagesCell;
     
+    
     PFUser * user = myMessagesCell[@"user"];
 
     PFQuery * userQuery = [PFUser query];
@@ -24,14 +25,11 @@
     PFUser * conversationUser = (PFUser *)[userQuery getObjectWithId:user.objectId];
 
     
-//    NSLog(@"%@",conversationUser);
-    
     self.inboxMessageName.text = conversationUser.username;
     
-   // NSLog(@"%@",myMessagesCell[@"messages"]);
-    
-    
-    
+    self.inboxMessagePhoto.layer.cornerRadius = 30;
+    self.inboxMessagePhoto.userInteractionEnabled = false;
+    self.inboxMessagePhoto.clipsToBounds = YES;
     
 }
 

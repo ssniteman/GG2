@@ -8,7 +8,9 @@
 
 #import "ConversationCell.h"
 
-@implementation ConversationCell
+@implementation ConversationCell{
+    UILabel * message;
+}
 
 - (void)awakeFromNib {
 
@@ -22,6 +24,14 @@
     self.messageLabel.text = self.text;
     
     
+    message = [[UILabel alloc] initWithFrame:CGRectMake(20, 80/2-20, 400, 20)];
+    
+    [self addSubview:message];
+    
+    message.text = text;
+    
+    message.textColor = [UIColor darkGrayColor];
+    
     //     Configure the cell...
 }
 
@@ -31,5 +41,7 @@
 
     // Configure the view for the selected state
 }
+
+
 
 @end

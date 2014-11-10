@@ -21,6 +21,7 @@
  
     NSMutableArray * myConversations;
     PFUser * friends;
+    PFUser * currentUser;
 }
 
 - (void)viewDidLoad {
@@ -52,27 +53,35 @@
         
         PFQuery * userQuery = [PFUser query];
 
-        PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
+        currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
+        
+        NSLog(@"current user %@", currentUser);
         
         NSArray * people = currentUser[@"peopleSpoken"];
-        
+       
+
         
         for (PFUser * user in people)
+            
         {
+
             NSMutableDictionary * conversation = [@{
-                                                    
-                                                    @"user": user,
-                                                    @"messages":[@[] mutableCopy]
-                                                    
+                                            
+                                            @"date":[NSDate date],
+                                            @"user": user,
+                                            @"messages":[@[] mutableCopy]
                                                     } mutableCopy];
             
             for (PFObject * message in objects)
             {
-                
+                NSDate *createdDate = [message createdAt];
+
                 PFUser * sender = (PFUser *)message[@"sender"];
                 PFUser * reciever = (PFUser *)message[@"reciever"];
                 
                 if ([sender.objectId isEqualToString:user.objectId] || [reciever.objectId isEqualToString:user.objectId]) {
+                    
+                    conversation[@"date"] = createdDate;
                     
                     [conversation[@"messages"] addObject:message];
                 }
@@ -82,11 +91,8 @@
             
         }
         
-        //TO DO
         for (NSDictionary * conversation in myConversations) {
             
-            
-            //NSLog(@"my messages are %@", conversation[@"messages"]);
             
             for (PFObject * message in conversation[@"messages"]) {
                 
@@ -107,10 +113,7 @@
 
 
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-//    // Return the number of sections.
-//    return 1;
-//}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
@@ -122,18 +125,46 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     InboxCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messagePeople" forIndexPath:indexPath];
     
+    NSString * lastMessage;
+    
+    for (PFObject * messageAndUser in myConversations[indexPath.row][@"messages"]) {
+        
+        lastMessage = messageAndUser[@"messageContent"];
+        
+    }
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //        //uncomment to get the time only
+    //        //[formatter setDateFormat:@"hh:mm a"];
+    //        //[formatter setDateFormat:@"MMM dd, YYYY"];
+   [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    cell.inboxMessageDate.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate: myConversations[indexPath.row][@"date"]]];
+    
+    cell.messagePreviewLabel.text = lastMessage;
     
     cell.myMessagesCell = myConversations[indexPath.row];
     
+    if(currentUser[@"image"] == nil) {
+        
+        [cell.inboxMessagePhoto setBackgroundImage:[UIImage imageNamed:@"avatarcopy.jpg"] forState:UIControlStateNormal];
+        
+        
+    }
+    
+    PFFile *imageFile = currentUser[@"image"];
+    
+            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+    
+                UIImage * image = [UIImage imageWithData:data];
+                [cell.inboxMessagePhoto setBackgroundImage:image forState:UIControlStateNormal];
+            }];
 
     if (cell == nil) {
         
         cell = [[InboxCustomCell alloc]init];
     }
- 
-    
-    
-//     Configure the cell...
+
    
     return cell;
 }
@@ -142,10 +173,13 @@
 
 //Cell You Select
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+
+    
+    
+    
     ConversationsVC * conversation = [[ConversationsVC alloc]init];
-    
-    
-    
+ 
     // This is the array that contains just the conversation that you select
     self.messages = [@[]mutableCopy];
 
@@ -159,18 +193,18 @@
     }
     
     
-    //After you get the mesages from that cell or person, you pass it to the next view...This is just the array of that one conversation
+    UINavigationController *navigationController =
+        [[UINavigationController alloc] initWithRootViewController:conversation];
+    
+        //now present this navigation controller modally
+        [self presentViewController:navigationController animated:YES completion:nil];
+    
+  //  After you get the mesages from that cell or person, you pass it to the next view...This is just the array of that one conversation
     
     NSLog(@"%d",self.messages.count);
     
     conversation.messages = self.messages;
 
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
