@@ -40,6 +40,8 @@
     
     UIView * line;
     
+    UIButton * searchArrow;
+    
     PFGeoPoint * currentGeoPoint;
     
 }
@@ -165,11 +167,6 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     self.view.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
-    
-  
-    
-    
-    
     searchSegmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician/Band",@"Bar/Venue"]];
     [searchSegmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
@@ -179,8 +176,8 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     searchSegmentControl.tintColor = newTintColor;
     [searchSegmentControl setSelectedSegmentIndex:0];
     [self.view addSubview:searchSegmentControl];
-    //    [segmentControl release];
 
+    // location view
 
     locationSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 140, SCREEN_WIDTH - 40, 80)];
     locationSearch.backgroundColor = [UIColor whiteColor];
@@ -202,6 +199,11 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     line = [[UIView alloc] initWithFrame:CGRectMake(0, 40, locationLabel.bounds.size.width, 1)];
     line.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
+    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(locationSearch.bounds.size.width/2 - 15, locationSearch.bounds.size.height/2 + 5, 30, 30)];
+    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+    [searchArrow addTarget:self action:@selector(locationArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+    
+    
     searchLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, locationSearch.bounds.size.width, locationSearch.bounds.size.height)];
     [locationSearch addSubview:searchLocationButton];
     [searchLocationButton addTarget:self action:@selector(searchLocationTapped) forControlEvents:UIControlEventTouchUpInside];
@@ -210,6 +212,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [self.view addSubview:locationSearch];
     [locationSearch addSubview:locationSearchs];
     [locationSearch addSubview:line];
+    [locationSearch addSubview:searchArrow];
     
     // GENRE VIEW
     
@@ -233,11 +236,18 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     // LABEL
 
+    
     genreSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
     genreSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     [genreSearchs setTextAlignment: NSTextAlignmentCenter];
     genreSearchs.backgroundColor = [UIColor whiteColor];
     genreSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    
+    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(genreSearch.bounds.size.width - 45, genreSearch.bounds.size.height/2 + 5, 30, 30)];
+    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+    [searchArrow addTarget:self action:@selector(genreArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+
+    
     // BUTTON
     
     genreSearchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, genreSearch.bounds.size.width, genreSearch.bounds.size.height)];
@@ -251,12 +261,19 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [self.view addSubview:genreSearch];
     [genreSearch addSubview:line];
     
+    [genreSearch addSubview:searchArrow];
+
+
     availabilitySearch = [[UIView alloc] initWithFrame:CGRectMake(20, 320, SCREEN_WIDTH - 40, 80)];
     availabilitySearch.backgroundColor = [UIColor whiteColor];
     availabilitySearch.layer.borderWidth = 1;
     availabilitySearch.layer.borderColor = [[UIColor whiteColor]CGColor];
     availabilitySearch.layer.cornerRadius = 5;
 
+    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(availabilitySearch.bounds.size.width/2 - 15, availabilitySearch.bounds.size.height/2 + 5, 30, 30)];
+    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+    [searchArrow addTarget:self action:@selector(availabilityArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UILabel * availabilityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, availabilitySearch.bounds.size.width, 25)];
     availabilityLabel.text = @"Availability";
@@ -283,6 +300,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [self.view addSubview:availabilitySearch];
     [availabilitySearch addSubview:availabilityLabel];
     [availabilitySearch addSubview:line];
+    [availabilitySearch addSubview:searchArrow];
     
     //// RATE
     
@@ -298,6 +316,11 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     rateSearchs.backgroundColor = [UIColor whiteColor];
     rateSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     rateSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    
+    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(rateSearch.bounds.size.width/2 - 15, rateSearch.bounds.size.height/2 + 5, 30, 30)];
+    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+    [searchArrow addTarget:self action:@selector(rateArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+    
     
     UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, rateSearch.bounds.size.width, 20)];
     rateLabel.text = @"Rate";
@@ -315,6 +338,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [self.view addSubview:rateSearch];
     [rateSearch addSubview:rateLabel];
     [rateSearch addSubview:line];
+    [rateSearch addSubview:searchArrow];
     
     // SEARCH BUTTON BOTTOM
     
@@ -336,14 +360,14 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 
 -(void)searchLocationTapped {
     
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
     
     SearchLocationTVC * searchLocation = [storyboard instantiateViewControllerWithIdentifier:@"searchLocationID"];
     
     searchLocation.delegate = self;
     
     [self.navigationController pushViewController:searchLocation animated:YES];
-
+        
 }
 
 -(void)genreSearchButtonTapped {
@@ -360,10 +384,9 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 
 -(void)availabilitySearchButtonTapped {
     
-    
     SearchAvailabilityTVC * searchAvailability = [[SearchAvailabilityTVC alloc] init];
     
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:searchAvailability];
+    UINavigationController * navController = [[UINavigationController alloc]initWithRootViewController:searchAvailability];
     
     searchAvailability.delegate = self;
     
@@ -373,9 +396,10 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 
 
 -(void)rateSearchButtonTapped {
+   
     SearchRateVC * searchRate = [[SearchRateVC alloc] init];
     
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:searchRate];
+    UINavigationController * navController = [[UINavigationController alloc]initWithRootViewController:searchRate];
     
     searchRate.delegate = self;
     
@@ -429,25 +453,13 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     }
     
     
-//    currentGeoPoint = [PFGeoPoint geoPointWithLatitude:self.latitudeSetter longitude:self.longitudeSetter];
-//    
-//    NSLog(@"Search lat and long %@", currentGeoPoint);
-//    
-//    [query whereKey:@"location" nearGeoPoint:currentGeoPoint withinMiles:[self.savedRadius intValue]];
-
-    
-    
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         if (searchSegmentControl.selectedSegmentIndex == 0) {
             
-//            NSLog(@"%@",objects);
-            
             for (PFUser * object in objects) {
                 
-                
                 [self.searchResults addObject:object];
-//                NSLog(@"object id is %@",object);
             }
             
         } else {
@@ -455,7 +467,6 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
             for (PFUser * object in objects) {
                 
                 [self.searchResults addObject:object];
-//                NSLog(@"object id is %@",object);
             }
 
         }
@@ -472,6 +483,56 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 //        NSLog(@"Before the passing %@",self.searchResults);
         
     }];
+    
+}
+
+-(void)locationArrowPressed{
+    
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
+    
+    SearchLocationTVC * searchLocation = [storyboard instantiateViewControllerWithIdentifier:@"searchLocationID"];
+    
+    searchLocation.delegate = self;
+    
+    [self.navigationController pushViewController:searchLocation animated:YES];
+    
+}
+
+
+-(void)genreArrowPressed {
+    
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"searchGenre" bundle: nil];
+    
+    SearchGenreTVC * searchGenre = [storyboard instantiateViewControllerWithIdentifier:@"searchGenreID"];
+    
+    searchGenre.delegate = self;
+    
+    [self.navigationController pushViewController:searchGenre animated:YES];
+    
+}
+
+
+-(void)availabilityArrowPressed {
+    
+    SearchAvailabilityTVC * searchAvailability = [[SearchAvailabilityTVC alloc] init];
+    
+    UINavigationController * navController = [[UINavigationController alloc]initWithRootViewController:searchAvailability];
+    
+    searchAvailability.delegate = self;
+    
+    [self.navigationController pushViewController:searchAvailability animated:YES];
+    
+}
+
+-(void)rateArrowPressed {
+    
+    SearchRateVC * searchRate = [[SearchRateVC alloc] init];
+    
+    UINavigationController * navController = [[UINavigationController alloc]initWithRootViewController:searchRate];
+    
+    searchRate.delegate = self;
+    
+    [self.navigationController pushViewController:searchRate animated:YES];
     
 }
 

@@ -94,9 +94,6 @@ UIButton * messageButton;
     
     
     
-
-    
-    
     // NAME LABEL
     
     nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-140, 200, 21)];

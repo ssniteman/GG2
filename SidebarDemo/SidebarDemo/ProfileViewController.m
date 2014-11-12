@@ -141,26 +141,28 @@
     nameLabel.textAlignment = NSTextAlignmentCenter;
     
     
-    if ([user[@"bandName"] length] <= 0) {
+    
+    
+    NSLog(@"TYPE: %@",user[@"userType"] );
+    
+    if ([user[@"userType"] isEqual:@"musician"] && ([user[@"bandName"] length] <= 0)) {
         
         nameLabel.text = @"Your Band Name";
-
-    } else {
+        
+    } else if ([user[@"userType"] isEqual:@"musician"] &&  [user[@"bandName"] length] > 0){
         
         nameLabel.text = user[@"bandName"];
-
-    }
-    
-    if ([user[@"barName"] length] <= 0) {
+        
+    } else if ([user[@"userType"] isEqual:@"bar"] &&  [user[@"barName"] length] <= 0) {
         
         nameLabel.text = @"Bar/Venue Name";
-        
-    } else {
+
+    } else if ([user[@"userType"] isEqual:@"bar"] &&  [user[@"barName"] length] > 0){
         
         nameLabel.text = user[@"barName"];
-        
+
     }
-    
+
     
 // Genre LABEL
     

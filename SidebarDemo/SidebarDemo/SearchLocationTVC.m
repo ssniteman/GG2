@@ -124,9 +124,9 @@
     
     CGSize pickerSize = [self.radiusPicker sizeThatFits:CGSizeZero];
     
-    UIView * pickerTransformView= [[UIView alloc] initWithFrame:CGRectMake(2.0f, 2.0f, pickerSize.width, pickerSize.height)];
+    UIView * pickerTransformView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, pickerSize.height)];
     
-    pickerTransformView.transform = CGAffineTransformMakeScale(1.0f, 1.0f);
+    pickerTransformView.transform = CGAffineTransformMakeScale(1, 1);
     [pickerTransformView addSubview:self.radiusPicker];
  
     self.radiusPicker.delegate = self;
@@ -137,7 +137,6 @@
     
     self.radiusPicker.showsSelectionIndicator = YES;
     self.radiusPicker.transform = CGAffineTransformMakeScale(0.95f, 0.95f);
-    
     [self.radiusCell addSubview:pickerTransformView];
     
     if ([self.searchZip.text isEqual:@""]) {
@@ -205,6 +204,11 @@
     
     [self.delegate setLatitudeSetter:[LatAndLong[@"lat"]doubleValue]];
     [self.delegate setLongitudeSetter:[LatAndLong[@"lng"]doubleValue]];
+    
+    [self.view endEditing:YES];
+    
+
+
 
 }
 
@@ -289,6 +293,7 @@
 
 
 -(void) cancelButton{
+    
     [self.navigationController popViewControllerAnimated:YES];
 
 }

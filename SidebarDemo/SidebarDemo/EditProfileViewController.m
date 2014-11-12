@@ -92,8 +92,11 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
         
         self.facebookView.hidden = TRUE;
         self.twitterView.hidden = TRUE;
-self.photosLabel.text =@"Photos";
-    } else {
+        self.photosLabel.text =@"Photos";
+    
+    }
+    
+    else {
         self.facebookView.hidden = FALSE;
         self.twitterView.hidden = FALSE;
         self.photosLabel.text =@"Instagram";
@@ -127,9 +130,12 @@ self.photosLabel.text =@"Photos";
     user = [PFUser currentUser];
    
     self.nameCell.text = user[@"bandName"];
-    self.emailTextField.text = user[@"email"];
     self.zipTextBox.text = user[@"zip"];
-
+    self.genreLabel.text = user[@"genre"];
+    self.rateLabel.text = user[@"nightlyRate"];
+    self.daysAvailableLabel.text = user[@"availability"];
+    
+    [user saveInBackground];
     
     PFFile *imageFile = user[@"image"];
     
@@ -160,9 +166,8 @@ self.photosLabel.text =@"Photos";
     
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
-   self.daysAvailableLabel.text = self.daysAvailable;
-}
 
+}
 
 
 - (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath {
@@ -259,6 +264,9 @@ self.photosLabel.text =@"Photos";
             user[@"zip"] = self.zipTextBox.text;
 
     }
+    
+    [self.view endEditing:YES];
+
     
 }
 
@@ -398,11 +406,7 @@ finishedSavingWithError:(NSError *)error
     picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
     
-    //    if((UIButton *) sender == choosePhotoBtn) {
     picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-    //    } else {
-    //        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    //    }
     
     [self presentModalViewController:picker animated:YES];
 }

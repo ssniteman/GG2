@@ -29,8 +29,9 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-//    self.searchResults = [@[@{}]mutableCopy];
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
 
+    
 }
 
 - (void)setSearchResults:(NSMutableArray *)searchResults {
@@ -57,22 +58,6 @@
     
     QueryResultsCell * cell = [tableView dequeueReusableCellWithIdentifier:@"profilesCell"];
     
-//    PFObject * user = [self.searchResults objectAtIndex:indexPath.row];
-//    PFFile *imageFile = user[@"image"];
-//    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//        UIImage * image = [UIImage imageWithData:data];
-//        [resultPhoto setBackgroundImage:image forState:UIControlStateNormal];
-//    }];
-//    resultPhoto.layer.cornerRadius = 70;
-//    resultPhoto.userInteractionEnabled = false;
-//    resultPhoto.clipsToBounds = YES;
-//    cell.resultBandName.text = user[@"bandName"];
-//    cell.resultGenreLabel.text = user[@"genre"];
-//    cell.resultCityLabel.text = do delegate for address[formatted address];
-//    cell.resultAvailabilityLabel.text = user[@"availability"];
-//    cell.resultRateLabel.text = user[@"nightly or hourly depending"];
-    
-    
     cell.usersContent = self.searchResults[indexPath.row];
 
     NSLog(@"these are the %@",self.searchResults);
@@ -90,35 +75,16 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    
-    
-//    SearchResultsProfileViewController * sendingData = [[SearchResultsProfileViewController alloc]init];
-    
-//    sendingData.whatProfileToLoad = NO;
-
-    
-    
-//        sendingData.searchResultsForProfile = self.searchResults[indexPath.row];
-
-    
-    
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"searchResultsProfile" bundle: nil];
     
     SearchResultsProfileViewController * resultProfile = [storyboard instantiateViewControllerWithIdentifier:@"resultProfile"];
     
-//    sendingData.messageButton.hidden = false;
-    
     resultProfile.searchResultsForProfile = self.searchResults[indexPath.row];
-
     
     [self.navigationController pushViewController:resultProfile animated:YES];
     
-//    ((UINavigationController *)self.presentingViewController).viewControllers = @[revealVC];
-    
     [self dismissViewControllerAnimated:YES completion:nil];
-
-    
-    
+ 
 }
 
 

@@ -223,6 +223,8 @@
     
     SWRevealViewController * revealVC = [storyboard instantiateViewControllerWithIdentifier:@"revealVC"];
     
+    // this giving problems on the logout, then signup issue
+    
     ((UINavigationController *)self.presentingViewController).viewControllers = @[revealVC];
     
     [self dismissViewControllerAnimated:YES completion:nil];

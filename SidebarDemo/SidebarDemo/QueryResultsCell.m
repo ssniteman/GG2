@@ -23,9 +23,7 @@
 
 
 -(void)setUsersContent:(PFUser *)usersContent {
-    
-    
-    
+   
     
     self.mainView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.mainView.layer.borderWidth = 1.0f;
@@ -33,10 +31,6 @@
     self.mainView.layer.cornerRadius = 3;
     self.mainView.layer.masksToBounds = YES;
    
-    
-//    self.bottomVIew.layer.borderColor = [UIColor lightGrayColor].CGColor;
-//    self.bottomVIew.layer.borderWidth = 1.0f;
-    
     
     _usersContent  = usersContent;
 

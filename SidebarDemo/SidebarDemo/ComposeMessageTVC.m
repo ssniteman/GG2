@@ -30,6 +30,8 @@
     [super viewDidLoad];
     
     self.toWhomWeSend.text = self.toWhomWeSendString;
+    self.toWhomWeSend.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    [self.toWhomWeSend setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]];
     
     NSLog(@"listen here %@",self.toWhomWeSendString);
 
@@ -66,8 +68,6 @@
     SearchResultsProfileViewController * searchResultProfile = [[SearchResultsProfileViewController alloc] init];
    
 }
-
-
 
 
 -(void)sendButton {
