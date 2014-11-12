@@ -23,6 +23,8 @@
     UITextField * loginUsernameTextField;
     UITextField * loginPasswordTextField;
     
+    UIView * loginView;
+    
 }
 
 - (void)viewDidLoad {
@@ -50,7 +52,7 @@
     
     // USERNAME TEXT FIELD
     
-    loginUsernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 220, SCREEN_WIDTH - 40, 50)];
+    loginUsernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 40, 50)];
     loginUsernameTextField.backgroundColor = [UIColor whiteColor];
     loginUsernameTextField.layer.cornerRadius = 5;
     loginUsernameTextField.font = [UIFont systemFontOfSize:18];
@@ -68,13 +70,10 @@
     loginUsernameTextField.leftViewMode = UITextFieldViewModeAlways;
     loginUsernameTextField.delegate = self;
     
-//    [loginUsernameTextField becomeFirstResponder];
-    
-    [self.view addSubview:loginUsernameTextField];
-    
+
     // PASSWORD TEXT FIELD
     
-    loginPasswordTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 160, SCREEN_WIDTH - 40, 50)];
+    loginPasswordTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 60, SCREEN_WIDTH - 40, 50)];
     loginPasswordTextField.backgroundColor = [UIColor whiteColor];
     loginPasswordTextField.layer.cornerRadius = 5;
     loginPasswordTextField.font = [UIFont systemFontOfSize:18];
@@ -94,13 +93,11 @@
     loginPasswordTextField.leftView = paddingView2;
     loginPasswordTextField.leftViewMode = UITextFieldViewModeAlways;
     
-    [self.view addSubview:loginPasswordTextField];
-    
     
     // LOGIN BUTTON
     
     
-    loginFinalButton = [[UIButton alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 100, SCREEN_WIDTH - 40, 50)];
+    loginFinalButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 120, SCREEN_WIDTH - 40, 50)];
     
     loginFinalButton.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     loginFinalButton.titleLabel.font = [UIFont systemFontOfSize:18];
@@ -115,7 +112,16 @@
     
     [loginFinalButton addTarget:self action:@selector(loginFinalTouched) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.view addSubview:loginFinalButton];
+    
+    loginView = [[UIView alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 220, SCREEN_WIDTH - 40, 170)];
+    loginView.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    
+    [self.view addSubview:loginView];
+
+    
+    [loginView addSubview:loginUsernameTextField];
+    [loginView addSubview:loginPasswordTextField];
+    [loginView addSubview:loginFinalButton];
     
 
 }

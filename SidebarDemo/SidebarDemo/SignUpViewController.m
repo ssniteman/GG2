@@ -20,6 +20,9 @@
     UITextField * emailField;
     UISegmentedControl * segmentControl;
     NSString * usernameText;
+    
+    UIButton * signUpFinalButton;
+    UIView * signUpView;
 }
 
 - (void)viewDidLoad {
@@ -46,7 +49,7 @@
     
     // USERNAME TEXT FIELD
     
-    usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 360, SCREEN_WIDTH - 40, 50)];
+    usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 40, 50)];
     usernameTextField.backgroundColor = [UIColor whiteColor];
     usernameTextField.layer.cornerRadius = 5;
     usernameTextField.font = [UIFont systemFontOfSize:18];
@@ -67,11 +70,10 @@
 
 //    [usernameTextField becomeFirstResponder];
     
-    [self.view addSubview:usernameTextField];
-        
+    
     // PASSWORD TEXT FIELD
     
-    passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 290, SCREEN_WIDTH - 40, 50)];
+    passwordTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 70, SCREEN_WIDTH - 40, 50)];
     passwordTextField.backgroundColor = [UIColor whiteColor];
     passwordTextField.layer.cornerRadius = 5;
     passwordTextField.font = [UIFont systemFontOfSize:18];
@@ -93,11 +95,10 @@
     passwordTextField.leftViewMode = UITextFieldViewModeAlways;
     passwordTextField.delegate = self;
 
-    [self.view addSubview:passwordTextField];
     
     // VERIFY PASSWORD TEXT FIELD
     
-    emailField = [[UITextField alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 220, SCREEN_WIDTH - 40, 50)];
+    emailField = [[UITextField alloc] initWithFrame:CGRectMake(0, 140, SCREEN_WIDTH - 40, 50)];
     emailField.backgroundColor = [UIColor whiteColor];
     emailField.layer.cornerRadius = 5;
     emailField.font = [UIFont systemFontOfSize:18];
@@ -114,35 +115,22 @@
     [emailField setValue:[UIFont fontWithName: @"HelveticaNeue-Thin" size: 24] forKeyPath:@"_placeholderLabel.font"];
 
     
-    [self.view addSubview:emailField];
     
     // USERTYPE
     
     segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician/Band",@"Bar/Venue"]];
     [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
-    segmentControl.frame = CGRectMake(20, SCREEN_HEIGHT - 150, SCREEN_WIDTH - 40, 50);
-    
-//    UIColor *newTintColor = [UIColor whiteColor];
-    segmentControl.tintColor = [UIColor whiteColor];
-    
-//    UIFont * font = [UIFont boldSystemFontOfSize:16.0f];
-//    NSDictionary *attributes = [NSDictionary dictionaryWithObject:font forKey:NSFontAttributeName];
+    segmentControl.frame = CGRectMake(0, 210, SCREEN_WIDTH - 40, 50);
+        segmentControl.tintColor = [UIColor whiteColor];
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
-//
-//    [segmentControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    
     segmentControl.layer.borderWidth = 0;
-    
-//    [segmentControl addTarget:self action:@selector(segmentedControlValueDidChange:) forControlEvents:UIControlEventValueChanged];
     [segmentControl setSelectedSegmentIndex:0];
-    [self.view addSubview:segmentControl];
-//    [segmentControl release];
     
     
     
     // SIGN UP FINAL BUTTON
     
-    UIButton * signUpFinalButton = [[UIButton alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 80, SCREEN_WIDTH - 40, 50)];
+    signUpFinalButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 280, SCREEN_WIDTH - 40, 50)];
     
     signUpFinalButton.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     signUpFinalButton.titleLabel.font = [UIFont systemFontOfSize:18];
@@ -156,7 +144,16 @@
     
     [signUpFinalButton setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24]];
 
-    [self.view addSubview:signUpFinalButton];
+    
+    signUpView = [[UIView alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 360, SCREEN_WIDTH - 40, 330)];
+    signUpView.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    [self.view addSubview:signUpView];
+    
+    [signUpView addSubview:usernameTextField];
+    [signUpView addSubview:emailField];
+    [signUpView addSubview:passwordTextField];
+    [signUpView addSubview:segmentControl];
+    [signUpView addSubview:signUpFinalButton];
 
 }
 
