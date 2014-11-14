@@ -78,52 +78,58 @@
     
     
     //See what this prints and
-    NSLog(@"%@",userInfo);
+    NSLog(@"this is the user info %@",userInfo);
+    
+    
+    NSLog(@"daddy got it");
     
     //DO THIS CODE BASED OFF The USER INFO
     
     
     //TEST this with TWO Phones
     
-    // add sender to my people spoken to
+//     add sender to my people spoken to
     
-//    PFQuery * userQuery = [PFUser query];
-//    [userQuery includeKey:@"peopleSpoken"];
-//    PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
-//    
-//    NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
-//    
-//    if (peopleSpokenTo == nil) {
-//        peopleSpokenTo = [@[] mutableCopy];
-//    }
-//    
-//    BOOL foundUser = NO;
-//    for (PFUser * user in peopleSpokenTo)
-//    {
-//        if ([user.objectId isEqualToString:self.toUser.objectId]) foundUser = YES;
-//    }
-//    
-//    if (!foundUser)
-//    {
-//        [peopleSpokenTo addObject:self.toUser];
-//    }
-//    
-//    //    if (![peopleSpokenTo containsObject:self.toUser])
-//    //    {
-//    //        [peopleSpokenTo addObject:self.toUser];
-//    //    }
-//    
-//    currentUser[@"peopleSpoken"] = peopleSpokenTo;
-//    
-//    [currentUser saveInBackground];
-//    
+    PFQuery * userQuery = [PFUser query];
+    [userQuery includeKey:@"peopleSpoken"];
+    PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
+    
+    NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
+    
+    if (peopleSpokenTo == nil) {
+        peopleSpokenTo = [@[] mutableCopy];
+    }
+    
+    BOOL foundUser = NO;
+    for (PFUser * user in peopleSpokenTo)
+    {
+        if ([user.objectId isEqualToString:self.toUser.objectId]) foundUser = YES;
+    }
+    
+    if (!foundUser)
+    {
+        [peopleSpokenTo addObject:self.toUser];
+    }
+    
+    //    if (![peopleSpokenTo containsObject:self.toUser])
+    //    {
+    //        [peopleSpokenTo addObject:self.toUser];
+    //    }
+    
+    currentUser[@"peopleSpoken"] = peopleSpokenTo;
+    
+    [currentUser saveInBackground];
+    
 //    NSMutableArray * peopleSpokenTo = [self.toUser[@"peopleSpoken"] mutableCopy];
 //
 //    [peopleSpokenTo addObject:self.currentUser];
 
-   
-    //Dispalys the alert
+
+    
+    //Displays the alert
+    
     [PFPush handlePush:userInfo];
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

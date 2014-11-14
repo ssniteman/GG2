@@ -37,16 +37,13 @@
     self.webView.delegate = self;
 
     loading=[[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    loading.center = CGPointMake(SCREEN_WIDTH/2-15, SCREEN_HEIGHT/2-15);
     
+    loading.center = CGPointMake(SCREEN_WIDTH/2, SCREEN_HEIGHT/2-15);
     
     [loading startAnimating];
     
-    
-    
-    
 
-loading.color = [UIColor colorWithRed:0.753f green:0.251f blue:0.204f alpha:1.0f];
+    loading.color = [UIColor colorWithRed:0.753f green:0.251f blue:0.204f alpha:1.0f];
 [self.view addSubview:loading];
 
 

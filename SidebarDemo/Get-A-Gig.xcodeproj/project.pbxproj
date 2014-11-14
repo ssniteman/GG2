@@ -29,6 +29,11 @@
 		6041FB671A13CFF500F8E2B3 /* youtube4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB651A13CFF500F8E2B3 /* youtube4@2x.png */; };
 		6041FB691A13D02A00F8E2B3 /* soundcloud4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB681A13D02A00F8E2B3 /* soundcloud4.png */; };
 		6041FB6D1A13D12F00F8E2B3 /* musicalnote@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB6C1A13D12F00F8E2B3 /* musicalnote@2x.png */; };
+		6041FB6F1A13D91D00F8E2B3 /* facebook4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB6E1A13D91D00F8E2B3 /* facebook4@2x.png */; };
+		6041FB711A13F9F500F8E2B3 /* instagram5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB701A13F9F500F8E2B3 /* instagram5@2x.png */; };
+		6041FB751A13FDC600F8E2B3 /* twitter5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB721A13FDC600F8E2B3 /* twitter5@2x.png */; };
+		6041FB761A13FDC600F8E2B3 /* youtube5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB731A13FDC600F8E2B3 /* youtube5@2x.png */; };
+		6041FB771A13FDC600F8E2B3 /* facebook5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB741A13FDC600F8E2B3 /* facebook5@2x.png */; };
 		6044CD0519D9A5B100B72FD5 /* SearchAvailabilityTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6044CD0419D9A5B100B72FD5 /* SearchAvailabilityTVC.m */; };
 		6048255C19E0C44700FDE2FC /* searchQueryResults.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6048255B19E0C44700FDE2FC /* searchQueryResults.storyboard */; };
 		6048255F19E0C51C00FDE2FC /* QueryResultsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 6048255E19E0C51C00FDE2FC /* QueryResultsTVC.m */; };
@@ -149,6 +154,11 @@
 		6041FB651A13CFF500F8E2B3 /* youtube4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "youtube4@2x.png"; sourceTree = "<group>"; };
 		6041FB681A13D02A00F8E2B3 /* soundcloud4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = soundcloud4.png; sourceTree = "<group>"; };
 		6041FB6C1A13D12F00F8E2B3 /* musicalnote@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "musicalnote@2x.png"; sourceTree = "<group>"; };
+		6041FB6E1A13D91D00F8E2B3 /* facebook4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook4@2x.png"; sourceTree = "<group>"; };
+		6041FB701A13F9F500F8E2B3 /* instagram5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram5@2x.png"; sourceTree = "<group>"; };
+		6041FB721A13FDC600F8E2B3 /* twitter5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter5@2x.png"; sourceTree = "<group>"; };
+		6041FB731A13FDC600F8E2B3 /* youtube5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "youtube5@2x.png"; sourceTree = "<group>"; };
+		6041FB741A13FDC600F8E2B3 /* facebook5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook5@2x.png"; sourceTree = "<group>"; };
 		6044CD0319D9A5B100B72FD5 /* SearchAvailabilityTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAvailabilityTVC.h; sourceTree = "<group>"; };
 		6044CD0419D9A5B100B72FD5 /* SearchAvailabilityTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAvailabilityTVC.m; sourceTree = "<group>"; };
 		6048255B19E0C44700FDE2FC /* searchQueryResults.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = searchQueryResults.storyboard; sourceTree = "<group>"; };
@@ -361,9 +371,9 @@
 			children = (
 				601441A219BCF14000BC3CC8 /* ProfileViewController.h */,
 				601441A319BCF14000BC3CC8 /* ProfileViewController.m */,
-				6044CD0719D9A98C00B72FD5 /* Login/SignUp */,
 				607A6CAF19E5C30500B27D94 /* SearchResultsProfileViewController.h */,
 				607A6CB019E5C30500B27D94 /* SearchResultsProfileViewController.m */,
+				6044CD0719D9A98C00B72FD5 /* Login/SignUp */,
 			);
 			name = ProfileView;
 			sourceTree = "<group>";
@@ -430,7 +440,12 @@
 				6041FB541A13AA8B00F8E2B3 /* instagram.png */,
 				6041FB5A1A13AA9C00F8E2B3 /* twitter.png */,
 				6041FB621A13B4FB00F8E2B3 /* instagram4@2x.png */,
+				6041FB6E1A13D91D00F8E2B3 /* facebook4@2x.png */,
+				6041FB721A13FDC600F8E2B3 /* twitter5@2x.png */,
+				6041FB731A13FDC600F8E2B3 /* youtube5@2x.png */,
+				6041FB741A13FDC600F8E2B3 /* facebook5@2x.png */,
 				6041FB641A13CFF500F8E2B3 /* twitter4@2x.png */,
+				6041FB701A13F9F500F8E2B3 /* instagram5@2x.png */,
 				6041FB651A13CFF500F8E2B3 /* youtube4@2x.png */,
 				6041FB5B1A13AA9C00F8E2B3 /* youtube.png */,
 				6041FB601A13B2DC00F8E2B3 /* twitter-bird.png */,
@@ -654,6 +669,7 @@
 				6032646B1A056A620084F4D5 /* p4.png in Resources */,
 				F4EECF28177C99F400778578 /* Default-568h@2x.png in Resources */,
 				60A420DC19D2039C007738D4 /* MainStoryboardTwo.storyboard in Resources */,
+				6041FB761A13FDC600F8E2B3 /* youtube5@2x.png in Resources */,
 				60D37D8019CA1309006FB596 /* avatarcopy.jpg in Resources */,
 				F4EECF5B177F384900778578 /* bookmark.png in Resources */,
 				F4EECF5C177F384900778578 /* calendar.png in Resources */,
@@ -665,6 +681,7 @@
 				F4EECF61177F384900778578 /* wishlist.png in Resources */,
 				6041FB631A13B4FB00F8E2B3 /* instagram4@2x.png in Resources */,
 				60FBF72E19F09C47004BF681 /* Images.xcassets in Resources */,
+				6041FB6F1A13D91D00F8E2B3 /* facebook4@2x.png in Resources */,
 				6041FB591A13AA9500F8E2B3 /* facebook.png in Resources */,
 				F4EECF63177F3CAB00778578 /* tag.png in Resources */,
 				60FBF72619F08540004BF681 /* video@2x.png in Resources */,
@@ -672,6 +689,8 @@
 				6041FB5F1A13B23300F8E2B3 /* youtube1.png in Resources */,
 				6048255C19E0C44700FDE2FC /* searchQueryResults.storyboard in Resources */,
 				60D7967619D0AE790009CDB2 /* g.png in Resources */,
+				6041FB751A13FDC600F8E2B3 /* twitter5@2x.png in Resources */,
+				6041FB711A13F9F500F8E2B3 /* instagram5@2x.png in Resources */,
 				60FBF72419F084C5004BF681 /* image@2x.png in Resources */,
 				60FBF72A19F0930F004BF681 /* menu3@2x.png in Resources */,
 				60E680F219F1584300639580 /* arrow.png in Resources */,
@@ -685,6 +704,7 @@
 				60FBF72C19F098CB004BF681 /* camera@2x.png in Resources */,
 				6041FB531A13A9D200F8E2B3 /* gg-instagram.png in Resources */,
 				6041FB5D1A13AA9C00F8E2B3 /* youtube.png in Resources */,
+				6041FB771A13FDC600F8E2B3 /* facebook5@2x.png in Resources */,
 				6041FB471A12805B00F8E2B3 /* searcharrows2.png in Resources */,
 				60F4242F19D7078D001D8B0E /* genre.storyboard in Resources */,
 				F4FE87FC1780081300CB3DA8 /* wishlist_photo.jpg in Resources */,

@@ -23,6 +23,9 @@
     UITextField * loginUsernameTextField;
     UITextField * loginPasswordTextField;
     
+    UIImageView *gLogo;
+    UIButton * cancelButton;
+    
     UIView * loginView;
     
 }
@@ -31,18 +34,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+   
     
-     self.view.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
-    UIImageView *gLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 140.0f)];
+    gLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 140.0f)];
     [gLogo setImage:[UIImage imageNamed:@"bigG.png"]];
     gLogo.center = CGPointMake(self.view.center.x, 150);
 
     [self.view addSubview:gLogo];
-    
+    //
 
     
-    UIButton * cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 50, 10, 40, 40)];
+    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 50, 10, 40, 40)];
     UIImage *cancel = [UIImage imageNamed:@"close.png"];
     [cancelButton setBackgroundImage:cancel forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(cancelTouched) forControlEvents:UIControlEventTouchUpInside];
@@ -119,12 +123,54 @@
     [self.view addSubview:loginView];
 
     
+    loginUsernameTextField.delegate = self;
+    loginPasswordTextField.delegate = self;
+    loginUsernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    loginPasswordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     [loginView addSubview:loginUsernameTextField];
     [loginView addSubview:loginPasswordTextField];
     [loginView addSubview:loginFinalButton];
     
 
 }
+
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    return YES; }
+
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    
+    [loginView endEditing:YES];
+    return YES; }
+
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    [UIView animateWithDuration:0.3 animations:^{
+        [loginView setFrame:CGRectMake(20,232,loginView.bounds.size.width,loginView.bounds.size.height)];
+    }];
+    
+    
+
+    
+//    gLogo.hidden = YES;
+//    cancelButton.hidden = YES;
+}
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        [loginView setFrame:CGRectMake(20,SCREEN_HEIGHT - 220,loginView.bounds.size.width,loginView.bounds.size.height)];
+    }];
+    
+    
+//    gLogo.hidden = NO;
+//    cancelButton.hidden = NO;
+}
+
 
 -(void)loginFinalTouched {
     

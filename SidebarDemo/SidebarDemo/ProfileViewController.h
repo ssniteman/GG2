@@ -58,12 +58,11 @@
 @property (nonatomic, strong) NSMutableArray * searchResultsForProfile;
 
 
-
-
-
 @property (nonatomic,strong) NSString * whatProfileToLoad;
 
 //Link for SHOWCASE
 
 @property (nonatomic) NSString * link;
+
+
 @end

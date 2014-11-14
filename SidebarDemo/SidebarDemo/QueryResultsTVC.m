@@ -19,7 +19,7 @@
 
 @implementation QueryResultsTVC {
     
-    UIButton * resuzltPhoto;
+    UIButton * resultPhoto;
 
 }
 
@@ -60,7 +60,7 @@
     
     cell.usersContent = self.searchResults[indexPath.row];
 
-    NSLog(@"these are the %@",self.searchResults);
+//    NSLog(@"these are the %@",self.searchResults);
 
     if (cell == nil) {
         

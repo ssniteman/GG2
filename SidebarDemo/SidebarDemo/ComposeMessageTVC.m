@@ -95,10 +95,16 @@
         peopleSpokenTo = [@[] mutableCopy];
     }
     
+    // querying through the people spoken to array... we are saying, if the self.toUser doesn't exist, add them to the array.
+    
     BOOL foundUser = NO;
+    
     for (PFUser * user in peopleSpokenTo)
     {
-        if ([user.objectId isEqualToString:self.toUser.objectId]) foundUser = YES;
+        if ([user.objectId isEqualToString:self.toUser.objectId])
+        {
+            foundUser = YES;
+        }
     }
     
     if (!foundUser)
@@ -116,32 +122,43 @@
     [currentUser saveInBackground];
     
     
-    // run push
+    // Run Push
     
     
     PFQuery * deviceQuery = [PFInstallation query];
     
     [deviceQuery whereKey:@"user" equalTo:self.toUser];
-
     
+    NSLog(@"TO USER IS %@",self.toUser);
+
+    NSLog(@"device query %@",deviceQuery);
+    
+    
+    
+    NSString * alert = [NSString stringWithFormat:self.sendMessageText.text, [PFUser currentUser].username];
     
     NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
-                          self.sendMessageText.text, @"alert",[PFUser currentUser],
+                          alert, @"alert",[PFUser currentUser].username,
                           @"sender",
                           @"Increment", @"badge",
                           nil];
+    
+    
+//    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
+//                          self.sendMessageText.text, @"alert",[PFUser currentUser].username,
+//                          @"sender",
+//                          @"Increment", @"badge",
+//                          nil];
+    
+    
+    
+    
     PFPush *push = [[PFPush alloc] init];
-    [push setQuery:(deviceQuery)];
+    [push setQuery:deviceQuery];
     
 
     [push setData:data];
     [push sendPushInBackground];
-    
-    
-    
-    
-    
-    
     
     
     NSLog(@"message is working");

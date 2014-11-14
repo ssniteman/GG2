@@ -23,23 +23,35 @@
     
     UIButton * signUpFinalButton;
     UIView * signUpView;
+    
+    UIButton * cancelButton;
+    UIImageView *gLogo;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    usernameTextField.delegate = self;
+    passwordTextField.delegate = self;
+    emailField.delegate = self;
+    usernameTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    passwordTextField.autocorrectionType = UITextAutocorrectionTypeNo;
+    emailField.autocorrectionType = UITextAutocorrectionTypeNo;
+
+    
+    
     self.view.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
     // Do any additional setup after loading the view.
     
-    UIImageView *gLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 140.0f)];
+    gLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 140.0f)];
     [gLogo setImage:[UIImage imageNamed:@"bigG.png"]];
     gLogo.center = CGPointMake(self.view.center.x, 100);
     
     [self.view addSubview:gLogo];
     
     
-    UIButton * cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 45, 5, 40, 40)];
+    cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH - 45, 5, 40, 40)];
     UIImage *cancel = [UIImage imageNamed:@"close.png"];
     [cancelButton setBackgroundImage:cancel forState:UIControlStateNormal];
     [cancelButton addTarget:self action:@selector(cancelTouched) forControlEvents:UIControlEventTouchUpInside];
@@ -165,32 +177,28 @@
     NSLog(@"SignUpFinal Tappedity Tapped");
     
     PFUser *user = [PFUser user];
+    
     user.username = usernameTextField.text;
     user.password = passwordTextField.text;
     user.email = emailField.text;
     
-//    if (![emailField.text length]<=0) {
-//        user.email = emailField.text;
-//
-//    }else{
-//        user.email = @"k@k.com";
-//
-//    }
     
-    NSLog(@"%@",emailField.text);
     
     if (segmentControl.selectedSegmentIndex == 0)
     {
         user[@"userType"] = @"musician";
+        
     }
     else {
         
         user[@"userType"] = @"bar";
-    }
+        
 
-   
-    // other fields can be set just like with PFObject
-//    user[@"phone"] = @"415-392-0202";
+        
+    }
+    
+    NSLog(@"user type on sign up %@",user[@"userType"]);
+    
     
     [user signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (!error) {
@@ -207,7 +215,8 @@
         installation[@"user"] = user;
         [installation saveInBackground];
     
-//
+    
+
 //     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
 //    
 //    ProfileViewController * profileView = [storyboard instantiateViewControllerWithIdentifier:@"profileView"];
@@ -215,6 +224,8 @@
 //    [self presentViewController:profileView animated:YES completion:nil];
     
 //    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    sleep(1);
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboardTwo" bundle: nil];
     
@@ -225,6 +236,9 @@
     ((UINavigationController *)self.presentingViewController).viewControllers = @[revealVC];
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+
+    
     
 }
 
@@ -243,12 +257,45 @@
 }
 
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    return YES; }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    
+    [signUpView endEditing:YES];
+    return YES; }
+
+
+- (void)keyboardDidShow:(NSNotification *)notification
+{
+    
+    
+//    [UIView animateWithDuration:0.3 animations:^{
+        [signUpView setFrame:CGRectMake(20,10,signUpView.bounds.size.width,signUpView.bounds.size.height)];
+        
+        gLogo.hidden = YES;
+        cancelButton.hidden = YES;
+//    }];
+    
 }
+
+-(void)keyboardDidHide:(NSNotification *)notification
+{
+    
+    
+//    [UIView animateWithDuration:0.3 animations:^{
+        [signUpView setFrame:CGRectMake(20,SCREEN_HEIGHT - 360,signUpView.bounds.size.width,signUpView.bounds.size.height)];
+        
+        gLogo.hidden = NO;
+        cancelButton.hidden = NO;
+//}];
+    
+    
+}
+
 
 /*
 #pragma mark - Navigation

@@ -3,8 +3,6 @@
 
 //  SidebarDemo
 
-//Things to fix EDIT
-
 #import "ProfileViewController.h"
 #import "SWRevealViewController.h"
 #import "EditProfileViewController.h"
@@ -39,42 +37,30 @@
 }
 
 
--(void)setSearchResultsForProfile:(NSMutableArray *)searchResultsForProfile {
-    
-    _searchResultsForProfile = searchResultsForProfile;
-    
-    NSLog(@"Other Users Content%@",self.searchResultsForProfile);
-    
-}
-
-
--(void)setWhatProfileToLoad:(NSString *)whatProfileToLoad {
-
-    _whatProfileToLoad = whatProfileToLoad;
-    
-    NSLog(@"%@", self.whatProfileToLoad);
-
-}
-
 // Added view will appear... because the view did load would set the view once on the reveal button... view will appear runs again once the view is called
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    
    user = [PFUser currentUser];
     
-    if ([user[@"userType"] isEqualToString:@"musician"]) {
-            
-        self.barUIView.hidden = TRUE;
+    NSLog(@"TYPE %@",user.username);
     
-    } else {
-        self.barUIView.hidden = FALSE;
-    }
+        if ([user[@"userType"] isEqualToString:@"musician"]) {
             
+            self.barUIView.hidden = TRUE;
             
+        } else {
+            self.barUIView.hidden = FALSE;
+        }
+        
     
+    
+   
+            
     [super viewDidLoad];
+    
     //LEFT MENU BUTTON
+    
     SWRevealViewController *revealController = [self revealViewController];
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu3.png"]style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     
@@ -141,24 +127,23 @@
     nameLabel.textAlignment = NSTextAlignmentCenter;
     
     
-    
-    
+
     NSLog(@"TYPE: %@",user[@"userType"] );
     
     if ([user[@"userType"] isEqual:@"musician"] && ([user[@"bandName"] length] <= 0)) {
-        
+    
         nameLabel.text = @"Your Band Name";
         
     } else if ([user[@"userType"] isEqual:@"musician"] &&  [user[@"bandName"] length] > 0){
-        
+    
         nameLabel.text = user[@"bandName"];
-        
+    
     } else if ([user[@"userType"] isEqual:@"bar"] &&  [user[@"barName"] length] <= 0) {
-        
+    
         nameLabel.text = @"Bar/Venue Name";
 
     } else if ([user[@"userType"] isEqual:@"bar"] &&  [user[@"barName"] length] > 0){
-        
+    
         nameLabel.text = user[@"barName"];
 
     }
@@ -186,7 +171,6 @@
     
     stateLabel.textColor = [UIColor whiteColor];
     stateLabel.textAlignment = NSTextAlignmentCenter;
-//    stateLabel.text = @"City, State";
     
     if ([user[@"city"] length] <= 0) {
         
@@ -207,7 +191,6 @@
     
     rateLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(topView.bounds.size.width - 115, topView.bounds.size.height - 30, 100, 20)];
     [rateLabelParse setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14]];
-//    rateLabelParse.backgroundColor = [UIColor greenColor];
     rateLabelParse.textColor = [UIColor whiteColor];
     rateLabelParse.textAlignment = NSTextAlignmentCenter;
     
@@ -220,7 +203,6 @@
     
     availabilityLabelParse = [[UILabel alloc] initWithFrame:CGRectMake(10, topView.bounds.size.height - 30, 100, 20)];
     [availabilityLabelParse setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:14]];
-//    availabilityLabelParse.backgroundColor = [UIColor greenColor];
 
     availabilityLabelParse.textColor = [UIColor whiteColor];
     availabilityLabelParse.textAlignment = NSTextAlignmentCenter;

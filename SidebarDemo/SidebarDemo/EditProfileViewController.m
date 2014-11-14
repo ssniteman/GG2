@@ -135,6 +135,23 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     self.rateLabel.text = user[@"nightlyRate"];
     self.daysAvailableLabel.text = user[@"availability"];
     
+    if ([user[@"userType"] isEqualToString:@"musician"]) {
+        
+        self.nameCell.text = user[@"bandName"];
+        self.photosTextField.text = user[@"instagram"];
+        self.soundTextField.text = user[@"soundcloud"];
+        self.videosTextField.text = user[@"youtube"];
+        
+    } else {
+        self.nameCell.text = user[@"bandName"];
+        self.photosTextField.text = user[@"instagram"];
+        self.facebookTextField.text = user[@"facebook"];
+        self.twitterTextField.text = user[@"twitter"];
+        
+    }
+    
+
+    
     [user saveInBackground];
     
     PFFile *imageFile = user[@"image"];
