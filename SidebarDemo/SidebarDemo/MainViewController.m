@@ -27,8 +27,9 @@
 {
     [super viewDidLoad];
 
-    self.title = @"Profile";
+//    self.title = @"Profile";
 
+    self.navigationController.navigationBarHidden = YES;
 
     
     // Set the gesture

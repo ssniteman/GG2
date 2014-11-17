@@ -10,25 +10,25 @@
 #import "ConversationCell.h"
 #import "InboxTVC.h"
 #import <Parse/Parse.h>
+#import "ComposeMessageTVC.h"
+
 @interface ConversationsVC ()<UITableViewDelegate,UITableViewDataSource>
 
 @end
 
-@implementation ConversationsVC{
+@implementation ConversationsVC {
+    
     UITableView *conversationTableView;
+    
 }
 
 -(void)setMessages:(NSMutableArray *)messages {
     _messages = messages;
     
     
-    [conversationTableView reloadData];
+    [self.tableView reloadData];
     
     
-}
-
--(void)setConversationThread:(NSDictionary *)conversationThread {
-    _conversationThread = conversationThread;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -50,17 +50,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-     NSString *CellIdentifier = @"newFriendCell";
     ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newFriendCell"];
     
-    if (cell == nil) {
-        cell = [[ConversationCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-
+    cell.text = self.messages[indexPath.row][@"messageContent"];
     
-    cell.text = self.messages[indexPath.row];
-    
-    NSLog(@"messagesss index %@",self.messages[indexPath.row]);
+//    NSLog(@"messagesss index %@",self.messages[indexPath.row]);
     
     
     return cell;
@@ -70,23 +64,52 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
-    
-    conversationTableView =[[UITableView alloc]initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height) style:UITableViewStylePlain];
-    
-    [self.view addSubview:conversationTableView];
-    
-conversationTableView.dataSource = self;
-    conversationTableView.delegate = self;
-    
     self.view.backgroundColor = [UIColor whiteColor];
     
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    // refresh conversation messages
+    
+    PFQuery * conversationQuery = [PFQuery queryWithClassName:@"Messages"];
+    
+    [conversationQuery whereKey:@"S_R" containsAllObjectsInArray:@[[PFUser currentUser],self.conversationThread[@"user"]]];
+    [conversationQuery includeKey:@"sender"];
+    [conversationQuery includeKey:@"reciever"];
+    [conversationQuery includeKey:@"S_R"];
+    
+    [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
+        self.messages = [objects mutableCopy];
+        
+    }];
     
 }
 
 
 
 - (IBAction)conversationNewSendButton:(id)sender {
+}
+
+- (IBAction)composeNewMessage:(id)sender {
+    
+    PFUser * user = self.conversationThread[@"user"];
+    
+    // create and present a new ComposeMessageTVC
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"composeMessage" bundle: nil];
+    
+    ComposeMessageTVC * composeTVC = [storyboard instantiateViewControllerWithIdentifier:@"composeNew"];
+    
+    composeTVC.toUser = user;
+    composeTVC.toWhomWeSendString = user[@"bandName"];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:composeTVC];
+    
+    //now present this navigation controller modally
+    [self presentViewController:navigationController animated:YES completion:nil];
+
+    
 }
 @end

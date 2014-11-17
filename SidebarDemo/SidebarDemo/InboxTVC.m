@@ -43,75 +43,120 @@
     
     PFQuery * inboxQuery = [PFQuery queryWithClassName:@"Messages"];
     
-//    [inboxQuery whereKey:@"reciever" equalTo:[PFUser currentUser]]; // find all the recievers
-
     [inboxQuery whereKey:@"S_R" containsAllObjectsInArray:@[[PFUser currentUser]]];
-    
     [inboxQuery includeKey:@"sender"];
+    [inboxQuery includeKey:@"reciever"];
+    [inboxQuery includeKey:@"S_R"];
     
     [inboxQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-        PFQuery * userQuery = [PFUser query];
-
-        currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
-        
-        NSLog(@"current user %@", currentUser);
-        
-        NSArray * people = currentUser[@"peopleSpoken"];
+//        NSLog(@"%@",objects);
+//        PFQuery * userQuery = [PFUser query];
+//
+//        currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
+//        
+//        NSLog(@"current user %@", currentUser);
+//        
+//        NSArray * people = currentUser[@"peopleSpoken"];
        
-
-        
-        for (PFUser * user in people)
+        if (objects.count > 0) {
             
-        {
-
-            NSMutableDictionary * conversation = [@{
-                                            
-                                            @"date":[NSDate date],
-                                            @"user": user,
-                                            @"messages":[@[] mutableCopy]
-                                                    } mutableCopy];
+            NSMutableArray * people = [@[] mutableCopy];
             
-            for (PFObject * message in objects)
-            {
-                NSDate *createdDate = [message createdAt];
-
-                PFUser * sender = (PFUser *)message[@"sender"];
-                PFUser * reciever = (PFUser *)message[@"reciever"];
+            for (PFObject * message in objects) {
                 
-                if ([sender.objectId isEqualToString:user.objectId] || [reciever.objectId isEqualToString:user.objectId]) {
+//                NSLog(@"sender %@",message[@"sender"]);
+//                NSLog(@"reciever %@",message[@"reciever"]);
+//                NSLog(@"S_R %@",message[@"S_R"]);
+                
+                NSArray * participants = @[message[@"sender"],message[@"reciever"]];
+                
+                
+                for (PFUser * user in participants) {
                     
-                    conversation[@"date"] = createdDate;
+                    if (![user.objectId isEqual:[PFUser currentUser].objectId]) {
+                        
+                        BOOL foundUser = NO;
+                        
+                        for (PFUser * person in people)
+                        {
+                            if ([person.objectId isEqualToString:user.objectId])
+                            {
+                                foundUser = YES;
+                            }
+                        }
+                        
+                        if (!foundUser)
+                        {
+                            [people addObject:user];
+                        }
+                        
+                    }
                     
-                    [conversation[@"messages"] addObject:message];
                 }
+                
             }
             
-            [myConversations addObject:conversation];
+//            NSLog(@"%@",people);
+            
+            [self layoutConversationsWithPeople:people andMessages:objects];
             
         }
         
-        for (NSDictionary * conversation in myConversations) {
-            
-            
-            for (PFObject * message in conversation[@"messages"]) {
-                
-                NSString * text = message[@"messageContent"];
-                
-                NSLog(@"The actual MESSAGE: %@",text);
-            }
-            
-            
-        }
-        
-        [self.tableView reloadData];
         
 
     }];
 
 }
 
-
+- (void)layoutConversationsWithPeople:(NSArray *)people andMessages:(NSArray *)messages {
+    
+    
+    for (PFUser * user in people)
+        
+    {
+        
+        NSMutableDictionary * conversation = [@{
+                                                @"date":[NSDate date],
+                                                @"user": user,
+                                                @"messages":[@[] mutableCopy]
+                                                } mutableCopy];
+        
+        for (PFObject * message in messages)
+        {
+            NSDate *createdDate = [message createdAt];
+            
+            PFUser * sender = (PFUser *)message[@"sender"];
+            PFUser * reciever = (PFUser *)message[@"reciever"];
+            
+            if ([sender.objectId isEqualToString:user.objectId] || [reciever.objectId isEqualToString:user.objectId]) {
+                
+                conversation[@"date"] = createdDate;
+                
+                [conversation[@"messages"] addObject:message];
+            }
+        }
+        
+        [myConversations addObject:conversation];
+        
+    }
+    
+//    for (NSDictionary * conversation in myConversations) {
+//        
+//        
+//        for (PFObject * message in conversation[@"messages"]) {
+//            
+//            NSString * text = message[@"messageContent"];
+//            
+//            NSLog(@"The actual MESSAGE: %@",text);
+//        }
+//        
+//        
+//    }
+    
+    [self.tableView reloadData];
+    
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
@@ -123,13 +168,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     InboxCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messagePeople" forIndexPath:indexPath];
     
-    NSString * lastMessage;
+    NSString * lastMessage = myConversations[indexPath.row][@"messages"][0][@"messageContent"];
     
-    for (PFObject * messageAndUser in myConversations[indexPath.row][@"messages"]) {
-        
-        lastMessage = messageAndUser[@"messageContent"];
-        
-    }
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     //        //uncomment to get the time only
@@ -170,40 +210,92 @@
 
 
 //Cell You Select
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//    
+//
+//    
+//    
+//    
+//    ConversationsVC * conversation = [[ConversationsVC alloc]init];
+// 
+//    // This is the array that contains just the conversation that you select
+//    self.messages = [@[]mutableCopy];
+//
+//    
+//    //Going through all your messages in your inbox
+//    for (PFObject * messageAndUser in myConversations[indexPath.row][@"messages"]) {
+//        
+//        //adding to the messages array just the messages from the cell you select ... IndexPath.Row
+//        [self.messages addObject:messageAndUser[@"messageContent"]];
+//      
+//    }
+//    
+//    
+//    UINavigationController *navigationController =
+//        [[UINavigationController alloc] initWithRootViewController:conversation];
+//    
+//        //now present this navigation controller modally
+//        [self presentViewController:navigationController animated:YES completion:nil];
+//    
+//  //  After you get the mesages from that cell or person, you pass it to the next view...This is just the array of that one conversation
+//    
+//    NSLog(@"%d",(int)self.messages.count);
+//    
+//    conversation.messages = self.messages;
+//
+//}
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
     
-    
-    
-    ConversationsVC * conversation = [[ConversationsVC alloc]init];
- 
-    // This is the array that contains just the conversation that you select
-    self.messages = [@[]mutableCopy];
-
-    
-    //Going through all your messages in your inbox
-    for (PFObject * messageAndUser in myConversations[indexPath.row][@"messages"]) {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        //adding to the messages array just the messages from the cell you select ... IndexPath.Row
-        [self.messages addObject:messageAndUser[@"messageContent"]];
-      
+        PFQuery * deleteQuery = [PFQuery queryWithClassName:@"Messages"];
+
+        NSDictionary * conversation = myConversations[indexPath.row];
+        
+        PFUser * user = conversation[@"user"];
+        
+        [deleteQuery whereKey:@"S_R" containsAllObjectsInArray:@[user,[PFUser currentUser]]];
+        
+        [deleteQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+           
+            [PFObject deleteAllInBackground:objects];
+            
+        }];
+        
+        [myConversations removeObjectAtIndex:indexPath.row];
+        [self.tableView reloadData];
+        
     }
     
-    
-    UINavigationController *navigationController =
-        [[UINavigationController alloc] initWithRootViewController:conversation];
-    
-        //now present this navigation controller modally
-        [self presentViewController:navigationController animated:YES completion:nil];
-    
-  //  After you get the mesages from that cell or person, you pass it to the next view...This is just the array of that one conversation
-    
-    NSLog(@"%d",self.messages.count);
-    
-    conversation.messages = self.messages;
-
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    ConversationsVC * convoVC = segue.destinationViewController;
+    
+    InboxCustomCell * cell = (InboxCustomCell *)sender;
+    NSIndexPath * indexPath = [self.tableView indexPathForCell:cell];
+    
+//    NSMutableArray * messages = [@[] mutableCopy];
+//    
+//    for (PFObject * messageAndUser in myConversations[indexPath.row][@"messages"]) {
+//        
+//        //adding to the messages array just the messages from the cell you select ... IndexPath.Row
+//        [messages addObject:messageAndUser[@"messageContent"]];
+//        
+//    }
+//    
+//    //  After you get the mesages from that cell or person, you pass it to the next view...This is just the array of that one conversation
+//    
+//    NSLog(@"%d",(int)self.messages.count);
+    
+    convoVC.messages = myConversations[indexPath.row][@"messages"];
+    convoVC.conversationThread = myConversations[indexPath.row];
+
+    
+}
 
 @end

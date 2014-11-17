@@ -135,36 +135,38 @@
 }
 
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     return YES; }
 
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardWillHideNotification object:nil];
     
     [loginView endEditing:YES];
     return YES; }
 
 
-- (void)keyboardDidShow:(NSNotification *)notification
+- (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
-    [UIView animateWithDuration:0.3 animations:^{
-        [loginView setFrame:CGRectMake(20,232,loginView.bounds.size.width,loginView.bounds.size.height)];
-    }];
-    
-    
 
+    CGSize kbSize = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    self.view.frame = CGRectMake(0, -kbSize.height, self.view.frame.size.width, self.view.frame.size.height);
     
-//    gLogo.hidden = YES;
-//    cancelButton.hidden = YES;
+    
+    
+//    [UIView animateWithDuration:0.3 animations:^{
+//        [loginView setFrame:CGRectMake(20,232,loginView.bounds.size.width,loginView.bounds.size.height)];
+//    }];
+    
 }
 
 -(void)keyboardDidHide:(NSNotification *)notification
 {
+    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
-    [UIView animateWithDuration:0.3 animations:^{
-        [loginView setFrame:CGRectMake(20,SCREEN_HEIGHT - 220,loginView.bounds.size.width,loginView.bounds.size.height)];
-    }];
+//    [UIView animateWithDuration:0.3 animations:^{
+//        [loginView setFrame:CGRectMake(20,SCREEN_HEIGHT - 220,loginView.bounds.size.width,loginView.bounds.size.height)];
+//    }];
     
     
 //    gLogo.hidden = NO;

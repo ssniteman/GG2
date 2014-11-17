@@ -81,45 +81,49 @@
     message[@"messageContent"] = self.sendMessageText.text;
     message[@"S_R"] = @[self.toUser, [PFUser currentUser]];
     
-    [message saveInBackground];
+    [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        
+        [self cancelButton];
+
+    }];
     
     // add reciever to people spoken to
     
-    PFQuery * userQuery = [PFUser query];
-    [userQuery includeKey:@"peopleSpoken"];
-    PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
-    
-    NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
-    
-    if (peopleSpokenTo == nil) {
-        peopleSpokenTo = [@[] mutableCopy];
-    }
-    
+//    PFQuery * userQuery = [PFUser query];
+//    [userQuery includeKey:@"peopleSpoken"];
+//    PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
+//    
+//    NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
+//    
+//    if (peopleSpokenTo == nil) {
+//        peopleSpokenTo = [@[] mutableCopy];
+//    }
+//    
     // querying through the people spoken to array... we are saying, if the self.toUser doesn't exist, add them to the array.
-    
-    BOOL foundUser = NO;
-    
-    for (PFUser * user in peopleSpokenTo)
-    {
-        if ([user.objectId isEqualToString:self.toUser.objectId])
-        {
-            foundUser = YES;
-        }
-    }
-    
-    if (!foundUser)
-    {
-        [peopleSpokenTo addObject:self.toUser];
-    }
-    
+//    
+//    BOOL foundUser = NO;
+//    
+//    for (PFUser * user in peopleSpokenTo)
+//    {
+//        if ([user.objectId isEqualToString:self.toUser.objectId])
+//        {
+//            foundUser = YES;
+//        }
+//    }
+//    
+//    if (!foundUser)
+//    {
+//        [peopleSpokenTo addObject:self.toUser];
+//    }
+//    
 //    if (![peopleSpokenTo containsObject:self.toUser])
 //    {
 //        [peopleSpokenTo addObject:self.toUser];
 //    }
-    
-    currentUser[@"peopleSpoken"] = peopleSpokenTo;
-    
-    [currentUser saveInBackground];
+//    
+//    currentUser[@"peopleSpoken"] = peopleSpokenTo;
+//    
+//    [currentUser saveInBackground];
     
     
     // Run Push
@@ -163,9 +167,6 @@
     
     NSLog(@"message is working");
     NSLog(@"this is the array of conversation %@", message[@"S_R"]);
-
-    
-    [self cancelButton];
     
 }
 

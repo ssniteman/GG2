@@ -58,7 +58,7 @@
     
     MainViewController * mainVC = [storyboard instantiateViewControllerWithIdentifier:@"mainID"];
     
-    [self presentViewController:mainVC animated:YES completion:nil];
+    [self.navigationController setViewControllers:@[mainVC]];
     
     
 }

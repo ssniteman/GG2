@@ -27,7 +27,7 @@
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-//    [PFUser enableAutomaticUser];
+    [PFUser enableAutomaticUser];
     
     // Register for Push Notitications, if running iOS 8
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
@@ -65,12 +65,11 @@
     return YES;
 }
 
-
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     [currentInstallation setDeviceTokenFromData:deviceToken];
-    
+    currentInstallation[@"user"] = [PFUser currentUser];
     [currentInstallation saveInBackground];
 }
 
@@ -90,35 +89,46 @@
     
 //     add sender to my people spoken to
     
-    PFQuery * userQuery = [PFUser query];
-    [userQuery includeKey:@"peopleSpoken"];
-    PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
+//    [[PFUser currentUser] refreshInBackgroundWithBlock:^(PFObject * object, NSError * error) {
+//       
+//        PFQuery * senderQuery = [PFUser query];
+//        [senderQuery whereKey:@"username" equalTo:userInfo[@"sender"]];
+//        
+//        [senderQuery findObjectsInBackgroundWithBlock:^(NSArray * objects, NSError * error) {
+//            
+//            
+//            if (objects.count > 0) {
+//                
+//                PFUser * currentUser = (PFUser *)object;
+//                PFUser * sender = objects[0];
+//                
+//                NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
+//                
+//                if (peopleSpokenTo == nil) {
+//                    peopleSpokenTo = [@[] mutableCopy];
+//                }
+//                
+//                BOOL foundUser = NO;
+//                for (PFUser * user in peopleSpokenTo)
+//                {
+//                    if ([user.objectId isEqualToString:sender.objectId]) foundUser = YES;
+//                }
+//                
+//                if (!foundUser)
+//                {
+//                    [peopleSpokenTo addObject:sender];
+//                }
+//                
+//                currentUser[@"peopleSpoken"] = peopleSpokenTo;
+//                
+//                [currentUser saveInBackground];
+//                
+//            }
+//            
+//        }];
+//        
+//    }];
     
-    NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
-    
-    if (peopleSpokenTo == nil) {
-        peopleSpokenTo = [@[] mutableCopy];
-    }
-    
-    BOOL foundUser = NO;
-    for (PFUser * user in peopleSpokenTo)
-    {
-        if ([user.objectId isEqualToString:self.toUser.objectId]) foundUser = YES;
-    }
-    
-    if (!foundUser)
-    {
-        [peopleSpokenTo addObject:self.toUser];
-    }
-    
-    //    if (![peopleSpokenTo containsObject:self.toUser])
-    //    {
-    //        [peopleSpokenTo addObject:self.toUser];
-    //    }
-    
-    currentUser[@"peopleSpoken"] = peopleSpokenTo;
-    
-    [currentUser saveInBackground];
     
 //    NSMutableArray * peopleSpokenTo = [self.toUser[@"peopleSpoken"] mutableCopy];
 //

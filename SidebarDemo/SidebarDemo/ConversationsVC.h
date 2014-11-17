@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConversationsVC : UIViewController
+@interface ConversationsVC : UITableViewController
 
 //The Dictionary
 @property (strong,nonatomic) NSDictionary * conversationThread;
@@ -26,6 +26,7 @@
 - (IBAction)conversationNewSendButton:(id)sender;
 
 
+- (IBAction)composeNewMessage:(id)sender;
 
 
 
