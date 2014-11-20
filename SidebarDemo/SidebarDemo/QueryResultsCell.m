@@ -65,9 +65,34 @@
     self.resultPhoto.clipsToBounds = YES;
     
     self.resultBandName.text = self.usersContent[@"bandName"];
-    self.resultGenreLabel.text = self.usersContent[@"genre"];
-    self.resultAvailabilityLabel.text = self.usersContent[@"availability"];
     
+    if ([usersContent[@"genre"] length] <= 0) {
+        
+        self.resultGenreLabel.text = @"N/A";
+    } else {
+        
+        self.resultGenreLabel.text = self.usersContent[@"genre"];
+
+    }
+
+    if ([usersContent[@"availability"] length] <= 0) {
+        
+        self.resultGenreLabel.text = @"N/A";
+    } else {
+        
+        self.resultGenreLabel.text = self.usersContent[@"availability"];
+        
+    }
+    
+    if ([usersContent[@"city"] length] <= 0) {
+        
+        self.resultCityLabel.text = @"City, State";
+        
+    } else {
+        
+        self.resultCityLabel.text = [NSString stringWithFormat:@"%@, %@",usersContent[@"city"],usersContent[@"state"]];
+       
+    }
 }
 
 

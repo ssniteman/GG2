@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="klb-xa-wO1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="klb-xa-wO1">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -137,6 +137,34 @@
             </objects>
             <point key="canvasLocation" x="2307" y="-1396"/>
         </scene>
+        <!--Showcase-->
+        <scene sceneID="vjz-Cw-LES">
+            <objects>
+                <viewController id="0eO-oy-Uw5" customClass="Showcase" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eC7-63-8FI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" id="6Rv-mk-8WP">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="0eO-oy-Uw5" id="1zM-BB-0OM"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="PIy-5a-L7U"/>
+                    <connections>
+                        <outlet property="webView" destination="6Rv-mk-8WP" id="duz-YJ-TI8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xts-EZ-4ju" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1949" y="-713"/>
+        </scene>
         <!--Search Results Profile View Controller-->
         <scene sceneID="Kpn-fc-7f2">
             <objects>
@@ -218,36 +246,40 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="mOu-eu-ffo">
-                                <rect key="frame" x="130" y="399" width="55" height="55"/>
+                                <rect key="frame" x="130" y="399" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="music.png">
+                                <state key="normal" image="musicalnote.png">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="soundcloudButton:" destination="klb-xa-wO1" eventType="touchUpInside" id="eAd-MN-1jJ"/>
+                                    <action selector="soundAction:" destination="klb-xa-wO1" eventType="touchUpInside" id="vph-Mb-vB5"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="v9A-da-Ao9">
-                                <rect key="frame" x="253" y="401" width="55" height="51"/>
+                                <rect key="frame" x="253" y="401" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="video.png">
+                                <state key="normal" image="youtube5.png">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="youtubeAction:" destination="klb-xa-wO1" eventType="touchUpInside" id="oeL-hi-2kF"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="j40-7n-TZv">
-                                <rect key="frame" x="14" y="401" width="50" height="50"/>
+                                <rect key="frame" x="14" y="401" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" image="image.png">
+                                <state key="normal" image="instagram5.png">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="instagramButton:" destination="klb-xa-wO1" eventType="touchUpInside" id="8kt-8m-QfV"/>
+                                    <action selector="photoAction:" destination="klb-xa-wO1" eventType="touchUpInside" id="JBV-o1-hHB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OYi-fI-Mx9">
@@ -271,6 +303,71 @@
                                 <color key="textColor" red="0.75686274509999996" green="0.2470588235" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" id="G9T-en-5ZX">
+                                <rect key="frame" x="4" y="385" width="310" height="112"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Instagram" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kb4-0K-kHm">
+                                        <rect key="frame" x="10" y="89" width="86" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="16"/>
+                                        <color key="textColor" red="0.75686274509999996" green="0.2470588235" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facebook" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qWZ-n0-qse">
+                                        <rect key="frame" x="113" y="89" width="86" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.75686274509999996" green="0.2470588235" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KYr-Np-rvp">
+                                        <rect key="frame" x="216" y="89" width="86" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" red="0.75686274509999996" green="0.2470588235" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="4Kj-Pa-a7t">
+                                        <rect key="frame" x="231" y="18" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="twitter5.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="twitterAction:" destination="klb-xa-wO1" eventType="touchUpInside" id="4id-12-As1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="redraw" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="418-ze-o4F">
+                                        <rect key="frame" x="24" y="21" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="instagram5.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="instagramAction:" destination="klb-xa-wO1" eventType="touchUpInside" id="ir9-zl-YKK"/>
+                                            <action selector="instagramButton:" destination="klb-xa-wO1" eventType="touchUpInside" id="PYf-gI-D8Y"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rbp-p0-z0G">
+                                        <rect key="frame" x="126" y="18" width="60" height="60"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <state key="normal" image="facebook5.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="facebookAction:" destination="klb-xa-wO1" eventType="touchUpInside" id="rG4-Tp-YNC"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -278,10 +375,12 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="barView" destination="G9T-en-5ZX" id="qOM-CA-Hc7"/>
                         <outlet property="photosButton" destination="j40-7n-TZv" id="Rwi-a7-o2E"/>
                         <outlet property="profilePicture" destination="CBq-Gz-wou" id="eIT-cN-gQf"/>
                         <outlet property="soundButton" destination="mOu-eu-ffo" id="OHQ-3t-zYY"/>
                         <outlet property="videoButton" destination="v9A-da-Ao9" id="JaY-2I-09h"/>
+                        <segue destination="0eO-oy-Uw5" kind="push" identifier="web" id="cnp-fW-NxY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sMa-hJ-NNz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -291,10 +390,12 @@
     </scenes>
     <resources>
         <image name="avatarcopy.jpg" width="3120" height="3120"/>
-        <image name="image.png" width="64" height="64"/>
-        <image name="music.png" width="64" height="64"/>
+        <image name="facebook5.png" width="65" height="65"/>
+        <image name="instagram5.png" width="65" height="65"/>
+        <image name="musicalnote.png" width="64" height="64"/>
         <image name="p5.png" width="1280" height="370"/>
-        <image name="video.png" width="64" height="64"/>
+        <image name="twitter5.png" width="65" height="65"/>
+        <image name="youtube5.png" width="65" height="65"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

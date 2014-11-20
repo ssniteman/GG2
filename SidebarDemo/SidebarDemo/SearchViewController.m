@@ -67,8 +67,6 @@
     
     _savedFormatAddress = savedFormatAddress;
     
-    NSLog(@"this %@",self.savedFormatAddress);
-    
     locationSearchs.text = self.savedFormatAddress;
     
 }
@@ -76,13 +74,11 @@
 -(void)setLatitudeSetter:(double)latitudeSetter {
     
     _latitudeSetter = latitudeSetter;
-    NSLog(@"Lat is %f",self.latitudeSetter);
 }
 
 -(void)setLongitudeSetter:(double)longitudeSetter {
     
     _longitudeSetter = longitudeSetter;
-    NSLog(@"Long is %f",self.longitudeSetter);
     
 }
 
@@ -101,7 +97,10 @@
 - (void)setSavedSearchGenres:(NSString *)savedSearchGenres {
     
     _savedSearchGenres = savedSearchGenres;
-        
+    
+    availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+    genreSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    
     genreSearchs.text = savedSearchGenres;
 
 }
@@ -116,8 +115,9 @@
 - (void)setSavedSearchAvailability:(NSString *)savedSearchAvailability {
     
     _savedSearchAvailability = savedSearchAvailability;
-    
-    NSLog(savedSearchAvailability);
+
+    availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+    availabilitySearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
     availabilitySearchs.text = savedSearchAvailability;
     
@@ -238,13 +238,15 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 
     
     genreSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
-    genreSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+    genreSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
     [genreSearchs setTextAlignment: NSTextAlignmentCenter];
     genreSearchs.backgroundColor = [UIColor whiteColor];
-    genreSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    genreSearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
+    
+//    genreSearchs.text = @"choose up to three...";
     
     searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(genreSearch.bounds.size.width - 45, genreSearch.bounds.size.height/2 + 5, 30, 30)];
-    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+    [searchArrow setImage:[UIImage imageNamed:@"searcharrows6.png"] forState:UIControlStateNormal];
     [searchArrow addTarget:self action:@selector(genreArrowPressed) forControlEvents:UIControlEventTouchUpInside];
 
     
@@ -271,7 +273,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     availabilitySearch.layer.cornerRadius = 5;
 
     searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(availabilitySearch.bounds.size.width/2 - 15, availabilitySearch.bounds.size.height/2 + 5, 30, 30)];
-    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+//    [searchArrow setImage:[UIImage imageNamed:@"searcharrows3.png"] forState:UIControlStateNormal];
     [searchArrow addTarget:self action:@selector(availabilityArrowPressed) forControlEvents:UIControlEventTouchUpInside];
     
     
@@ -288,8 +290,11 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     availabilitySearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
     availabilitySearchs.backgroundColor = [UIColor whiteColor];
-    availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
-    availabilitySearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+    availabilitySearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
+    
+    availabilitySearchs.text = @"Choose";
+    
     [availabilitySearchs setTextAlignment: NSTextAlignmentCenter];
     availabilitySearchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, availabilitySearch.bounds.size.width, availabilitySearch.bounds.size.height)];
     [availabilitySearch addSubview:availabilitySearchButton];
@@ -411,16 +416,41 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     PFUser * user = [PFUser user];
     
+    
+    PFQuery *query = [PFUser query];
+
     if (searchSegmentControl.selectedSegmentIndex==0)
     {
         user[@"userType"] = @"musician";
+        [query whereKey:@"userType" equalTo:@"musician"]; // find all the musicians
+
     }
     else {
         user[@"userType"] = @"bar";
+        [query whereKey:@"userType" equalTo:@"bar"]; // find all the bars
+
     }
     
-    PFQuery *query = [PFUser query];
-    [query whereKey:@"userType" equalTo:@"musician"]; // find all the musicians
+    // Querying location
+    
+    if([self.savedFormatAddress length] > 0) {
+        
+        
+        PFGeoPoint *userGeoPoint = [PFGeoPoint geoPointWithLatitude:self.latitudeSetter longitude:self.longitudeSetter];
+
+        NSLog(@"user geo point %@",userGeoPoint);
+    
+        [query whereKey:@"location" nearGeoPoint:userGeoPoint withinMiles:[self.savedRadius doubleValue]];
+        
+        NSLog(@"radius %@",self.savedRadius);
+        
+
+       NSArray *placeObjects = [query findObjects];
+       
+        NSLog(@"place objects %@",placeObjects);
+        
+    }
+    
 
     if(self.searchArrayGenres.count > 0) {
         [query whereKey:@"genreArray" containedIn:self.searchArrayGenres];
@@ -433,25 +463,23 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     // WE NEED THE RATE TO BE FILLED -- NEED IF ELSE STATEMENT
     
-    if (self.savedRateSetter) {
+    if (self.savedRateSetter > 0 ) {
     
+        if (self.nightlyOrHourly) {
+            
+            [query whereKey:@"nightlyRateNumber" lessThanOrEqualTo:self.savedRateSetter];
+            [query orderByAscending:@"nightlyRateNumber"];
+            
+            NSLog(@"Querying Nightly Rate");
+            
+        } else {
+            
+            [query whereKey:@"hourlyRateNumber" lessThanOrEqualTo:self.savedRateSetter];
+            [query orderByAscending:@"hourlyRateNumber"];
+            
+            NSLog(@"Querying Hourly Rate");
+        }
     }
-    
-    if (self.nightlyOrHourly) {
-        
-        [query whereKey:@"nightlyRateNumber" lessThanOrEqualTo:self.savedRateSetter];
-        [query orderByAscending:@"nightlyRateNumber"];
-
-        NSLog(@"Querying Nightly Rate");
-   
-    } else {
-        
-        [query whereKey:@"hourlyRateNumber" lessThanOrEqualTo:self.savedRateSetter];
-        [query orderByAscending:@"hourlyRateNumber"];
-        
-        NSLog(@"Querying Hourly Rate");
-    }
-    
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         

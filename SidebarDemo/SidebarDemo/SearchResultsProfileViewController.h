@@ -14,14 +14,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *profilePicture;
 
 
-//Profile SoundCloud Button
-- (IBAction)soundcloudButton:(id)sender;
+//Bar Facebook Button
 
-//Profile Facebook Button
-- (IBAction)facebookButton:(id)sender;
 
-//Profile Instagram Button
-- (IBAction)instagramButton:(id)sender;
+- (IBAction)instagramAction:(id)sender;
+
+- (IBAction)facebookAction:(id)sender;
+
+- (IBAction)twitterAction:(id)sender;
+
 
 @property (weak, nonatomic) IBOutlet UILabel *testlabel;
 
@@ -32,10 +33,22 @@
 @property (weak, nonatomic) IBOutlet UIButton *soundButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *videoButton;
+@property (weak, nonatomic) IBOutlet UIView *barView;
 
+- (IBAction)photoAction:(id)sender;
 
+- (IBAction)soundAction:(id)sender;
+
+- (IBAction)youtubeAction:(id)sender;
 
 //Array for other profiles
 @property (nonatomic, strong) PFUser * searchResultsForProfile;
+
+
+//Link for SHOWCASE
+
+@property (nonatomic) NSString * link;
+
+
 
 @end

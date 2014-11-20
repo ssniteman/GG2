@@ -12,6 +12,8 @@
 #import "ComposeMessageTVC.h"
 #import <Parse/Parse.h>
 
+#import "Showcase.h"
+
 #define SCREEN_WIDTH [UIScreen mainScreen].bounds.size.width
 #define SCREEN_HEIGHT [UIScreen mainScreen].bounds.size.height
 
@@ -32,6 +34,9 @@ UIButton * messageButton;
 //PFUser * user;
     
     NSDictionary * address;
+    
+    PFUser * user;
+
     
 }
 -(void)setSearchResultsForProfile:(NSMutableDictionary *)searchResultsForProfile {
@@ -58,6 +63,17 @@ UIButton * messageButton;
     // Setting Profile Picture
  
     //Setting the profile picture to be round
+    
+
+    NSLog(@"TYPE %@",user.username);
+    
+    if ([self.searchResultsForProfile[@"userType"] isEqualToString:@"musician"]) {
+        
+        self.barView.hidden = TRUE;
+        
+    } else {
+        self.barView.hidden = FALSE;
+    }
     
 
     
@@ -108,7 +124,12 @@ UIButton * messageButton;
     [genreLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20]];
     genreLabel.textColor = [UIColor whiteColor];
     genreLabel.textAlignment = NSTextAlignmentCenter;
-    genreLabel.text = searchResultsForProfile[@"genre"];
+    
+    if ([searchResultsForProfile[@"genre"] length] <= 0) {
+        genreLabel.text = @"Genre";
+    } else {
+        genreLabel.text = searchResultsForProfile[@"genre"];
+    }
     
     //City & State LABEL
     
@@ -117,7 +138,16 @@ UIButton * messageButton;
     
     stateLabel.textColor = [UIColor whiteColor];
     stateLabel.textAlignment = NSTextAlignmentCenter;
-    stateLabel.text = @"City, State";
+    
+    if ([searchResultsForProfile[@"city"] length] <= 0) {
+        
+        stateLabel.text = @"City, State";
+    } else {
+        
+        stateLabel.text = [NSString stringWithFormat:@"%@, %@",searchResultsForProfile[@"city"],searchResultsForProfile[@"state"]];
+        
+    }
+    
     
     [topView addSubview:nameLabel];
     [topView addSubview:genreLabel];
@@ -172,36 +202,8 @@ UIButton * messageButton;
 
 - (void)viewDidLoad {
     
-//    PFUser * user = [PFUser user];
-//    //
-//    
-//    if (user[@"image"] == nil) {
-//        
-//        profileImage = [UIImage imageNamed:@"avatarcopy.jpg"];
-//        
-//        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
-//        
-//        
-//    } else {
-//        [theProfilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
-//        
-//        // Image coming back from Parse
-//        
-//        PFFile *imageFile = user[@"image"];
-//        
-//        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
-//            
-//            UIImage * image = [UIImage imageWithData:data];
-//            [theProfilePicture setBackgroundImage:image forState:UIControlStateNormal];
-//        }];
-//    }
-//
-//    
-    
     [super viewDidLoad];
    
-    
-//    [self.profilePicture setBackgroundImage:profileImage forState:UIControlStateNormal];
     self.profilePicture.layer.cornerRadius = 90;
     self.profilePicture.userInteractionEnabled = false;
     self.profilePicture.clipsToBounds = YES;
@@ -233,25 +235,48 @@ UIButton * messageButton;
     
     self.videoButton.frame = CGRectMake(SCREEN_WIDTH-105, SCREEN_HEIGHT-125, 95, 95);
 
-    
+
 }
 
-- (IBAction)soundcloudButton:(id)sender {
-    
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"web"])
+    {
+        Showcase *webController = segue.destinationViewController;
+        webController.link = self.link;
+        
+    }
 }
-
-
-
-- (IBAction)facebookButton:(id)sender {
-    
-}
-
-
 
 - (IBAction)instagramButton:(id)sender {
     
+    
+    
+}
+- (IBAction)instagramAction:(id)sender {
+    
 }
 
-- (IBAction)messageButton:(id)sender {
+- (IBAction)facebookAction:(id)sender {
+    self.link = [NSString stringWithFormat:@"https://www.facebook.com/%@", self.searchResultsForProfile[@"facebook"]];
+    
+    [self performSegueWithIdentifier:@"web" sender:self];
+    
+}
+- (IBAction)twitterAction:(id)sender {
+    
+}
+
+
+
+- (IBAction)photoAction:(id)sender {
+    
+}
+
+- (IBAction)soundAction:(id)sender {
+    
+}
+
+- (IBAction)youtubeAction:(id)sender {
+    
 }
 @end
