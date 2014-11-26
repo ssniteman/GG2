@@ -133,13 +133,22 @@
                 
                 conversation[@"date"] = createdDate;
                 
-                [conversation[@"messages"] addObject:message];
+                [conversation[@"messages"] insertObject:message atIndex:0];
             }
         }
         
-        [myConversations addObject:conversation];
+        // orders inbox by date -- last recieved first
+        
+        [myConversations insertObject:conversation atIndex:0];
+        
+//        NSLog(@"my conversations are %@",myConversations);
+        
         
     }
+    
+   // NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"beginDate" ascending:TRUE];
+   // [myConversations sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+
     
 //    for (NSDictionary * conversation in myConversations) {
 //        
@@ -292,8 +301,18 @@
 //    
 //    NSLog(@"%d",(int)self.messages.count);
     
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    if (currentInstallation.badge != 0) {
+        currentInstallation.badge = 0;
+        [currentInstallation saveEventually];
+    }
+    
     convoVC.messages = myConversations[indexPath.row][@"messages"];
     convoVC.conversationThread = myConversations[indexPath.row];
+
+    
+    //NSLog(@"convoVC messages are %@", convoVC.messages);
+    NSLog(@"convoVC conversation thread is %@", convoVC.conversationThread);
 
     
 }

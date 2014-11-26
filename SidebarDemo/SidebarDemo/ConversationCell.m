@@ -7,33 +7,22 @@
 //
 
 #import "ConversationCell.h"
+#import "ConversationsVC.h"
+#import <Parse/Parse.h>
 
-@implementation ConversationCell{
+
+@implementation ConversationCell {
     UILabel * message;
+    
+    UILabel * fromLabel;
+    
+    UILabel * dateLabel;
+    
 }
 
-- (void)awakeFromNib {
 
 
 
-
-}
-
--(void)setText:(NSString *)text{
-    _text = text;
-    self.messageLabel.text = self.text;
-    
-    
-    message = [[UILabel alloc] initWithFrame:CGRectMake(20, 80/2-20, 400, 20)];
-    
-    [self addSubview:message];
-    
-    message.text = text;
-    
-    message.textColor = [UIColor darkGrayColor];
-    
-    //     Configure the cell...
-}
 
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

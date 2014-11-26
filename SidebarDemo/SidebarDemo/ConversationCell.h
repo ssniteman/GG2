@@ -8,7 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+#import <Parse/Parse.h>
+
+
 @interface ConversationCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 @property (strong,nonatomic) NSString * text;
+@property (strong,nonatomic) NSString * text2;
+@property(strong,nonatomic) NSString * whoSending;
+
+@property(strong,nonatomic) NSArray * messages;
+@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *fromLabel;
+
 @end

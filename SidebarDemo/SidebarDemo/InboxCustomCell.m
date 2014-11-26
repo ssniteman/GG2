@@ -20,8 +20,37 @@
     
     PFUser * user = myMessagesCell[@"user"];
     
-    self.inboxMessageName.text = user.username;
+    if ([user[@"userType"] isEqualToString:@"musician"]) {
     
+        if ([user[@"bandName"] length]==0) {
+            self.inboxMessageName.text = @"N/A";
+        } else {
+        
+            self.inboxMessageName.text = user[@"bandName"];
+        }
+     
+    } else {
+        
+        if ([user[@"barName"] length]==0) {
+            self.inboxMessageName.text = @"N/A";
+        } else {
+        self.inboxMessageName.text = user[@"barName"];
+        }
+    }
+    
+    
+    
+    PFFile *imageFile = user[@"image"];
+    
+    [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+        
+        UIImage * image = [UIImage imageWithData:data];
+        [self.inboxMessagePhoto setBackgroundImage:image forState:UIControlStateNormal];
+    }];
+    
+    
+
+
     self.inboxMessagePhoto.layer.cornerRadius = 30;
     self.inboxMessagePhoto.userInteractionEnabled = false;
     self.inboxMessagePhoto.clipsToBounds = YES;
@@ -30,11 +59,6 @@
 
 
 
-
-
-- (void)awakeFromNib {
-    // Initialization code
-}
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

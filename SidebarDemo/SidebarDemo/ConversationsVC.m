@@ -52,9 +52,24 @@
     
     ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newFriendCell"];
     
-    cell.text = self.messages[indexPath.row][@"messageContent"];
+
+   cell.messageLabel.text = self.messages[indexPath.row][@"messageContent"];
     
-//    NSLog(@"messagesss index %@",self.messages[indexPath.row]);
+    PFUser * user = self.messages[indexPath.row][@"S_R"];
+        NSLog(@"messagesss index %@",self.messages[indexPath.row][@"S_R"][0][@"bandName"]);
+
+
+   cell.fromLabel.text =  self.messages[indexPath.row][@"S_R"][1][@"bandName"];
+
+    
+    
+    
+    if (cell == nil) {
+        
+        cell = [[ConversationCell alloc]init];
+    }
+    
+//    cell.usersContent = self.messages[indexPath.row][@"S_R"];
     
     
     return cell;
