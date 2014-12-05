@@ -64,7 +64,31 @@
     self.resultPhoto.userInteractionEnabled = false;
     self.resultPhoto.clipsToBounds = YES;
     
+    
+    if ([usersContent[@"bandName"] length] <= 0) {
+        
+        self.resultBandName.text = @"N/A";
+        
+    } else {
+    
     self.resultBandName.text = self.usersContent[@"bandName"];
+    
+    }
+    
+//    
+//    
+//    if ([usersContent[@"barName"] length] <= 0) {
+//        
+//        self.resultBandName.text = @"N/A";
+//        
+//    } else {
+//        
+//        self.resultBandName.text = self.usersContent[@"barName"];
+//        
+//    }
+//    
+//    
+    
     
     if ([usersContent[@"genre"] length] <= 0) {
         

@@ -61,7 +61,7 @@
     
     // USERNAME TEXT FIELD
     
-    usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH - 40, 50)];
+    usernameTextField = [[UITextField alloc] initWithFrame:CGRectMake(0, 10, SCREEN_WIDTH - 40, 50)];
     usernameTextField.backgroundColor = [UIColor whiteColor];
     usernameTextField.layer.cornerRadius = 5;
     usernameTextField.font = [UIFont systemFontOfSize:18];
@@ -110,7 +110,7 @@
     
     // VERIFY PASSWORD TEXT FIELD
     
-    emailField = [[UITextField alloc] initWithFrame:CGRectMake(0, 140, SCREEN_WIDTH - 40, 50)];
+    emailField = [[UITextField alloc] initWithFrame:CGRectMake(0, 130, SCREEN_WIDTH - 40, 50)];
     emailField.backgroundColor = [UIColor whiteColor];
     emailField.layer.cornerRadius = 5;
     emailField.font = [UIFont systemFontOfSize:18];
@@ -132,7 +132,7 @@
     
     segmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician/Band",@"Bar/Venue"]];
     [segmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
-    segmentControl.frame = CGRectMake(0, 210, SCREEN_WIDTH - 40, 50);
+    segmentControl.frame = CGRectMake(0, 190, SCREEN_WIDTH - 40, 50);
         segmentControl.tintColor = [UIColor whiteColor];
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
     segmentControl.layer.borderWidth = 0;
@@ -142,7 +142,7 @@
     
     // SIGN UP FINAL BUTTON
     
-    signUpFinalButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 280, SCREEN_WIDTH - 40, 50)];
+    signUpFinalButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 250, SCREEN_WIDTH - 40, 50)];
     
     signUpFinalButton.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     signUpFinalButton.titleLabel.font = [UIFont systemFontOfSize:18];
@@ -157,7 +157,7 @@
     [signUpFinalButton setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24]];
 
     
-    signUpView = [[UIView alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 360, SCREEN_WIDTH - 40, 330)];
+    signUpView = [[UIView alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 350, SCREEN_WIDTH - 40, 330)];
     signUpView.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     [self.view addSubview:signUpView];
     
@@ -181,6 +181,7 @@
     user.username = usernameTextField.text;
     user.password = passwordTextField.text;
     user.email = emailField.text;
+//    user[@"badgeNumber"] = @(0);
     
     
     
@@ -257,44 +258,89 @@
 }
 
 
+//-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+//    return YES; }
+//
+//
+//- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+//    
+//    [signUpView endEditing:YES];
+//    return YES; }
+//
+//
+//- (void)keyboardDidShow:(NSNotification *)notification
+//{
+//    
+//    
+////    [UIView animateWithDuration:0.3 animations:^{
+//        [signUpView setFrame:CGRectMake(20,10,signUpView.bounds.size.width,signUpView.bounds.size.height)];
+//        
+//        gLogo.hidden = YES;
+//        cancelButton.hidden = YES;
+////    }];
+//    
+//}
+//
+//-(void)keyboardDidHide:(NSNotification *)notification
+//{
+//    
+//    
+////    [UIView animateWithDuration:0.3 animations:^{
+//        [signUpView setFrame:CGRectMake(20,SCREEN_HEIGHT - 360,signUpView.bounds.size.width,signUpView.bounds.size.height)];
+//        
+//        gLogo.hidden = NO;
+//        cancelButton.hidden = NO;
+////}];
+//    
+//    
+//}
+
+
+/// ui view going up
+
 -(BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidShow:) name:UIKeyboardDidShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
     return YES; }
 
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardDidHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide:) name:UIKeyboardWillHideNotification object:nil];
     
     [signUpView endEditing:YES];
     return YES; }
 
 
-- (void)keyboardDidShow:(NSNotification *)notification
+- (void)keyboardWillChangeFrame:(NSNotification *)notification
 {
     
+    CGSize kbSize = [notification.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue].size;
+    self.view.frame = CGRectMake(0, -kbSize.height, self.view.frame.size.width, self.view.frame.size.height);
     
-//    [UIView animateWithDuration:0.3 animations:^{
-        [signUpView setFrame:CGRectMake(20,10,signUpView.bounds.size.width,signUpView.bounds.size.height)];
-        
-        gLogo.hidden = YES;
-        cancelButton.hidden = YES;
-//    }];
+    
+    
+    //    [UIView animateWithDuration:0.3 animations:^{
+    //        [loginView setFrame:CGRectMake(20,232,loginView.bounds.size.width,loginView.bounds.size.height)];
+    //    }];
     
 }
 
 -(void)keyboardDidHide:(NSNotification *)notification
 {
+    self.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    //    [UIView animateWithDuration:0.3 animations:^{
+    //        [loginView setFrame:CGRectMake(20,SCREEN_HEIGHT - 220,loginView.bounds.size.width,loginView.bounds.size.height)];
+    //    }];
     
     
-//    [UIView animateWithDuration:0.3 animations:^{
-        [signUpView setFrame:CGRectMake(20,SCREEN_HEIGHT - 360,signUpView.bounds.size.width,signUpView.bounds.size.height)];
-        
-        gLogo.hidden = NO;
-        cancelButton.hidden = NO;
-//}];
-    
-    
+    //    gLogo.hidden = NO;
+    //    cancelButton.hidden = NO;
 }
+
+
+
 
 
 /*

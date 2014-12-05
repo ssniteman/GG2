@@ -51,7 +51,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ConversationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"newFriendCell"];
-    
+    NSLog(@"%@",self.messages[indexPath.row]);
 
    cell.messageLabel.text = self.messages[indexPath.row][@"messageContent"];
     
@@ -61,6 +61,18 @@
 
    cell.fromLabel.text =  self.messages[indexPath.row][@"S_R"][1][@"bandName"];
 
+    
+    
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //        //uncomment to get the time only
+    //        //[formatter setDateFormat:@"hh:mm a"];
+    //        //[formatter setDateFormat:@"MMM dd, YYYY"];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    
+    cell.dateLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate: self.messages[indexPath.row][@"date"]]];
+
+    
     
     
     
@@ -87,16 +99,44 @@
 {
     // refresh conversation messages
     
+    
+    
+    
     PFQuery * conversationQuery = [PFQuery queryWithClassName:@"Messages"];
     
     [conversationQuery whereKey:@"S_R" containsAllObjectsInArray:@[[PFUser currentUser],self.conversationThread[@"user"]]];
     [conversationQuery includeKey:@"sender"];
     [conversationQuery includeKey:@"reciever"];
     [conversationQuery includeKey:@"S_R"];
+    [conversationQuery includeKey:@"createdAt"];
     
     [conversationQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
         self.messages = [objects mutableCopy];
+        
+        int unReadNowRead = 0;
+        for (PFObject * message in self.messages)
+        {
+            PFUser * reciever = message[@"reciever"];
+            
+            // only read message if you are the reciever
+            if ([reciever.objectId isEqualToString:[PFUser currentUser].objectId])
+            {
+                if (![message[@"read"] boolValue]) { unReadNowRead++; }
+                
+                message[@"read"] = @YES;
+                [message saveInBackground];
+            }
+            
+            
+        }
+        
+        PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+        if (currentInstallation.badge != 0) {
+            currentInstallation.badge -= unReadNowRead;
+            if (currentInstallation.badge < 0) { currentInstallation.badge = 0; }
+            [currentInstallation saveEventually];
+        }
         
     }];
     

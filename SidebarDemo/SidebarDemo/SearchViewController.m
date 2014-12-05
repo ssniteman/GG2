@@ -199,10 +199,10 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     line = [[UIView alloc] initWithFrame:CGRectMake(0, 40, locationLabel.bounds.size.width, 1)];
     line.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
-    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(locationSearch.bounds.size.width/2 - 15, locationSearch.bounds.size.height/2 + 5, 30, 30)];
-    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
-    [searchArrow addTarget:self action:@selector(locationArrowPressed) forControlEvents:UIControlEventTouchUpInside];
-    
+//    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(locationSearch.bounds.size.width/2 - 15, locationSearch.bounds.size.height/2 + 5, 30, 30)];
+//    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+//    [searchArrow addTarget:self action:@selector(locationArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+//    
     
     searchLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, locationSearch.bounds.size.width, locationSearch.bounds.size.height)];
     [locationSearch addSubview:searchLocationButton];
@@ -212,7 +212,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [self.view addSubview:locationSearch];
     [locationSearch addSubview:locationSearchs];
     [locationSearch addSubview:line];
-    [locationSearch addSubview:searchArrow];
+//    [locationSearch addSubview:searchArrow];
     
     // GENRE VIEW
     
@@ -245,9 +245,9 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
 //    genreSearchs.text = @"choose up to three...";
     
-    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(genreSearch.bounds.size.width - 45, genreSearch.bounds.size.height/2 + 5, 30, 30)];
-    [searchArrow setImage:[UIImage imageNamed:@"searcharrows6.png"] forState:UIControlStateNormal];
-    [searchArrow addTarget:self action:@selector(genreArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+//    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(genreSearch.bounds.size.width - 45, genreSearch.bounds.size.height/2 + 5, 30, 30)];
+//    [searchArrow setImage:[UIImage imageNamed:@"searcharrows6.png"] forState:UIControlStateNormal];
+//    [searchArrow addTarget:self action:@selector(genreArrowPressed) forControlEvents:UIControlEventTouchUpInside];
 
     
     // BUTTON
@@ -263,7 +263,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [self.view addSubview:genreSearch];
     [genreSearch addSubview:line];
     
-    [genreSearch addSubview:searchArrow];
+//    [genreSearch addSubview:searchArrow];
 
 
     availabilitySearch = [[UIView alloc] initWithFrame:CGRectMake(20, 320, SCREEN_WIDTH - 40, 80)];
@@ -272,10 +272,10 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     availabilitySearch.layer.borderColor = [[UIColor whiteColor]CGColor];
     availabilitySearch.layer.cornerRadius = 5;
 
-    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(availabilitySearch.bounds.size.width/2 - 15, availabilitySearch.bounds.size.height/2 + 5, 30, 30)];
-//    [searchArrow setImage:[UIImage imageNamed:@"searcharrows3.png"] forState:UIControlStateNormal];
-    [searchArrow addTarget:self action:@selector(availabilityArrowPressed) forControlEvents:UIControlEventTouchUpInside];
-    
+//    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(availabilitySearch.bounds.size.width/2 - 15, availabilitySearch.bounds.size.height/2 + 5, 30, 30)];
+////    [searchArrow setImage:[UIImage imageNamed:@"searcharrows3.png"] forState:UIControlStateNormal];
+//    [searchArrow addTarget:self action:@selector(availabilityArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+//    
     
     UILabel * availabilityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, availabilitySearch.bounds.size.width, 25)];
     availabilityLabel.text = @"Availability";
@@ -293,7 +293,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
     availabilitySearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
     
-    availabilitySearchs.text = @"Choose";
+//    availabilitySearchs.text = @"Choose";
     
     [availabilitySearchs setTextAlignment: NSTextAlignmentCenter];
     availabilitySearchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, availabilitySearch.bounds.size.width, availabilitySearch.bounds.size.height)];
@@ -305,7 +305,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [self.view addSubview:availabilitySearch];
     [availabilitySearch addSubview:availabilityLabel];
     [availabilitySearch addSubview:line];
-    [availabilitySearch addSubview:searchArrow];
+//    [availabilitySearch addSubview:searchArrow];
     
     //// RATE
     
@@ -322,10 +322,10 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     rateSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     rateSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
-    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(rateSearch.bounds.size.width/2 - 15, rateSearch.bounds.size.height/2 + 5, 30, 30)];
-    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
-    [searchArrow addTarget:self action:@selector(rateArrowPressed) forControlEvents:UIControlEventTouchUpInside];
-    
+//    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(rateSearch.bounds.size.width/2 - 15, rateSearch.bounds.size.height/2 + 5, 30, 30)];
+//    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+//    [searchArrow addTarget:self action:@selector(rateArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+//    
     
     UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, rateSearch.bounds.size.width, 20)];
     rateLabel.text = @"Rate";
@@ -343,7 +343,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [self.view addSubview:rateSearch];
     [rateSearch addSubview:rateLabel];
     [rateSearch addSubview:line];
-    [rateSearch addSubview:searchArrow];
+//    [rateSearch addSubview:searchArrow];
     
     // SEARCH BUTTON BOTTOM
     

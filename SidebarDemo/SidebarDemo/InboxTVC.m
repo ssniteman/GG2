@@ -24,8 +24,13 @@
     PFUser * currentUser;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
+- (void)viewWillAppear:(BOOL)animated
+{
+    
+//}
+//
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
 
     myConversations = [@[] mutableCopy];
     
@@ -39,6 +44,16 @@
     
     self.navigationItem.leftBarButtonItem = revealButtonItem;
     
+    PFQuery * inboxQueryOne = [PFQuery queryWithClassName:@"Messages"];
+    
+    [inboxQueryOne findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+       
+        NSLog(@"des nuts %@",[objects[0] createdAt]);
+        
+    }];
+
+    
+    
     // QUERYING FOR PEOPLE YOU'RE CHATTING WITH
     
     PFQuery * inboxQuery = [PFQuery queryWithClassName:@"Messages"];
@@ -47,6 +62,7 @@
     [inboxQuery includeKey:@"sender"];
     [inboxQuery includeKey:@"reciever"];
     [inboxQuery includeKey:@"S_R"];
+    
     
     [inboxQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
@@ -96,8 +112,8 @@
                 }
                 
             }
-            
-//            NSLog(@"%@",people);
+            NSLog(@"hello");
+            NSLog(@"%@",people);
             
             [self layoutConversationsWithPeople:people andMessages:objects];
             
@@ -111,6 +127,20 @@
 
 - (void)layoutConversationsWithPeople:(NSArray *)people andMessages:(NSArray *)messages {
     
+    /*
+     
+    - user
+        - grabbed preople spoken to
+            - used them to get messages
+                - ordered conversations by people spoken to
+     
+     - grabbing all messages that have me in S_R
+        - loop through those and grab unique participants
+             - ordered conversations by unique participants
+     
+     
+    
+    */
     
     for (PFUser * user in people)
         
@@ -128,6 +158,7 @@
             
             PFUser * sender = (PFUser *)message[@"sender"];
             PFUser * reciever = (PFUser *)message[@"reciever"];
+//            PFUser * createdAt = (PFUser *)message[@"createdAt"];
             
             if ([sender.objectId isEqualToString:user.objectId] || [reciever.objectId isEqualToString:user.objectId]) {
                 
@@ -136,6 +167,8 @@
                 [conversation[@"messages"] insertObject:message atIndex:0];
             }
         }
+        
+        //NSLog(@"DATE IS THIS %@",conversation[@"date"]);
         
         // orders inbox by date -- last recieved first
         
@@ -177,6 +210,29 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     InboxCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:@"messagePeople" forIndexPath:indexPath];
     
+    NSArray * messages = myConversations[indexPath.row][@"messages"];
+    
+    int unReadCount = 0;
+    
+    for (PFObject * message in messages)
+    {
+        PFUser * reciever = message[@"reciever"];
+        
+        // if the message is to me and unread... then update unread count
+        if (![message[@"read"] boolValue] && [reciever.objectId isEqualToString:[PFUser currentUser].objectId]) { unReadCount++; }
+    }
+    
+    if (unReadCount > 0)
+    {
+        cell.inboxMessagePhoto.layer.borderColor = [UIColor redColor].CGColor;
+        cell.inboxMessagePhoto.layer.borderWidth = 2.0;
+        // show red line on right
+    } else {
+        
+        cell.inboxMessagePhoto.layer.borderWidth = 0.0;
+    }
+    
+    
     NSString * lastMessage = myConversations[indexPath.row][@"messages"][0][@"messageContent"];
     
     
@@ -191,6 +247,8 @@
     cell.messagePreviewLabel.text = lastMessage;
     
     cell.myMessagesCell = myConversations[indexPath.row];
+    
+    NSLog(@"CONVO %@", myConversations[indexPath.row]);
     
     if(currentUser[@"image"] == nil) {
         
@@ -301,18 +359,12 @@
 //    
 //    NSLog(@"%d",(int)self.messages.count);
     
-    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    if (currentInstallation.badge != 0) {
-        currentInstallation.badge = 0;
-        [currentInstallation saveEventually];
-    }
-    
     convoVC.messages = myConversations[indexPath.row][@"messages"];
     convoVC.conversationThread = myConversations[indexPath.row];
 
     
     //NSLog(@"convoVC messages are %@", convoVC.messages);
-    NSLog(@"convoVC conversation thread is %@", convoVC.conversationThread);
+   // NSLog(@"convoVC conversation thread is %@", convoVC.conversationThread);
 
     
 }

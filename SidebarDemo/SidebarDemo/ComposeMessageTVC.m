@@ -33,7 +33,7 @@
     self.toWhomWeSend.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     [self.toWhomWeSend setFont:[UIFont fontWithName:@"HelveticaNeue-Light" size:18.0]];
     
-    NSLog(@"listen here %@",self.toWhomWeSendString);
+   // NSLog(@"listen here %@",self.toWhomWeSendString);
 
     self.sendMessageText.text = @"";
     
@@ -80,12 +80,28 @@
     message[@"reciever"] = self.toUser;
     message[@"messageContent"] = self.sendMessageText.text;
     message[@"S_R"] = @[self.toUser, [PFUser currentUser]];
+    message[@"date"] = [NSDate date];
     
     [message saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         
         [self cancelButton];
 
     }];
+    
+//    PFUser * user = self.toUser;
+//
+//    PFObject * forBadgeNumber = [PFObject objectWithClassName:@"User"];
+//    
+////    int badgeNumber = [self.toUser[@"badgeNumber"] intValue]+1;
+//    
+//    
+//        user[@"badgeNumber"] = @(5);
+//
+//    
+//    [self.toUser saveInBackground];
+
+    
+//    forBadgeNumber[@"badgeNumber"] = @(self.toUser[@"badgeNumber"]+1);
     
     // add reciever to people spoken to
     
@@ -126,18 +142,12 @@
 //    [currentUser saveInBackground];
     
     
-    // Run Push
+    // RUN PUSH
     
     
     PFQuery * deviceQuery = [PFInstallation query];
     
     [deviceQuery whereKey:@"user" equalTo:self.toUser];
-    
-    NSLog(@"TO USER IS %@",self.toUser);
-
-    NSLog(@"device query %@",deviceQuery);
-    
-    
     
     NSString * alert = [NSString stringWithFormat:self.sendMessageText.text, [PFUser currentUser].username];
     
@@ -148,14 +158,6 @@
                           nil];
     
     
-//    NSDictionary *data = [NSDictionary dictionaryWithObjectsAndKeys:
-//                          self.sendMessageText.text, @"alert",[PFUser currentUser].username,
-//                          @"sender",
-//                          @"Increment", @"badge",
-//                          nil];
-    
-    
-    
     
     PFPush *push = [[PFPush alloc] init];
     [push setQuery:deviceQuery];
@@ -163,10 +165,6 @@
 
     [push setData:data];
     [push sendPushInBackground];
-    
-    
-    NSLog(@"message is working");
-    NSLog(@"this is the array of conversation %@", message[@"S_R"]);
     
 }
 

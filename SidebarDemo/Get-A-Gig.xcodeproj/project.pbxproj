@@ -406,12 +406,12 @@
 				60CE5A7E19E6D3F200263FCD /* InboxTVC.m */,
 				60B10FCB19E815D6001E270D /* InboxCustomCell.h */,
 				60B10FCC19E815D6001E270D /* InboxCustomCell.m */,
-				60CE5A7A19E6D35400263FCD /* ComposeMessageTVC.h */,
-				60CE5A7B19E6D35400263FCD /* ComposeMessageTVC.m */,
 				60B10FCE19E85697001E270D /* ConversationsVC.h */,
 				60B10FCF19E85697001E270D /* ConversationsVC.m */,
 				60B10FD119E8576D001E270D /* ConversationCell.h */,
 				60B10FD219E8576D001E270D /* ConversationCell.m */,
+				60CE5A7A19E6D35400263FCD /* ComposeMessageTVC.h */,
+				60CE5A7B19E6D35400263FCD /* ComposeMessageTVC.m */,
 			);
 			name = Messaging;
 			sourceTree = "<group>";

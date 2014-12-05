@@ -54,18 +54,16 @@
 }
 
 // tell the picker the width of each row for a given component
-- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
-    int sectionWidth = 120;
-    
-    return sectionWidth;
-}
+//- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+//    int sectionWidth = 120;
+//    
+//    return sectionWidth;
+//}
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row   forComponent:(NSInteger)component
 {
     
     return [NSString stringWithFormat:@"%@ Miles",[radiusMiles objectAtIndex:row]];
-
-    
 }
 
 
@@ -120,24 +118,26 @@
 
     radiusMiles=[@[@"5",@"10",@"15",@"20",@"25",@"35",@"50",@"75",@"100",@"150",@"250",@"500"]mutableCopy];
     
-    
-    
-    CGSize pickerSize = [self.radiusPicker sizeThatFits:CGSizeZero];
-    
-    UIView * pickerTransformView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, pickerSize.height)];
-    
-    pickerTransformView.transform = CGAffineTransformMakeScale(1, 1);
-    [pickerTransformView addSubview:self.radiusPicker];
+//    CGSize pickerSize = [self.radiusPicker sizeThatFits:CGSizeZero];
+//    
+//    UIView * pickerTransformView= [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, pickerSize.height)];
+//    
+//    pickerTransformView.transform = CGAffineTransformMakeScale(1, 1);
+//    [pickerTransformView addSubview:self.radiusPicker];
  
     self.radiusPicker.delegate = self;
     self.radiusPicker.dataSource =self;
     
     
+//    CGRect frame = self.radiusPicker.frame;
+//    frame.size.width = self.view.frame.size.width;
+//    self.radiusPicker.frame = frame;
+    
     NSLog(@"WIDTH: %f , HEIGHT:  %f",self.radiusPicker.bounds.size.width,self.radiusPicker.bounds.size.height);
     
     self.radiusPicker.showsSelectionIndicator = YES;
-    self.radiusPicker.transform = CGAffineTransformMakeScale(0.95f, 0.95f);
-    [self.radiusCell addSubview:pickerTransformView];
+//    self.radiusPicker.transform = CGAffineTransformMakeScale(0.95f, 0.95f);
+//    [self.radiusCell addSubview:pickerTransformView];
     
     if ([self.searchZip.text isEqual:@""]) {
         
