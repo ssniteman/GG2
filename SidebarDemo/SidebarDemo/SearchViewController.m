@@ -238,7 +238,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 
     
     genreSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
-    genreSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+    genreSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     [genreSearchs setTextAlignment: NSTextAlignmentCenter];
     genreSearchs.backgroundColor = [UIColor whiteColor];
     genreSearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
@@ -290,7 +290,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     availabilitySearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
     availabilitySearchs.backgroundColor = [UIColor whiteColor];
-    availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+    availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     availabilitySearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
     
 //    availabilitySearchs.text = @"Choose";

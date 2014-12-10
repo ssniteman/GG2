@@ -224,7 +224,7 @@
     
     if (unReadCount > 0)
     {
-        cell.inboxMessagePhoto.layer.borderColor = [UIColor redColor].CGColor;
+        cell.inboxMessagePhoto.layer.borderColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f].CGColor;
         cell.inboxMessagePhoto.layer.borderWidth = 2.0;
         // show red line on right
     } else {
