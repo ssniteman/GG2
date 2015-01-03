@@ -102,6 +102,7 @@
     if ([usersContent[@"availability"] length] <= 0) {
         
         self.resultGenreLabel.text = @"N/A";
+        
     } else {
         
         self.resultGenreLabel.text = self.usersContent[@"availability"];
@@ -117,6 +118,35 @@
         self.resultCityLabel.text = [NSString stringWithFormat:@"%@, %@",usersContent[@"city"],usersContent[@"state"]];
        
     }
+    
+    if ([usersContent[@"nightlyRate"] length] <= 0) {
+        
+        
+        if ([usersContent[@"hourlyRate"] length] <= 0) {
+            
+            self.resultRateLabel.text = @"N/A";
+            
+        } else {
+            
+            self.resultRateLabel.text = self.usersContent[@"hourlyRate"];
+            
+        }
+
+        
+    } else {
+        
+        self.resultRateLabel.text = self.usersContent[@"nightlyRate"];
+
+    }
+    
+  
+    
+//    if ([usersContent[@"nightlyRate"] length] <= 0 && [usersContent[@"hourlyRate"] length] <=0) {
+//     
+//        self.resultRateLabel.text = @"N/A";
+//    }
+
+    
 }
 
 
