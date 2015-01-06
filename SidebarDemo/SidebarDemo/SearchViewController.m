@@ -170,7 +170,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     searchSegmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician/Band",@"Bar/Venue"]];
     [searchSegmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
-    searchSegmentControl.frame = CGRectMake(20, 60, SCREEN_WIDTH -40, 70);
+    searchSegmentControl.frame = CGRectMake(20, 60, SCREEN_WIDTH -40, 60);
     searchSegmentControl.layer.borderWidth = 0;
     UIColor *newTintColor = [UIColor whiteColor];
     searchSegmentControl.tintColor = newTintColor;
@@ -179,36 +179,29 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 
     // location view
 
-    locationSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 140, SCREEN_WIDTH - 40, 80)];
+    locationSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 170, SCREEN_WIDTH - 40, 40)];
     locationSearch.backgroundColor = [UIColor whiteColor];
     locationSearch.layer.borderWidth = 1;
     locationSearch.layer.cornerRadius = 5;
     locationSearch.layer.borderColor = [[UIColor whiteColor]CGColor];
-    locationSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
+    locationSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, locationSearch.bounds.size.width - 20, locationSearch.bounds.size.height)];
     locationSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     [locationSearchs setTextAlignment: NSTextAlignmentCenter];
     locationSearchs.backgroundColor = [UIColor whiteColor];
     locationSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
-    UILabel * locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, locationSearch.bounds.size.width, 20)];
+    UILabel * locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 140, 100, 20)];
     locationLabel.text = @"Location";
     locationLabel.textAlignment = NSTextAlignmentCenter;
     locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    locationLabel.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    locationLabel.textColor = [UIColor whiteColor];
     
-    line = [[UIView alloc] initWithFrame:CGRectMake(0, 40, locationLabel.bounds.size.width, 1)];
-    line.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
-    
-//    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(locationSearch.bounds.size.width/2 - 15, locationSearch.bounds.size.height/2 + 5, 30, 30)];
-//    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
-//    [searchArrow addTarget:self action:@selector(locationArrowPressed) forControlEvents:UIControlEventTouchUpInside];
-//    
     
     searchLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, locationSearch.bounds.size.width, locationSearch.bounds.size.height)];
     [locationSearch addSubview:searchLocationButton];
     [searchLocationButton addTarget:self action:@selector(searchLocationTapped) forControlEvents:UIControlEventTouchUpInside];
     
-    [locationSearch addSubview:locationLabel];
+    [self.view addSubview:locationLabel];
     [self.view addSubview:locationSearch];
     [locationSearch addSubview:locationSearchs];
     [locationSearch addSubview:line];
@@ -216,38 +209,29 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     // GENRE VIEW
     
-    genreSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 230, SCREEN_WIDTH - 40, 80)];
+    genreSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 260, SCREEN_WIDTH - 40, 40)];
     genreSearch.backgroundColor = [UIColor whiteColor];
     genreSearch.layer.borderWidth = 1;
     genreSearch.layer.borderColor = [[UIColor whiteColor]CGColor];
     genreSearch.layer.cornerRadius = 5;
 
     
-    UILabel * genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, genreSearch.bounds.size.width, 20)];
+    UILabel * genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 230, 100, 20)];
     genreLabel.text = @"Genre";
     genreLabel.textAlignment = NSTextAlignmentCenter;
     genreLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    genreLabel.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
-    
-    line = [[UIView alloc] initWithFrame:CGRectMake(0, 40, genreLabel.bounds.size.width, 1)];
-    line.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
-
+    genreLabel.textColor = [UIColor whiteColor];
     
     
     // LABEL
-
     
-    genreSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
+    genreSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, genreSearch.bounds.size.width - 20, genreSearch.bounds.size.height)];
     genreSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     [genreSearchs setTextAlignment: NSTextAlignmentCenter];
     genreSearchs.backgroundColor = [UIColor whiteColor];
     genreSearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
     
 //    genreSearchs.text = @"choose up to three...";
-    
-//    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(genreSearch.bounds.size.width - 45, genreSearch.bounds.size.height/2 + 5, 30, 30)];
-//    [searchArrow setImage:[UIImage imageNamed:@"searcharrows6.png"] forState:UIControlStateNormal];
-//    [searchArrow addTarget:self action:@selector(genreArrowPressed) forControlEvents:UIControlEventTouchUpInside];
 
     
     // BUTTON
@@ -258,7 +242,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [genreSearchButton addTarget:self action:@selector(genreSearchButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     
     [genreSearch addSubview:genreSearchs];
-    [genreSearch addSubview:genreLabel];
+    [self.view addSubview:genreLabel];
 
     [self.view addSubview:genreSearch];
     [genreSearch addSubview:line];
@@ -266,7 +250,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 //    [genreSearch addSubview:searchArrow];
 
 
-    availabilitySearch = [[UIView alloc] initWithFrame:CGRectMake(20, 320, SCREEN_WIDTH - 40, 80)];
+    availabilitySearch = [[UIView alloc] initWithFrame:CGRectMake(20, 345, SCREEN_WIDTH - 40, 40)];
     availabilitySearch.backgroundColor = [UIColor whiteColor];
     availabilitySearch.layer.borderWidth = 1;
     availabilitySearch.layer.borderColor = [[UIColor whiteColor]CGColor];
@@ -277,18 +261,16 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 //    [searchArrow addTarget:self action:@selector(availabilityArrowPressed) forControlEvents:UIControlEventTouchUpInside];
 //    
     
-    UILabel * availabilityLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, availabilitySearch.bounds.size.width, 25)];
+    UILabel * availabilityLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 310, 100, 30)];
     availabilityLabel.text = @"Availability";
     availabilityLabel.textAlignment = NSTextAlignmentCenter;
     availabilityLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    availabilityLabel.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    availabilityLabel.textColor = [UIColor whiteColor];
     
-    line = [[UIView alloc] initWithFrame:CGRectMake(0, 40, availabilityLabel.bounds.size.width, 1)];
-    line.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
     // LABEL
     
-    availabilitySearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
+    availabilitySearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, availabilitySearch.bounds.size.width - 20, availabilitySearch.bounds.size.height)];
     availabilitySearchs.backgroundColor = [UIColor whiteColor];
     availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     availabilitySearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
@@ -303,20 +285,20 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [availabilitySearch addSubview:availabilitySearchs];
 
     [self.view addSubview:availabilitySearch];
-    [availabilitySearch addSubview:availabilityLabel];
+    [self.view addSubview:availabilityLabel];
     [availabilitySearch addSubview:line];
 //    [availabilitySearch addSubview:searchArrow];
     
     //// RATE
     
-    rateSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 410, SCREEN_WIDTH - 40, 80)];
+    rateSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 430, SCREEN_WIDTH - 40, 40)];
     rateSearch.backgroundColor = [UIColor whiteColor];
     rateSearch.layer.borderWidth = 1;
     rateSearch.layer.borderColor = [[UIColor whiteColor]CGColor];
     rateSearch.layer.cornerRadius = 5;
     rateSearchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, rateSearch.bounds.size.width, rateSearch.bounds.size.height)];
     [rateSearch addSubview:rateSearchButton];
-    rateSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 40, SCREEN_WIDTH - 60, 40)];
+    rateSearchs = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, rateSearch.bounds.size.width - 20, rateSearch.bounds.size.height)];
     [rateSearchs setTextAlignment: NSTextAlignmentCenter];
     rateSearchs.backgroundColor = [UIColor whiteColor];
     rateSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
@@ -327,21 +309,18 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 //    [searchArrow addTarget:self action:@selector(rateArrowPressed) forControlEvents:UIControlEventTouchUpInside];
 //    
     
-    UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, rateSearch.bounds.size.width, 20)];
+    UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 400, 100, 20)];
     rateLabel.text = @"Rate";
     rateLabel.textAlignment = NSTextAlignmentCenter;
     rateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
-    rateLabel.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
-    
-    line = [[UIView alloc] initWithFrame:CGRectMake(0, 40, rateLabel.bounds.size.width, 1)];
-    line.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    rateLabel.textColor = [UIColor whiteColor];
     
     
     [rateSearchButton addTarget:self action:@selector(rateSearchButtonTapped) forControlEvents:UIControlEventTouchUpInside];
     
     [rateSearch addSubview:rateSearchs];
     [self.view addSubview:rateSearch];
-    [rateSearch addSubview:rateLabel];
+    [self.view addSubview:rateLabel];
     [rateSearch addSubview:line];
 //    [rateSearch addSubview:searchArrow];
     
