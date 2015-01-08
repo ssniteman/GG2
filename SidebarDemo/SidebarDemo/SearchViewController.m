@@ -68,6 +68,8 @@
     _savedFormatAddress = savedFormatAddress;
     
     locationSearchs.text = self.savedFormatAddress;
+    locationSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+
     
 }
 
@@ -129,6 +131,9 @@
     
     _savedRateSetter = savedRateSetter;
     
+    rateSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+
+    
     if (self.nightlyOrHourly==TRUE) {
        
         NSLog(@"< %@/Nightly",self.savedRateSetter);
@@ -188,7 +193,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     locationSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     [locationSearchs setTextAlignment: NSTextAlignmentCenter];
     locationSearchs.backgroundColor = [UIColor whiteColor];
-    locationSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    locationSearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
     
     UILabel * locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 140, 100, 20)];
     locationLabel.text = @"Location";
@@ -196,6 +201,9 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     locationLabel.textColor = [UIColor whiteColor];
     
+    
+    locationSearchs.text = @"enter zip or city";
+
     
     searchLocationButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, locationSearch.bounds.size.width, locationSearch.bounds.size.height)];
     [locationSearch addSubview:searchLocationButton];
@@ -231,7 +239,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     genreSearchs.backgroundColor = [UIColor whiteColor];
     genreSearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
     
-//    genreSearchs.text = @"choose up to three...";
+    genreSearchs.text = @"choose up to three";
 
     
     // BUTTON
@@ -275,7 +283,7 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     availabilitySearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
     availabilitySearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
     
-//    availabilitySearchs.text = @"Choose";
+    availabilitySearchs.text = @"choose days available";
     
     [availabilitySearchs setTextAlignment: NSTextAlignmentCenter];
     availabilitySearchButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, availabilitySearch.bounds.size.width, availabilitySearch.bounds.size.height)];
@@ -302,12 +310,14 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [rateSearchs setTextAlignment: NSTextAlignmentCenter];
     rateSearchs.backgroundColor = [UIColor whiteColor];
     rateSearchs.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
-    rateSearchs.textColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+    rateSearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
     
-//    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(rateSearch.bounds.size.width/2 - 15, rateSearch.bounds.size.height/2 + 5, 30, 30)];
-//    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
-//    [searchArrow addTarget:self action:@selector(rateArrowPressed) forControlEvents:UIControlEventTouchUpInside];
-//    
+    rateSearchs.text = @"enter rate";
+    
+    searchArrow = [[UIButton alloc]initWithFrame:CGRectMake(rateSearch.bounds.size.width/2 - 15, rateSearch.bounds.size.height/2 + 5, 30, 30)];
+    [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
+    [searchArrow addTarget:self action:@selector(rateArrowPressed) forControlEvents:UIControlEventTouchUpInside];
+
     
     UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 400, 100, 20)];
     rateLabel.text = @"Rate";
@@ -340,7 +350,33 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     [self.view addSubview:searchButton];
     
+    /// trying slider
+    
+    //    CGRect frame = CGRectMake(0.0, 0.0, 200.0, 10.0);
+//    UISlider *slider = [[UISlider alloc] initWithFrame:CGRectMake(20, 480, SCREEN_WIDTH - 40, 10)];
+//    [slider addTarget:self action:@selector(sliderAction:) forControlEvents:UIControlEventValueChanged];
+//    [slider setBackgroundColor:[UIColor clearColor]];
+//    slider.minimumValue = 0;
+//    slider.maximumValue = 5000.00;
+//    slider.continuous = YES;
+//    slider.value = 25;
+//    [self.view addSubview:slider];
+//    
+
+    
+    
 }
+
+//-(void)sliderAction:(id)sender
+//{
+//    UISlider *slider = (UISlider*)sender;
+//    float value = slider.value;
+//    //-- Do further actions
+//    
+//    NSLog(@"%@",slider);
+//}
+
+
 
 -(void)searchLocationTapped {
     
@@ -491,6 +527,8 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
         
     }];
     
+    
+    
 }
 
 -(void)locationArrowPressed{
@@ -549,7 +587,5 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     return YES;
 }
-
-
 
 @end

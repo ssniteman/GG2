@@ -86,16 +86,22 @@
     
     NSMutableString * stringOfDays = [[NSMutableString alloc] init];
     
+    
     //Getting each day and appending it to one string
     for (NSString * days in self.available) {
         
-        [stringOfDays appendFormat:@"%@ ", days];
+        if ([days length] != 0) {
         
+            [stringOfDays appendFormat:@"%@/", days];
+        
+        }
     }
     
-    [self.delegate setSavedSearchAvailability:stringOfDays];
+    [self.delegate setSavedSearchAvailability:[stringOfDays substringToIndex:[stringOfDays length]-1]];
     
     [self.delegate setSearchArrayAvailability:self.available];
+
+    
     
     [self cancelButton];
 }

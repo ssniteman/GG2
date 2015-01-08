@@ -118,14 +118,33 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     self.navigationItem.rightBarButtonItem = saveButton;
     
 
-    if ([self.zipTextBox.text isEqualToString:@""]) {
-        self.changeZipButton.hidden = YES;
-        self.zipButton.hidden = NO;
+//    if ([self.zipTextBox.text isEqualToString:@""]) {
+//        self.changeZipButton.hidden = YES;
+//        self.zipButton.hidden = NO;
+//    } else {
+//        self.changeZipButton.hidden = NO;
+//        self.zipButton.hidden = YES;
+//        
+//    }
+    
+    
+    
+    if ([self.zipTextBox.text isEqual:@""]) {
+        
+        [self.changeZipButton setHidden:YES];
+        [self.zipButton setHidden:NO];
+        
     } else {
-        self.changeZipButton.hidden = NO;
+        [self.changeZipButton setHidden:NO];
         self.zipButton.hidden = YES;
         
     }
+    
+    
+    
+    
+    
+    
     
     user = [PFUser currentUser];
    
@@ -229,7 +248,18 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     self.changeZipButton.hidden = YES;
     self.zipButton.hidden = NO;
 
-
+//    if ([self.zipTextBox.text isEqual:@""]) {
+//       
+//        self.changeZipButton.hidden = YES;
+//        self.zipButton.hidden = NO;
+//    } else {
+//        
+//        self.zipButton.hidden = YES;
+//        self.changeZipButton.hidden = NO;
+//        
+//    }
+    
+    
 }
 
 - (IBAction)zipButton:(id)sender {
@@ -283,6 +313,7 @@ UINavigationControllerDelegate, UIActionSheetDelegate, UIImagePickerControllerDe
     }
     
     [self.view endEditing:YES];
+
 
     
 }

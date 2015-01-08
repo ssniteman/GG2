@@ -10,6 +10,7 @@
 #import <Parse/Parse.h>
 #import <GoogleMaps/GoogleMaps.h>
 #import <Accelerate/Accelerate.h>
+#import <Crashlytics/Crashlytics.h>
 
 @implementation AppDelegate
 
@@ -28,6 +29,8 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     [PFUser enableAutomaticUser];
+    
+    [Crashlytics startWithAPIKey:@"9fa9f504728f314888b4bbb1e7ef5c3e44ba7310"];
     
     // Register for Push Notitications, if running iOS 8
     if ([application respondsToSelector:@selector(registerUserNotificationSettings:)]) {
@@ -50,7 +53,6 @@
     
     [[UINavigationBar appearance] setBarTintColor:[UIColor whiteColor]];
     
-
     
     
     

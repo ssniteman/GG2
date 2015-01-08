@@ -17,8 +17,8 @@
 @property(strong,nonatomic) NSString * whoSending;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
+@property (weak, nonatomic) IBOutlet UITextView *messageLabel;
 @property(strong,nonatomic) NSArray * messages;
-@property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *fromLabel;
 

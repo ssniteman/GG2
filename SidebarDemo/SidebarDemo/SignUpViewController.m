@@ -46,7 +46,7 @@
     
     gLogo = [[UIImageView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 80.0f, 140.0f)];
     [gLogo setImage:[UIImage imageNamed:@"bigG.png"]];
-    gLogo.center = CGPointMake(self.view.center.x, 100);
+    gLogo.center = CGPointMake(self.view.center.x, 120);
     
     [self.view addSubview:gLogo];
     
@@ -157,7 +157,7 @@
     [signUpFinalButton setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24]];
 
     
-    signUpView = [[UIView alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 350, SCREEN_WIDTH - 40, 330)];
+    signUpView = [[UIView alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 320, SCREEN_WIDTH - 40, 330)];
     signUpView.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     [self.view addSubview:signUpView];
     

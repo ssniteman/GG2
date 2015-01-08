@@ -101,11 +101,11 @@
 
     if ([usersContent[@"availability"] length] <= 0) {
         
-        self.resultGenreLabel.text = @"N/A";
+        self.resultAvailabilityLabel.text = @"N/A";
         
     } else {
         
-        self.resultGenreLabel.text = self.usersContent[@"availability"];
+        self.resultAvailabilityLabel.text = self.usersContent[@"availability"];
         
     }
     

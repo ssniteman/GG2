@@ -80,20 +80,21 @@
 
 -(void) saveButton{
     
-    
-    
-    
+
     NSMutableString *stringOfDays = [[NSMutableString alloc] init];
     
     //Getting each day and appending it to one string
     for (NSString * days in self.available) {
         
-        [stringOfDays appendFormat:@"%@ ", days];
+        if ([days length] != 0) {
         
-    
+        
+            [stringOfDays appendFormat:@"%@/", days];
+        
+        }
+        
     }
-    
-    
+
 //    if ([self.available containsObject: @"Monday"]&&[self.available containsObject: @"Tuesday"]&&[self.available containsObject: @"Wednesday"]&&[self.available containsObject: @"Thursday"]&& self.available.count <=3) {
 //        
 //        [self.delegate setDaysAvailable:@"Weekdays"];
@@ -111,11 +112,11 @@
     
     PFUser * user = [PFUser currentUser];
     
-    user[@"availability"] = stringOfDays;
-    
+    user[@"availability"] = [stringOfDays substringToIndex:[stringOfDays length]-1];
+        
     [self.available removeObject:@""];
     
-    user[@"availabilityArray"] = self.available;
+    user[@"availabilityArray"]  = self.available;
     
     [[PFUser currentUser] saveInBackground];
     
@@ -124,7 +125,7 @@
 
 
     
-    [self.delegate setDaysAvailable:stringOfDays];
+    [self.delegate setDaysAvailable:[stringOfDays substringToIndex:[stringOfDays length]-1]];
 
     
 //    editProfile.daysAvailableLabel.text = string;

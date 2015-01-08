@@ -12,6 +12,7 @@
 		601441AD19BCF21F00BC3CC8 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 601441AC19BCF21F00BC3CC8 /* SettingsViewController.m */; };
 		60186EDD19D58DBC00AE331A /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 60186EDC19D58DBC00AE331A /* LoginViewController.m */; };
 		601FC3A41A11238A00724776 /* p5.png in Resources */ = {isa = PBXBuildFile; fileRef = 601FC3A31A11238A00724776 /* p5.png */; };
+		602360CB1A5E0485004AF2D4 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 602360CA1A5E0485004AF2D4 /* Crashlytics.framework */; };
 		6027C5A719CF896D00CDD988 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6027C5A619CF896D00CDD988 /* SignUpViewController.m */; };
 		6032646B1A056A620084F4D5 /* p4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6032646A1A056A620084F4D5 /* p4.png */; };
 		6041FB451A127AD700F8E2B3 /* searcharrows.png in Resources */ = {isa = PBXBuildFile; fileRef = 6041FB441A127AD700F8E2B3 /* searcharrows.png */; };
@@ -139,6 +140,7 @@
 		60186EDB19D58DBC00AE331A /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		60186EDC19D58DBC00AE331A /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		601FC3A31A11238A00724776 /* p5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p5.png; sourceTree = "<group>"; };
+		602360CA1A5E0485004AF2D4 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		6027C5A519CF896D00CDD988 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
 		6027C5A619CF896D00CDD988 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
 		6032646A1A056A620084F4D5 /* p4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p4.png; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				60C351FF19D89192008375AD /* libicucore.dylib in Frameworks */,
 				60C351FD19D8917F008375AD /* OpenGLES.framework in Frameworks */,
 				60D7968E19D1075E0009CDB2 /* SystemConfiguration.framework in Frameworks */,
+				602360CB1A5E0485004AF2D4 /* Crashlytics.framework in Frameworks */,
 				60D7968C19D107560009CDB2 /* StoreKit.framework in Frameworks */,
 				60D7968A19D1074F0009CDB2 /* Security.framework in Frameworks */,
 				60D7968819D1074A0009CDB2 /* QuartzCore.framework in Frameworks */,
@@ -502,6 +505,7 @@
 		F4EECF10177C99F400778578 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				602360CA1A5E0485004AF2D4 /* Crashlytics.framework */,
 				60C3521D19D89A47008375AD /* Accounts.framework */,
 				60C3521B19D899EC008375AD /* libsqlite3.dylib */,
 				60C3521919D899DB008375AD /* libz.1.2.5.dylib */,
@@ -614,6 +618,7 @@
 				F4EECF0A177C99F400778578 /* Sources */,
 				F4EECF0B177C99F400778578 /* Frameworks */,
 				F4EECF0C177C99F400778578 /* Resources */,
+				602360C91A5E0447004AF2D4 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -733,6 +738,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		602360C91A5E0447004AF2D4 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "./Crashlytics.framework/run 9fa9f504728f314888b4bbb1e7ef5c3e44ba7310 555bd516f81adb1d75f3a1d009f7c5bae9982a120a6ef7ec8ceb4ee51d344173";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F4EECF0A177C99F400778578 /* Sources */ = {

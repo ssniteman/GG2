@@ -38,7 +38,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 80;
+    return 150;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -93,6 +93,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
+
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -100,7 +102,8 @@
     // refresh conversation messages
     
     
-    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
+
     
     PFQuery * conversationQuery = [PFQuery queryWithClassName:@"Messages"];
     
