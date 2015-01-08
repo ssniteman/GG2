@@ -151,7 +151,7 @@
     
 // Genre LABEL
     
-    genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-100, topView.bounds.size.height-115, 200, 21)];
+    genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-150, topView.bounds.size.height-115, 300, 21)];
     [genreLabel setFont:[UIFont fontWithName:@"HelveticaNeue-UltraLight" size:20]];
     
     genreLabel.textColor = [UIColor whiteColor];
