@@ -36,8 +36,6 @@
     
     SWRevealViewController *revealController = [self revealViewController];
     
-    //[self.navigationController.navigationBar addGestureRecognizer:revealController.panGestureRecognizer];
-    
     UIBarButtonItem *revealButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"menu3.png"]style:UIBarButtonItemStyleBordered target:revealController action:@selector(revealToggle:)];
     
     revealButtonItem.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
@@ -48,7 +46,7 @@
     
     [inboxQueryOne findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
        
-        NSLog(@"des nuts %@",[objects[0] createdAt]);
+        NSLog(@"CREATED AT %@",[objects[0] createdAt]);
         
     }];
 
@@ -66,24 +64,12 @@
     
     [inboxQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         
-//        NSLog(@"%@",objects);
-//        PFQuery * userQuery = [PFUser query];
-//
-//        currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
-//        
-//        NSLog(@"current user %@", currentUser);
-//        
-//        NSArray * people = currentUser[@"peopleSpoken"];
-       
         if (objects.count > 0) {
             
             NSMutableArray * people = [@[] mutableCopy];
             
             for (PFObject * message in objects) {
                 
-//                NSLog(@"sender %@",message[@"sender"]);
-//                NSLog(@"reciever %@",message[@"reciever"]);
-//                NSLog(@"S_R %@",message[@"S_R"]);
                 
                 NSArray * participants = @[message[@"sender"],message[@"reciever"]];
                 
@@ -130,7 +116,7 @@
     /*
      
     - user
-        - grabbed preople spoken to
+        - grabbed people spoken to
             - used them to get messages
                 - ordered conversations by people spoken to
      
@@ -179,22 +165,6 @@
         
     }
     
-   // NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"beginDate" ascending:TRUE];
-   // [myConversations sortUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-
-    
-//    for (NSDictionary * conversation in myConversations) {
-//        
-//        
-//        for (PFObject * message in conversation[@"messages"]) {
-//            
-//            NSString * text = message[@"messageContent"];
-//            
-//            NSLog(@"The actual MESSAGE: %@",text);
-//        }
-//        
-//        
-//    }
     
     [self.tableView reloadData];
     

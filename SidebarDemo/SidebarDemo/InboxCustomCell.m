@@ -20,23 +20,32 @@
     
     PFUser * user = myMessagesCell[@"user"];
     
-    if ([user[@"userType"] isEqualToString:@"musician"]) {
+//    if ([user[@"userType"] isEqualToString:@"musician"]) {
+//    
+//        if ([user[@"bandName"] length]==0) {
+//            self.inboxMessageName.text = @"N/A";
+//        } else {
+//        
+//            self.inboxMessageName.text = user[@"bandName"];
+//        }
+//     
+//    } else {
+//        
+//        if ([user[@"barName"] length]==0) {
+//            self.inboxMessageName.text = @"N/A";
+//        } else {
+//        self.inboxMessageName.text = user[@"barName"];
+//        }
+//    }
+    
     
         if ([user[@"bandName"] length]==0) {
             self.inboxMessageName.text = @"N/A";
         } else {
-        
+            
             self.inboxMessageName.text = user[@"bandName"];
         }
-     
-    } else {
         
-        if ([user[@"barName"] length]==0) {
-            self.inboxMessageName.text = @"N/A";
-        } else {
-        self.inboxMessageName.text = user[@"barName"];
-        }
-    }
     
     
     
@@ -48,8 +57,6 @@
         [self.inboxMessagePhoto setBackgroundImage:image forState:UIControlStateNormal];
     }];
     
-    
-
 
     self.inboxMessagePhoto.layer.cornerRadius = 30;
     self.inboxMessagePhoto.userInteractionEnabled = false;
@@ -58,16 +65,10 @@
 }
 
 
-
-
-
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-    
-    
     
 
     

@@ -25,9 +25,7 @@
 -(void)setMessages:(NSMutableArray *)messages {
     _messages = messages;
     
-    
     [self.tableView reloadData];
-    
     
 }
 
@@ -61,9 +59,6 @@
 
    cell.fromLabel.text =  self.messages[indexPath.row][@"S_R"][1][@"bandName"];
 
-    
-    
-    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     //        //uncomment to get the time only
     //        //[formatter setDateFormat:@"hh:mm a"];
@@ -72,9 +67,6 @@
     
     cell.dateLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate: self.messages[indexPath.row][@"date"]]];
 
-    
-    
-    
     
     if (cell == nil) {
         
@@ -92,18 +84,14 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    
-
-    
+  
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     // refresh conversation messages
     
-    
     self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
-
     
     PFQuery * conversationQuery = [PFQuery queryWithClassName:@"Messages"];
     
@@ -122,7 +110,8 @@
         {
             PFUser * reciever = message[@"reciever"];
             
-            // only read message if you are the reciever
+            // only can read message if you are the reciever //
+            
             if ([reciever.objectId isEqualToString:[PFUser currentUser].objectId])
             {
                 if (![message[@"read"] boolValue]) { unReadNowRead++; }
@@ -144,7 +133,6 @@
     }];
     
 }
-
 
 
 - (IBAction)conversationNewSendButton:(id)sender {

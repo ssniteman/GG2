@@ -19,13 +19,6 @@
 }
 
 
-//-(void)setToWhomWeSendString:(NSString *)toWhomWeSendString{
-//    _toWhomWeSendString =toWhomWeSendString;
-//    self.toWhomWeSend.text = self.toWhomWeSendString;
-//
-//    NSLog(@"listen here %@",toWhomWeSendString);
-//}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -87,59 +80,6 @@
         [self cancelButton];
 
     }];
-    
-//    PFUser * user = self.toUser;
-//
-//    PFObject * forBadgeNumber = [PFObject objectWithClassName:@"User"];
-//    
-////    int badgeNumber = [self.toUser[@"badgeNumber"] intValue]+1;
-//    
-//    
-//        user[@"badgeNumber"] = @(5);
-//
-//    
-//    [self.toUser saveInBackground];
-
-    
-//    forBadgeNumber[@"badgeNumber"] = @(self.toUser[@"badgeNumber"]+1);
-    
-    // add reciever to people spoken to
-    
-//    PFQuery * userQuery = [PFUser query];
-//    [userQuery includeKey:@"peopleSpoken"];
-//    PFUser * currentUser = (PFUser *)[userQuery getObjectWithId:[PFUser currentUser].objectId];
-//    
-//    NSMutableArray * peopleSpokenTo = [currentUser[@"peopleSpoken"] mutableCopy];
-//    
-//    if (peopleSpokenTo == nil) {
-//        peopleSpokenTo = [@[] mutableCopy];
-//    }
-//    
-    // querying through the people spoken to array... we are saying, if the self.toUser doesn't exist, add them to the array.
-//    
-//    BOOL foundUser = NO;
-//    
-//    for (PFUser * user in peopleSpokenTo)
-//    {
-//        if ([user.objectId isEqualToString:self.toUser.objectId])
-//        {
-//            foundUser = YES;
-//        }
-//    }
-//    
-//    if (!foundUser)
-//    {
-//        [peopleSpokenTo addObject:self.toUser];
-//    }
-//    
-//    if (![peopleSpokenTo containsObject:self.toUser])
-//    {
-//        [peopleSpokenTo addObject:self.toUser];
-//    }
-//    
-//    currentUser[@"peopleSpoken"] = peopleSpokenTo;
-//    
-//    [currentUser saveInBackground];
     
     
     // RUN PUSH
