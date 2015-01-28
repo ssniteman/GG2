@@ -39,6 +39,9 @@
 //    }
     
     
+    // eventually needs to be changed to above code -- everyone is a user[bandname] (which is wrong) -- below corrects that
+    
+    
         if ([user[@"bandName"] length]==0) {
             self.inboxMessageName.text = @"N/A";
         } else {

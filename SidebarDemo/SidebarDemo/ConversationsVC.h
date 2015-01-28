@@ -14,8 +14,7 @@
 @property (strong,nonatomic) NSDictionary * conversationThread;
 
 
-//The Array for Messages
-
+//The Array for Messagesx
 @property(strong,nonatomic) NSMutableArray * messages;
 
 

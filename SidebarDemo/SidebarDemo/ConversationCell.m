@@ -17,7 +17,8 @@
     UILabel * fromLabel;
     
     UILabel * dateLabel;
-    
+
+    UIButton * fromButton;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

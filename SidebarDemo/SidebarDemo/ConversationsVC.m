@@ -11,6 +11,8 @@
 #import "InboxTVC.h"
 #import <Parse/Parse.h>
 #import "ComposeMessageTVC.h"
+#import "ProfileViewController.h"
+#import "SearchResultsProfileViewController.h"
 
 @interface ConversationsVC ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -59,6 +61,19 @@
 
    cell.fromLabel.text =  self.messages[indexPath.row][@"S_R"][1][@"bandName"];
 
+    /// Button Label
+    
+    UIButton * fromButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 5, 150, 30)];
+//    [fromButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0]];
+//    [fromButton setTitleColor:[UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f] forState:UIControlStateNormal];
+//    [fromButton setTitle:self.messages[indexPath.row][@"S_R"][1][@"bandName"] forState:UIControlStateNormal];
+    [fromButton addTarget:self action:@selector(fromButtonLabel) forControlEvents:UIControlEventTouchUpInside ];
+    fromButton.backgroundColor= [UIColor clearColor];
+    [cell.contentView addSubview:fromButton];
+
+    
+    // Date Label
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     //        //uncomment to get the time only
     //        //[formatter setDateFormat:@"hh:mm a"];
@@ -120,7 +135,7 @@
                 [message saveInBackground];
             }
             
-            
+      
         }
         
         PFInstallation *currentInstallation = [PFInstallation currentInstallation];
@@ -156,6 +171,25 @@
     //now present this navigation controller modally
     [self presentViewController:navigationController animated:YES completion:nil];
 
+    
+}
+//- (void)fromButtonLabel:(PFUser*) user{
+
+- (void)fromButtonLabel{
+    
+    //// trying to bring up the profile of label clicked on
+    
+    
+    PFUser * user = self.conversationThread[@"user"];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"searchResultsProfile" bundle: nil];
+
+    SearchResultsProfileViewController * resultProfile = [storyboard instantiateViewControllerWithIdentifier:@"resultProfile"];
+    
+    resultProfile.searchResultsForProfile = user;
+    
+    [self.navigationController pushViewController:resultProfile animated:YES];
+        
     
 }
 @end
