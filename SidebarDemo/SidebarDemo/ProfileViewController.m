@@ -31,6 +31,10 @@
     UILabel * rateLabelParse;
     
     UILabel * availabilityLabelParse;
+    
+    UILabel * availabilityLabelTwo;
+    UILabel * rateLabelTwo;
+
 
     
     PFUser * user;
@@ -92,7 +96,19 @@
     
  //Setting the profile picture to be round
     
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+
     theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-90, 80, 180, 180)];
+        theProfilePicture.layer.cornerRadius = 90;
+
+    } else {
+        
+        theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-60, 60, 120, 120)];
+        theProfilePicture.layer.cornerRadius = 60;
+  
+
+
+    }
     
     if (user[@"image"] == nil) {
     
@@ -115,7 +131,6 @@
         }];
     }
     
-    theProfilePicture.layer.cornerRadius = 90;
     theProfilePicture.userInteractionEnabled = false;
     theProfilePicture.clipsToBounds = YES;
     
@@ -213,6 +228,22 @@
     [topView addSubview:self.rateLabel];
     [topView addSubview:self.availabilityLabel];
 
+    
+    
+    availabilityLabelTwo = [[UILabel alloc] initWithFrame:CGRectMake(10, topView.bounds.size.height - 55, 100, 20)];
+    availabilityLabelTwo.textColor = [UIColor whiteColor];
+    availabilityLabelTwo.textAlignment = NSTextAlignmentCenter;
+    [availabilityLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17]];
+    availabilityLabelTwo.text = @"Availability";
+    [topView addSubview:availabilityLabelTwo];
+
+    
+    rateLabelTwo = [[UILabel alloc] initWithFrame:CGRectMake(topView.bounds.size.width - 115, topView.bounds.size.height - 55, 100, 20)];
+    rateLabelTwo.textColor = [UIColor whiteColor];
+    rateLabelTwo.textAlignment = NSTextAlignmentCenter;
+    [rateLabelTwo setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:17]];
+    rateLabelTwo.text = @"Rate";
+    [topView addSubview:rateLabelTwo];
     
 }
 

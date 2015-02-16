@@ -71,6 +71,7 @@
     
     // RATE TEXT FIELD
     
+
     rateTextField = [[UITextField alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-50, SCREEN_HEIGHT - 400, 100, 50)];
     rateTextField.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     rateTextField.textAlignment = NSTextAlignmentCenter;

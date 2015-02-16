@@ -189,7 +189,7 @@
     resultProfile.searchResultsForProfile = user;
     
     [self.navigationController pushViewController:resultProfile animated:YES];
-        
+    
     
 }
 @end

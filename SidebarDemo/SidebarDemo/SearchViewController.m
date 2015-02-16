@@ -37,6 +37,11 @@
     UILabel * rateSearchs;
     UILabel * locationSearchs;
     UILabel * availabilitySearchs;
+    UILabel * locationLabel;
+    UILabel * genreLabel;
+    UILabel * availabilityLabel;
+    UILabel * rateLabel;
+    
     
     UIView * line;
     
@@ -172,10 +177,19 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     self.view.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     
+    
     searchSegmentControl = [[UISegmentedControl alloc]initWithItems:@[@"Musician/Band",@"Bar/Venue"]];
     [searchSegmentControl setSegmentedControlStyle:UISegmentedControlStyleBar];
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"HelveticaNeue-Light" size:20.0], UITextAttributeFont, nil] forState:UIControlStateNormal];
-    searchSegmentControl.frame = CGRectMake(20, 60, SCREEN_WIDTH -40, 60);
+    
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+    searchSegmentControl.frame = CGRectMake(20, 60, SCREEN_WIDTH - 40, 60);
+    } else {
+        searchSegmentControl.frame = CGRectMake(20, 60, SCREEN_WIDTH - 40, 40);
+
+    }
+    
+    
     searchSegmentControl.layer.borderWidth = 0;
     UIColor *newTintColor = [UIColor whiteColor];
     searchSegmentControl.tintColor = newTintColor;
@@ -184,7 +198,12 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 
     // location view
 
-    locationSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 170, SCREEN_WIDTH - 40, 40)];
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+        locationSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 170, SCREEN_WIDTH - 40, 40)];
+    } else {
+        locationSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 140, SCREEN_WIDTH - 40, 30)];
+
+    }
     locationSearch.backgroundColor = [UIColor whiteColor];
     locationSearch.layer.borderWidth = 1;
     locationSearch.layer.cornerRadius = 5;
@@ -195,10 +214,19 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     locationSearchs.backgroundColor = [UIColor whiteColor];
     locationSearchs.textColor = [UIColor colorWithRed:0.780f green:0.780f blue:0.800f alpha:1.0f];
     
-    UILabel * locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 140, 100, 20)];
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+
+    locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 140, 100, 20)];
+        locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+
+    } else {
+    locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 110, 100, 20)];
+    locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+
+
+    }
     locationLabel.text = @"Location";
     locationLabel.textAlignment = NSTextAlignmentCenter;
-    locationLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     locationLabel.textColor = [UIColor whiteColor];
     
     
@@ -217,17 +245,31 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     // GENRE VIEW
     
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+
     genreSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 260, SCREEN_WIDTH - 40, 40)];
+    } else {
+        genreSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 210, SCREEN_WIDTH - 40, 30)];
+
+        }
     genreSearch.backgroundColor = [UIColor whiteColor];
     genreSearch.layer.borderWidth = 1;
     genreSearch.layer.borderColor = [[UIColor whiteColor]CGColor];
     genreSearch.layer.cornerRadius = 5;
 
-    
-    UILabel * genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 230, 100, 20)];
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+
+    genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 230, 100, 20)];
+        genreLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+
+    } else {
+            genreLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 180, 100, 20)];
+        genreLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+
+
+        }
     genreLabel.text = @"Genre";
     genreLabel.textAlignment = NSTextAlignmentCenter;
-    genreLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     genreLabel.textColor = [UIColor whiteColor];
     
     
@@ -257,8 +299,13 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
 //    [genreSearch addSubview:searchArrow];
 
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
 
     availabilitySearch = [[UIView alloc] initWithFrame:CGRectMake(20, 345, SCREEN_WIDTH - 40, 40)];
+    } else {
+        availabilitySearch = [[UIView alloc] initWithFrame:CGRectMake(20, 290, SCREEN_WIDTH - 40, 30)];
+
+    }
     availabilitySearch.backgroundColor = [UIColor whiteColor];
     availabilitySearch.layer.borderWidth = 1;
     availabilitySearch.layer.borderColor = [[UIColor whiteColor]CGColor];
@@ -268,11 +315,18 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 ////    [searchArrow setImage:[UIImage imageNamed:@"searcharrows3.png"] forState:UIControlStateNormal];
 //    [searchArrow addTarget:self action:@selector(availabilityArrowPressed) forControlEvents:UIControlEventTouchUpInside];
 //    
-    
-    UILabel * availabilityLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 310, 100, 30)];
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+
+    availabilityLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 310, 100, 30)];
+        availabilityLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+
+    } else {
+        availabilityLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 250, 100, 30)];
+        availabilityLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+
+    }
     availabilityLabel.text = @"Availability";
     availabilityLabel.textAlignment = NSTextAlignmentCenter;
-    availabilityLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     availabilityLabel.textColor = [UIColor whiteColor];
     
     
@@ -298,8 +352,13 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
 //    [availabilitySearch addSubview:searchArrow];
     
     //// RATE
-    
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+
     rateSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 430, SCREEN_WIDTH - 40, 40)];
+    } else {
+        rateSearch = [[UIView alloc] initWithFrame:CGRectMake(20, 360, SCREEN_WIDTH - 40, 30)];
+
+    }
     rateSearch.backgroundColor = [UIColor whiteColor];
     rateSearch.layer.borderWidth = 1;
     rateSearch.layer.borderColor = [[UIColor whiteColor]CGColor];
@@ -318,11 +377,19 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     [searchArrow setImage:[UIImage imageNamed:@"searcharrows2.png"] forState:UIControlStateNormal];
     [searchArrow addTarget:self action:@selector(rateArrowPressed) forControlEvents:UIControlEventTouchUpInside];
 
-    
-    UILabel * rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 400, 100, 20)];
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+
+    rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 400, 100, 20)];
+        rateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
+
+    } else {
+        rateLabel = [[UILabel alloc] initWithFrame:CGRectMake(SCREEN_WIDTH / 2 - 50, 330, 100, 20)];
+        rateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20];
+
+
+    }
     rateLabel.text = @"Rate";
     rateLabel.textAlignment = NSTextAlignmentCenter;
-    rateLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:24];
     rateLabel.textColor = [UIColor whiteColor];
     
     
@@ -336,7 +403,13 @@ rateSearchs.text = [NSString stringWithFormat:@"< %@/Nightly",[self.savedRateSet
     
     // SEARCH BUTTON BOTTOM
     
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+
     searchButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 500, SCREEN_WIDTH - 40, 50)];
+    } else {
+        searchButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 420, SCREEN_WIDTH - 40, 40)];
+
+    }
     searchButton.backgroundColor = [UIColor colorWithRed:0.859f green:0.282f blue:0.255f alpha:1.0f];
     [searchButton setTitle:@"SEARCH" forState:UIControlStateNormal];
     [searchButton.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-Thin" size:24.0]];

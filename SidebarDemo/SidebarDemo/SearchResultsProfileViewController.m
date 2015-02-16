@@ -77,7 +77,21 @@ UIButton * messageButton;
     
 
     
-    theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-90, 80, 180, 180)];
+    
+    if (IsIphone5 || IsIphone6 || IsIphone6plus) {
+        
+        theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-90, 80, 180, 180)];
+        theProfilePicture.layer.cornerRadius = 90;
+        
+    } else {
+        
+        theProfilePicture = [[UIButton alloc] initWithFrame:CGRectMake(SCREEN_WIDTH/2-60, 60, 120, 120)];
+        theProfilePicture.layer.cornerRadius = 60;
+        
+        
+        
+    }
+    
     
     if (searchResultsForProfile[@"image"] == nil) {
         
@@ -104,7 +118,6 @@ UIButton * messageButton;
     
     }
     
-    theProfilePicture.layer.cornerRadius = 90;
     theProfilePicture.userInteractionEnabled = false;
     theProfilePicture.clipsToBounds = YES;
     

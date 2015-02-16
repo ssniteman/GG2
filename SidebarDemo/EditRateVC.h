@@ -14,6 +14,8 @@
 #define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
 #define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
 
+
+
 @property (nonatomic,assign) id<RateDelegate> delegate;
 
 @end
